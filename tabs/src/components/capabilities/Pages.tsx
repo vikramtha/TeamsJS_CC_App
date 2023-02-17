@@ -96,10 +96,20 @@ export const Pages = () => {
                         Return focus to search box
                     </Button>
                     <Button onClick={async () => {
+                        pages.returnFocus(false);
+                    }}>
+                        Return focus to app bar
+                    </Button>
+                    <Button onClick={async () => {
                         // TODO: Implement deeplink
                         //pages.shareDeepLink({})
                     }}>
                         Share Deep Link
+                    </Button>
+                    <Button onClick={async () => {
+                        
+                    }}>
+                        Set Current Frame to _____
                     </Button>
                 </>
             }
@@ -108,3 +118,4 @@ export const Pages = () => {
 }
 
 export const PagesIsSupported = () => booleanToString(pages.isSupported());
+export const PagesCurrent   = () => booleanToString(pages.currentApp.isSupported());

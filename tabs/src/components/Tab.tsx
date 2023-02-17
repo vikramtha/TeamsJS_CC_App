@@ -12,7 +12,7 @@ import { GeoLocation, GeoLocationIsSupported } from "./capabilities/GeoLocation"
 import { Mail, MailIsSupported } from "./capabilities/Mail";
 import { Menus, MenusIsSupported } from "./capabilities/Menus";
 import { Monetization, MonetizationIsSupported } from "./capabilities/Monetization";
-import { Pages, PagesIsSupported } from "./capabilities/Pages";
+import { Pages, PagesIsSupported, PagesCurrent } from "./capabilities/Pages";
 import { People, PeopleIsSupported } from "./capabilities/People";
 import { Profile, ProfileIsSupported } from "./capabilities/Profile";
 import { Search, SearchIsSupported } from "./capabilities/Search";
@@ -22,11 +22,12 @@ import { TeamsCore, TeamsCoreIsSupported } from "./capabilities/TeamsCore";
 import { Video, VideoIsSupported } from "./capabilities/Video";
 import { WebStorage, WebStorageIsSupported } from "./capabilities/WebStorage";
 import { App, AppIsSupported } from "./capabilities/App";
+import { Hub } from "./Host";
 import packageJSON from "../../package.json";
 
 const Tab = () => {
   const { themeString } = useContext(TeamsFxContext);
-
+  
   const header: Fluent.ShorthandValue<Fluent.TableRowProps> = {
     key: 'header',
     items: [
@@ -138,6 +139,14 @@ const Tab = () => {
         ],
       },
       {
+        key: 11,
+        items: [
+          { key: '11-1', content: 'Pages.current' },
+          { key: '11-2', content: PagesCurrent() },
+          { key: '11-3', content: <Pages /> }
+        ],
+      },
+      {
         key: 12,
         items: [
           { key: '12-1', content: 'People' },
@@ -213,7 +222,10 @@ const Tab = () => {
 
   return (
     <div className={themeString === "default" ? "" : "dark"}>
-      <Fluent.Flex column={true} gap={"gap.small"} padding={"padding.medium"}>
+      <Fluent.Flex column={true} gap={"gap.small"} padding={"padding.medium"} >
+      <Fluent.Segment>
+        <Hub />
+      </Fluent.Segment>
         <Fluent.Segment>
           <Fluent.Flex space="between">
             <Fluent.Checkbox
