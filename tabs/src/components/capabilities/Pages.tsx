@@ -101,8 +101,11 @@ export const Pages = () => {
                         Return focus to app bar
                     </Button>
                     <Button onClick={async () => {
-                        // TODO: Implement deeplink
-                        //pages.shareDeepLink({})
+                        pages.shareDeepLink({
+                            subPageId: "72c73d2e-a890-4580-9c68-513c8cb6efcd",
+                            subPageLabel: "Shareable link Microsoft.com",
+                            subPageWebUrl: "https://www.microsoft.com"
+                        });
                     }}>
                         Share Deep Link
                     </Button>
