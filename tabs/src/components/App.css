@@ -1,5 +1,19 @@
-
 .center {
     text-align: center
-   }
-   
+}
+
+.ui_action .ui-flex {
+    width: max-content;
+}
+
+.ui-table__cell:not(:last-child) {
+    max-width: 6%;
+}
+
+.ui-table__cell:first-child {
+    max-width: 10%;
+}
+
+.ui-icon {
+    padding-right: 0.2rem;
+}
