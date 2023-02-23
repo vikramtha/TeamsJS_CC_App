@@ -45,6 +45,26 @@
                 "personal",
                 "team"
             ]
+        },
+        {
+            "entityId": "tou1",
+            "name": "Terms of use",
+            "contentUrl": "{{state.fx-resource-frontend-hosting.endpoint}}{{state.fx-resource-frontend-hosting.indexPath}}/termsofuse",
+            "websiteUrl": "{{state.fx-resource-frontend-hosting.endpoint}}{{state.fx-resource-frontend-hosting.indexPath}}/termsofuse",
+            "scopes": [
+                "personal",
+                "team"
+            ]
+        },
+        {
+            "entityId": "dialog",
+            "name": "Dialog",
+            "contentUrl": "{{state.fx-resource-frontend-hosting.endpoint}}{{state.fx-resource-frontend-hosting.indexPath}}/dialog",
+            "websiteUrl": "{{state.fx-resource-frontend-hosting.endpoint}}{{state.fx-resource-frontend-hosting.indexPath}}/dialog",
+            "scopes": [
+                "personal",
+                "team"
+            ]
         }
     ],
     "permissions": [

@@ -1,42 +1,52 @@
 import { Button, Flex } from "@fluentui/react-northstar";
-import { menus } from "@microsoft/teams-js";
+
+import SetNavBarMenu from "./SetNavBarMenu";
 import { booleanToString } from "../../helpers";
+import { menus } from "@microsoft/teams-js";
 
 export const Menus = () => {
     // check to see if capability is supported
     if (menus.isSupported()) {
         menus.initialize();
+        const menuItem: menus.MenuItem = {
+            id: '1',
+            enabled: true,
+            icon: '',
+            selected: true,
+            title: 'test menu',
+            displayMode: menus.DisplayMode.ifRoom,
+            viewData: {
+                listTitle: 'test menu list',
+                listType: menus.MenuListType.dropDown,
+                listItems: [
+                    {
+                        id: '1-1',
+                        enabled: true,
+                        icon: '',
+                        selected: true,
+                        title: 'test menu list1'
+                    }
+                ]
+            }
+        }
+
         return (
             <Flex gap="gap.small" vAlign="center">
-                <Button onClick={async () => {
-                    menus.setUpViews([
-                        { id: "1", title: "View 1" },
-                    ], (id: string) => {
+                <Button onClick={() => {
+                    menus.setUpViews([{ id: "1", title: "View 1" }], (id: string) => {
                         console.log(id);
                         return true;
-                    })
+                    });
                 }}>
                     Setup Views
                 </Button>
-                <Button onClick={async () => {
-                    menus.setNavBarMenu([
-                        { id: "1", title: "Item 1", icon: "emoji", enabled: true, selected: false },
-                    ], (id: string) => {
-                        console.log(id);
+                <SetNavBarMenu />
+
+                <Button onClick={() => {
+                    menus.showActionMenu({ items: [menuItem], title: "Menu Title" }, (id: string) => {
+
                         return true;
-                    })
-                }}>
-                    Set Nav Bar Menu
-                </Button>
-                <Button onClick={async () => {
-                    menus.showActionMenu({
-                        items: [
-                            { id: "1", title: "Item 1", icon: "emoji", enabled: true, selected: false },
-                        ], title: "Menu Title"
-                    }, (id: string) => {
-                        console.log(id);
-                        return true;
-                    })
+                    });
                 }}>
                     Show Action Menu
                 </Button>

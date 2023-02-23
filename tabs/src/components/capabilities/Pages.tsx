@@ -1,6 +1,7 @@
 import { Button, Flex } from "@fluentui/react-northstar";
-import { pages } from "@microsoft/teams-js";
+
 import { booleanToString } from "../../helpers";
+import { pages } from "@microsoft/teams-js";
 
 export const Pages = () => {
     // check to see if capability is supported
@@ -34,6 +35,7 @@ export const Pages = () => {
         console.log("fullScreenHandler");
     });
 
+
     return (
         <Flex gap="gap.small" vAlign="center">
             {pages.backStack.isSupported() &&
@@ -46,7 +48,7 @@ export const Pages = () => {
             {pages.currentApp.isSupported() &&
                 // 🤷🏻‍♂️ returns false in Teams
                 <Button onClick={async () => {
-                    pages.currentApp.navigateTo({
+                    await pages.currentApp.navigateTo({
                         pageId: 'privacy1'
                     });
                 }}>
@@ -55,32 +57,6 @@ export const Pages = () => {
             }
             {pages.tabs.isSupported() &&
                 <>
-                    <Button onClick={async () => {
-                        const config = await pages.tabs.getTabInstances();
-                        console.log(config)
-                    }}>
-                        Get tab instances
-                    </Button>
-                    <Button onClick={async () => {
-                        const config = await pages.tabs.getMruTabInstances();
-                        console.log(config);
-                    }}>
-                        Get Most Recently Used tab instances
-                    </Button>
-                    <Button onClick={async () => {
-                        // only works for channel tabs, see
-                        // https://stackoverflow.com/questions/62390440/msteams-development-navigate-between-personal-tabs
-                        const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
-                        // deprecated? check docs
-                        await pages.tabs.navigateToTab({
-                            tabName: 'privacy1',
-                            entityId: 'privacy1',
-                            url: `${baseUrl}/index.html#/privacy`,
-                            websiteUrl: `${baseUrl}//index.html#/privacy`
-                        });
-                    }}>
-                        Navigate to tab
-                    </Button>
                     <Button onClick={async () => {
                         // navigate to the Apps tab in the Developer Portal app
                         await pages.navigateToApp({
@@ -109,10 +85,15 @@ export const Pages = () => {
                     }}>
                         Share Deep Link
                     </Button>
-                    <Button onClick={async () => {
-                        
+                    <Button onClick={() => {
+                        const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
+                        pages.setCurrentFrame({
+                            contentUrl: `${baseUrl}/#/termsofuse`,
+                            websiteUrl: `${baseUrl}/#/termsofuse`
+                        });
+
                     }}>
-                        Set Current Frame to _____
+                        Set Current Frame to 'Terms of Use'
                     </Button>
                 </>
             }
@@ -121,4 +102,4 @@ export const Pages = () => {
 }
 
 export const PagesIsSupported = () => booleanToString(pages.isSupported());
-export const PagesCurrent   = () => booleanToString(pages.currentApp.isSupported());
+export const PagesCurrent = () => booleanToString(pages.currentApp.isSupported());

@@ -1,37 +1,33 @@
+import "./App.css";
+
+import * as Fluent from "@fluentui/react-northstar";
+
+import { browserName, isMobile } from 'react-device-detect';
+
 import { app } from "@microsoft/teams-js";
 import { useData } from "@microsoft/teamsfx-react";
-import { browserName, CustomView, isMobile } from 'react-device-detect';
-import "./App.css";
+
 export const Hub = () => {
     const hubName = useData(async () => {
         await app.initialize();
         const context = await app.getContext();
         return context.app.host.name;
-      })?.data;
+    })?.data;
     return (
-        <div className="center">
-            {hubName && (
-                <p className="center">Current Host: {hubName}</p>
-            )}
-            <CustomView condition={browserName === "Chrome"}>
-            <p className="center">Current Browser: Chrome</p>
-            </CustomView>
-            <CustomView condition={browserName === "Edge"}>
-            <p className="center">Current Browser: Edge</p>
-            </CustomView>
-            <CustomView condition={browserName === "Firefox"}>
-            <p className="center">Current Browser: Firefox</p>
-            </CustomView>
-            <CustomView condition={browserName === "Safari"}>
-            <p className="center">Current Browser: Safari</p>
-            </CustomView>
-            <div>
-                <p  className="center"> {isMobile? 'This is a mobile device': 'This is a desktop device'} </p>
-            </div>
-        </div>
-        
+        <Fluent.Flex gap="gap.small" padding="padding.medium" styles={{ justifyContent: 'space-between' }}>
+            <Fluent.Flex.Item>
+                {hubName && (
+                    <Fluent.Text weight="bold">Current Host: {hubName}</Fluent.Text>
+                )}
+            </Fluent.Flex.Item>
+            <Fluent.Flex.Item>
+                <Fluent.Text weight="bold">Current Browser: {browserName}</Fluent.Text>
+            </Fluent.Flex.Item>
+
+            <Fluent.Flex.Item>
+                <Fluent.Text weight="bold">{isMobile ? 'Mobile device' : 'Desktop device'}</Fluent.Text>
+            </Fluent.Flex.Item>
+        </Fluent.Flex>
     );
 
 }
-
-
