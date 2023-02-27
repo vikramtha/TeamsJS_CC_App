@@ -1,6 +1,6 @@
 import { Button } from "@fluentui/react-northstar";
-import { dialog } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
+import { dialog } from "@microsoft/teams-js";
 
 export const Dialog = () => {
     // check to see if capability is supported
@@ -8,14 +8,14 @@ export const Dialog = () => {
         // return buttons to open dialog
         return (
             <Button onClick={() =>
-                dialog.open({
+                dialog.url.open({
                     title: 'Dialog Example',
-                    fallbackUrl: 'https://localhost:53000',
+                    fallbackUrl: 'https://localhost:53000/index.html#/privacy',
                     url: 'https://localhost:53000/index.html#/dialog',
-                    size: { height: 300, width: 300 }
+                    size: { height: 300, width: 500 }
                 }, (response) => {
                     if (response.err) {
-                        console.error(response.err);
+                        console.log(response.err);
                     }
                     console.log('submitHandler:', response.result);
                 }, (res) => {
@@ -30,3 +30,6 @@ export const Dialog = () => {
 }
 
 export const DialogIsSupported = () => booleanToString(dialog.isSupported());
+export const DialogUrlIsSupported = () => booleanToString(dialog.url.isSupported());
+export const DialogAdaptivecardIsSupported = () => booleanToString(dialog.adaptiveCard.isSupported());
+

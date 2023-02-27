@@ -17,3 +17,7 @@
 .ui-icon {
     padding-right: 0.2rem;
 }
+
+.ui_action .ui-table__cell__content {
+    display: flex;
+}
