@@ -1,4 +1,5 @@
-import { Flex, Segment, Form, FormButton, FormInput } from "@fluentui/react-northstar";
+import { Flex, Form, FormButton, FormInput, Segment } from "@fluentui/react-northstar";
+
 import { dialog } from "@microsoft/teams-js";
 
 const DialogPage = () => {
@@ -10,7 +11,7 @@ const DialogPage = () => {
                         const formData = new FormData(event.currentTarget as any);
                         const json: any = {};
                         formData.forEach((value, key) => (json[key] = value));
-                        dialog.submit(json, 'c939f284-fdf2-4024-b38f-dece4ca29914');
+                        dialog.url.submit(json, 'c939f284-fdf2-4024-b38f-dece4ca29914');
                     }}
                 >
                     <FormInput

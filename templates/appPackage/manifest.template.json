@@ -55,16 +55,6 @@
                 "personal",
                 "team"
             ]
-        },
-        {
-            "entityId": "dialog",
-            "name": "Dialog",
-            "contentUrl": "{{state.fx-resource-frontend-hosting.endpoint}}{{state.fx-resource-frontend-hosting.indexPath}}/dialog",
-            "websiteUrl": "{{state.fx-resource-frontend-hosting.endpoint}}{{state.fx-resource-frontend-hosting.indexPath}}/dialog",
-            "scopes": [
-                "personal",
-                "team"
-            ]
         }
     ],
     "permissions": [

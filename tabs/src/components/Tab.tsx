@@ -6,7 +6,7 @@ import { BarCode, BarCodeIsSupported } from "./capabilities/BarCode";
 import { Calendar, CalendarIsSupported } from "./capabilities/Calendar";
 import { Call, CallIsSupported } from "./capabilities/Call";
 import { Chat, ChatIsSupported } from "./capabilities/Chat";
-import { Dialog, DialogIsSupported } from "./capabilities/Dialog";
+import { Dialog, DialogAdaptivecardIsSupported, DialogIsSupported, DialogUrlIsSupported } from "./capabilities/Dialog";
 import { GeoLocation, GeoLocationIsSupported } from "./capabilities/GeoLocation";
 import { Mail, MailIsSupported } from "./capabilities/Mail";
 import { Menus, MenusIsSupported } from "./capabilities/Menus";
@@ -42,8 +42,10 @@ const Tab = () => {
   const [showSupportedOnly, setShowSupportedOnly] = useState(true);
   const [tableRows, setTableRows] = useState([] as Fluent.ShorthandCollection<Fluent.TableRowProps, Record<string, {}>>);
 
-  useEffect(() => {
-    const defaultRows = [
+  async function setData() {
+    const appInstallDialog = await AppInstallDialog();
+    const barCode = await BarCode();
+    return [
       {
         key: 0,
         items: [
@@ -57,7 +59,7 @@ const Tab = () => {
         items: [
           { key: '1-1', content: <><Fluent.DownloadIcon />App Install Dialog</> },
           { key: '1-2', content: AppInstallDialogIsSupported() },
-          { key: '1-3', content: <AppInstallDialog />, className: 'ui_action' }
+          { key: '1-3', content: appInstallDialog, className: 'ui_action' }
         ]
       },
       {
@@ -65,7 +67,7 @@ const Tab = () => {
         items: [
           { key: '2-1', content: 'Bar Code' },
           { key: '2-2', content: BarCodeIsSupported() },
-          { key: '2-3', content: <BarCode />, className: 'ui_action' }
+          { key: '2-3', content: barCode, className: 'ui_action' }
         ],
       },
       {
@@ -98,6 +100,22 @@ const Tab = () => {
           { key: '6-1', content: <><Fluent.CustomerHubIcon />Dialog</> },
           { key: '6-2', content: DialogIsSupported() },
           { key: '6-3', content: <Dialog />, className: 'ui_action' }
+        ],
+      },
+      {
+        key: 22,
+        items: [
+          { key: '22-1', content: <><Fluent.CustomerHubIcon />Dialog Url </> },
+          { key: '22-2', content: DialogUrlIsSupported() },
+          { key: '22-3', content: <Dialog />, className: 'ui_action' }
+        ],
+      },
+      {
+        key: 23,
+        items: [
+          { key: '23-1', content: <><Fluent.CustomerHubIcon />Dialog AdaptiveCard</> },
+          { key: '23-2', content: DialogAdaptivecardIsSupported() },
+          { key: '23-3', content: <Dialog />, className: 'ui_action' }
         ],
       },
       {
@@ -221,13 +239,21 @@ const Tab = () => {
         ],
       }
     ];
+  }
 
-    if (showSupportedOnly) {
-      const rows = defaultRows.filter((r) => { return r.items[1].content === 'Yes' });
-      setTableRows(rows);
-    } else {
-      setTableRows(defaultRows);
-    }
+  useEffect(() => {
+
+    setData().then((defaultRows) => {
+      if (showSupportedOnly) {
+        const rows = defaultRows.filter((r) => { return r.items[1].content === 'Yes' });
+        setTableRows(rows);
+      } else {
+        setTableRows(defaultRows);
+      }
+    }, (error) => {
+      console.log("Error", error);
+    })
+
   }, [showSupportedOnly]);
 
   return (
