@@ -26,6 +26,7 @@ import { useContext, useEffect, useState } from "react";
 import { Hub } from "./Host";
 import { TeamsFxContext } from "./Context";
 import packageJSON from "../../package.json";
+import { Button } from "@fluentui/react-northstar";
 
 const Tab = () => {
   const { themeString } = useContext(TeamsFxContext);
@@ -279,6 +280,9 @@ const Tab = () => {
             aria-label="Static table"
             header={header}
             rows={tableRows} />
+        </Fluent.Segment>
+        <Fluent.Segment>
+          <a href = "https://forms.office.com/r/Jxh7rqrmMr"><Button> Suggestions </Button></a> 
         </Fluent.Segment>
       </Fluent.Flex >
     </div >
