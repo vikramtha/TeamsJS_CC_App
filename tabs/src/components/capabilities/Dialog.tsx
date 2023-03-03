@@ -22,6 +22,7 @@ export const Dialog = () => {
                     console.log('dialogListener', res);
                 })}>
                 Open Dialog
+                dialog.url.submit 
             </Button>
         )
     };
