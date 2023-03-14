@@ -1,6 +1,9 @@
-import { video } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
+import { video } from "@microsoft/teams-js";
 
+/**
+ * This component is comming soon
+ */
 export const Video = () => {
     // check to see if capability is supported
     if (video.isSupported()) {

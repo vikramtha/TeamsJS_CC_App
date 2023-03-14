@@ -3,8 +3,13 @@ import { app, appInstallDialog } from "@microsoft/teams-js";
 import { Button } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 
+/**
+ * This component Open's a dialog with particular application to install.
+ */
 export const AppInstallDialog = async () => {
+    // Initialize the Microsoft Teams SDK
     await app.initialize();
+    // Check if app is initialized
     if (app.isInitialized()) {
         // check to see if capability is supported
         if (appInstallDialog.isSupported()) {

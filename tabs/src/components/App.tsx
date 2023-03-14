@@ -1,14 +1,17 @@
-// https://fluentsite.z22.web.core.windows.net/quick-start
-import { Provider, teamsTheme, Loader } from "@fluentui/react-northstar";
-import { HashRouter as Router, Redirect, Route } from "react-router-dom";
-import { useTeamsFx } from "@microsoft/teamsfx-react";
-import Privacy from "./Privacy";
-import TermsOfUse from "./TermsOfUse";
-import Tab from "./Tab";
 import "./App.css";
+
+// https://fluentsite.z22.web.core.windows.net/quick-start
+import { Loader, Provider, teamsTheme } from "@fluentui/react-northstar";
+import { Redirect, Route, HashRouter as Router } from "react-router-dom";
+
+import DialogPage from "./DialogPage";
+import PagesTab from "./PagesTab";
+import Privacy from "./Privacy";
+import Tab from "./Tab";
 import TabConfig from "./TabConfig";
 import { TeamsFxContext } from "./Context";
-import DialogPage from "./DialogPage";
+import TermsOfUse from "./TermsOfUse";
+import { useTeamsFx } from "@microsoft/teamsfx-react";
 
 /**
  * The main app which handles the initialization and routing
@@ -33,6 +36,7 @@ const App = () => {
               <Route exact path="/tab" component={Tab} />
               <Route exact path="/config" component={TabConfig} />
               <Route exact path="/dialog" component={DialogPage} />
+              <Route exact path="/pagesTab" component={PagesTab} />
             </>
           )}
         </Router>
