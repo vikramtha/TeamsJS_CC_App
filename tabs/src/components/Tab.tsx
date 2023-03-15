@@ -11,7 +11,8 @@ import { GeoLocation, GeoLocationIsSupported } from "./capabilities/GeoLocation"
 import { Mail, MailIsSupported } from "./capabilities/Mail";
 import { Menus, MenusIsSupported } from "./capabilities/Menus";
 import { Monetization, MonetizationIsSupported } from "./capabilities/Monetization";
-import { Pages, PagesCurrent, PagesIsSupported } from "./capabilities/Pages";
+import { Pages, PagesIsSupported } from "./capabilities/Pages";
+import { PagesCurrent, PagesIsCurrent } from "./capabilities/Pages.Current";
 import { PagesDeprecated, PagesDeprecatedIsSupported } from "./capabilities/Pages.deprecated";
 import { People, PeopleIsSupported } from "./capabilities/People";
 import { Profile, ProfileIsSupported } from "./capabilities/Profile";
@@ -23,10 +24,10 @@ import { Video, VideoIsSupported } from "./capabilities/Video";
 import { WebStorage, WebStorageIsSupported } from "./capabilities/WebStorage";
 import { useContext, useEffect, useState } from "react";
 
+import { Button } from "@fluentui/react-northstar";
 import { Hub } from "./Host";
 import { TeamsFxContext } from "./Context";
 import packageJSON from "../../package.json";
-import { Button } from "@fluentui/react-northstar";
 
 const Tab = () => {
   const { themeString } = useContext(TeamsFxContext);
@@ -163,8 +164,8 @@ const Tab = () => {
         key: 12,
         items: [
           { key: '12-1', content: <><Fluent.FilesTxtIcon />Pages.current</> },
-          { key: '12-2', content: PagesCurrent() },
-          { key: '12-3', content: <Pages />, className: 'ui_action' }
+          { key: '12-2', content: PagesIsCurrent() },
+          { key: '12-3', content: <PagesCurrent />, className: 'ui_action' }
         ],
       },
       {
@@ -243,7 +244,6 @@ const Tab = () => {
   }
 
   useEffect(() => {
-
     setData().then((defaultRows) => {
       if (showSupportedOnly) {
         const rows = defaultRows.filter((r) => { return r.items[1].content === 'Yes' });
@@ -282,7 +282,7 @@ const Tab = () => {
             rows={tableRows} />
         </Fluent.Segment>
         <Fluent.Segment>
-          <a href = "https://forms.office.com/r/Jxh7rqrmMr"><Button> Suggestions </Button></a> 
+          <a href="https://forms.office.com/r/Jxh7rqrmMr"><Button> Suggestions </Button></a>
         </Fluent.Segment>
       </Fluent.Flex >
     </div >

@@ -1,7 +1,12 @@
 import { Button, Flex } from "@fluentui/react-northstar";
 import { app, people } from "@microsoft/teams-js";
+
 import { booleanToString } from "../../helpers";
 
+/**
+ * This component open's a dialog with search option to search
+ * people in same organization.
+ */
 export const People = () => {
     // check to see if capability is supported
     if (people.isSupported()) {

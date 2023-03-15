@@ -3,6 +3,10 @@ import { Button, Flex } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 import { pages } from "@microsoft/teams-js";
 
+/**
+ * Provides APIs for querying and navigating between contextual tabs of an application. 
+ * Unlike personal tabs, contextual tabs are pages associated with a specific context, such as channel or chat.
+ */
 export const PagesDeprecated = () => {
     // check to see if capability is supported
     // see TabConfig.tsx for more details on pages.config namespace usage
@@ -57,10 +61,10 @@ export const PagesDeprecated = () => {
                         const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
                         // deprecated? check docs
                         await pages.tabs.navigateToTab({
-                            tabName: 'Dialog',
-                            entityId: 'dialog',
-                            url: `${baseUrl}/index.html#/dialog`,
-                            websiteUrl: `${baseUrl}/index.html#/dialog`
+                            tabName: 'Terms of use',
+                            entityId: 'tou1',
+                            url: `${baseUrl}/index.html#/termsofuse`,
+                            websiteUrl: `${baseUrl}/index.html#/termsofuse`
                         });
                     }}>
                         Navigate to tab

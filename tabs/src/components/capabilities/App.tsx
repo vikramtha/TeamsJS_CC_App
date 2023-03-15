@@ -1,4 +1,4 @@
-import { Button, Text, TextArea } from "@fluentui/react-northstar";
+import { Button, TextArea } from "@fluentui/react-northstar";
 
 import { app } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
@@ -13,14 +13,14 @@ export const App = () => {
             console.log("Theme changed");
         });
 
-        // return button to get context
+        // return button to get context and displays the information/ context in the resizeable text area
         return (<>
             <Button onClick={async () => {
                 const context = await app.getContext();
                 const contextString = JSON.stringify(context);
                 setText(contextString);
                 setShowText(true);
-                console.log(contextString);
+                console.log(context);
             }}>
                 Get Context
             </Button>

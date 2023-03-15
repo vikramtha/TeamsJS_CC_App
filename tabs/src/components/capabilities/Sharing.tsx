@@ -1,7 +1,9 @@
 import { Button } from "@fluentui/react-northstar";
-import { sharing } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
-
+import { sharing } from "@microsoft/teams-js";
+/**
+ * This component open's a dialog with shareable content
+ */
 export const Sharing = () => {
     // check to see if capability is supported
     if (sharing.isSupported()) {

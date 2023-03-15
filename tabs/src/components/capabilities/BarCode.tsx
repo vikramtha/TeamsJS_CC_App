@@ -4,8 +4,9 @@ import { Button } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 
 export const BarCode = async () => {
+    // Initialize the Microsoft Teams SDK
     await app.initialize();
-
+    // Check if app is initialized
     if (app.isInitialized()) {
         // check to see if capability is supported
         if (barCode.isSupported()) {
