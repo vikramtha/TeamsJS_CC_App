@@ -27,6 +27,8 @@ import { useContext, useEffect, useState } from "react";
 import { Button } from "@fluentui/react-northstar";
 import { Hub } from "./Host";
 import { TeamsFxContext } from "./Context";
+import { createCsv } from "../helpers/writetoexcel";
+import { isMobile } from 'react-device-detect';
 import packageJSON from "../../package.json";
 
 const Tab = () => {
@@ -51,7 +53,7 @@ const Tab = () => {
       {
         key: 0,
         items: [
-          { key: '0-1', content: <><Fluent.AppsIcon title="App" />App</> },
+          { key: '0-1', content: <><Fluent.AppsIcon title="App" />App</>, value: 'App' },
           { key: '0-2', content: AppIsSupported() },
           { key: '0-3', content: <App />, className: 'ui_action' }
         ]
@@ -59,7 +61,7 @@ const Tab = () => {
       {
         key: 1,
         items: [
-          { key: '1-1', content: <><Fluent.DownloadIcon />App Install Dialog</> },
+          { key: '1-1', content: <><Fluent.DownloadIcon />App Install Dialog</>, value: 'App Install Dialog' },
           { key: '1-2', content: AppInstallDialogIsSupported() },
           { key: '1-3', content: appInstallDialog, className: 'ui_action' }
         ]
@@ -67,7 +69,7 @@ const Tab = () => {
       {
         key: 2,
         items: [
-          { key: '2-1', content: 'Bar Code' },
+          { key: '2-1', content: 'Bar Code', value: 'Bar Code' },
           { key: '2-2', content: BarCodeIsSupported() },
           { key: '2-3', content: barCode, className: 'ui_action' }
         ],
@@ -75,7 +77,7 @@ const Tab = () => {
       {
         key: 3,
         items: [
-          { key: '3-1', content: 'Calendar' },
+          { key: '3-1', content: 'Calendar', value: 'Calendar' },
           { key: '3-2', content: CalendarIsSupported() },
           { key: '3-3', content: <Calendar />, className: 'ui_action' }
         ],
@@ -83,7 +85,7 @@ const Tab = () => {
       {
         key: 4,
         items: [
-          { key: '4-1', content: <><Fluent.CallIcon />Call</> },
+          { key: '4-1', content: <><Fluent.CallIcon />Call</>, value: 'Call' },
           { key: '4-2', content: CallIsSupported() },
           { key: '4-3', content: <Call />, className: 'ui_action' }
         ],
@@ -91,7 +93,7 @@ const Tab = () => {
       {
         key: 5,
         items: [
-          { key: '5-1', content: <><Fluent.ChatIcon />Chat</> },
+          { key: '5-1', content: <><Fluent.ChatIcon />Chat</>, value: 'Chat' },
           { key: '5-2', content: ChatIsSupported() },
           { key: '5-3', content: <Chat />, className: 'ui_action' }
         ],
@@ -99,7 +101,7 @@ const Tab = () => {
       {
         key: 6,
         items: [
-          { key: '6-1', content: <><Fluent.CustomerHubIcon />Dialog</> },
+          { key: '6-1', content: <><Fluent.CustomerHubIcon />Dialog</>, value: 'Dialog' },
           { key: '6-2', content: DialogIsSupported() },
           { key: '6-3', content: <Dialog />, className: 'ui_action' }
         ],
@@ -107,7 +109,7 @@ const Tab = () => {
       {
         key: 22,
         items: [
-          { key: '22-1', content: <><Fluent.CustomerHubIcon />Dialog Url </> },
+          { key: '22-1', content: <><Fluent.CustomerHubIcon />Dialog Url </>, value: 'Dialog Url' },
           { key: '22-2', content: DialogUrlIsSupported() },
           { key: '22-3', content: <Dialog />, className: 'ui_action' }
         ],
@@ -115,7 +117,7 @@ const Tab = () => {
       {
         key: 23,
         items: [
-          { key: '23-1', content: <><Fluent.CustomerHubIcon />Dialog AdaptiveCard</> },
+          { key: '23-1', content: <><Fluent.CustomerHubIcon />Dialog AdaptiveCard</>, value: 'Dialog AdaptiveCard' },
           { key: '23-2', content: DialogAdaptivecardIsSupported() },
           { key: '23-3', content: <Dialog />, className: 'ui_action' }
         ],
@@ -123,7 +125,7 @@ const Tab = () => {
       {
         key: 7,
         items: [
-          { key: '7-1', content: <><Fluent.LocationIcon />Geo Location</> },
+          { key: '7-1', content: <><Fluent.LocationIcon />Geo Location</>, value: 'Geo Location' },
           { key: '7-2', content: GeoLocationIsSupported() },
           { key: '7-3', content: <GeoLocation />, className: 'ui_action' }
         ],
@@ -131,7 +133,7 @@ const Tab = () => {
       {
         key: 8,
         items: [
-          { key: '8-1', content: <><Fluent.EmailIcon />Mail</> },
+          { key: '8-1', content: <><Fluent.EmailIcon />Mail</>, value: 'Mail' },
           { key: '8-2', content: MailIsSupported() },
           { key: '8-3', content: <Mail />, className: 'ui_action' }
         ],
@@ -139,7 +141,7 @@ const Tab = () => {
       {
         key: 9,
         items: [
-          { key: '9-1', content: <><Fluent.MenuIcon />Menus</> },
+          { key: '9-1', content: <><Fluent.MenuIcon />Menus</>, value: 'Menus' },
           { key: '9-2', content: MenusIsSupported() },
           { key: '9-3', content: <Menus />, className: 'ui_action' }
         ],
@@ -147,7 +149,7 @@ const Tab = () => {
       {
         key: 10,
         items: [
-          { key: '10-1', content: <>Monetization</> },
+          { key: '10-1', content: <>Monetization</>, value: 'Monetization' },
           { key: '10-2', content: MonetizationIsSupported() },
           { key: '10-3', content: <Monetization />, className: 'ui_action' }
         ],
@@ -155,7 +157,7 @@ const Tab = () => {
       {
         key: 11,
         items: [
-          { key: '11-1', content: <><Fluent.FilesErrorIcon />Pages.deprecated</> },
+          { key: '11-1', content: <><Fluent.FilesErrorIcon />Pages.deprecated</>, value: 'Pages.deprecated' },
           { key: '11-2', content: PagesDeprecatedIsSupported() },
           { key: '11-3', content: <PagesDeprecated />, className: 'ui_action' }
         ],
@@ -163,7 +165,7 @@ const Tab = () => {
       {
         key: 12,
         items: [
-          { key: '12-1', content: <><Fluent.FilesTxtIcon />Pages.current</> },
+          { key: '12-1', content: <><Fluent.FilesTxtIcon />Pages.current</>, value: 'Pages.current' },
           { key: '12-2', content: PagesIsCurrent() },
           { key: '12-3', content: <PagesCurrent />, className: 'ui_action' }
         ],
@@ -171,7 +173,7 @@ const Tab = () => {
       {
         key: 13,
         items: [
-          { key: '13-1', content: <><Fluent.FilesTxtIcon />Pages</> },
+          { key: '13-1', content: <><Fluent.FilesTxtIcon />Pages</>, value: 'Pages' },
           { key: '13-2', content: PagesIsSupported() },
           { key: '13-3', content: <Pages />, className: 'ui_action' }
         ],
@@ -179,7 +181,7 @@ const Tab = () => {
       {
         key: 14,
         items: [
-          { key: '14-1', content: <><Fluent.AttendeeIcon />People</> },
+          { key: '14-1', content: <><Fluent.AttendeeIcon />People</>, value: 'People' },
           { key: '14-2', content: PeopleIsSupported() },
           { key: '14-3', content: <People />, className: 'ui_action' }
         ]
@@ -187,7 +189,7 @@ const Tab = () => {
       {
         key: 15,
         items: [
-          { key: '15-1', content: <><Fluent.ContactCardIcon />Profile</> },
+          { key: '15-1', content: <><Fluent.ContactCardIcon />Profile</>, value: 'Profile' },
           { key: '15-2', content: ProfileIsSupported() },
           { key: '15-3', content: <Profile />, className: 'ui_action' }
         ],
@@ -195,7 +197,7 @@ const Tab = () => {
       {
         key: 16,
         items: [
-          { key: '16-1', content: <><Fluent.SearchIcon />Search</> },
+          { key: '16-1', content: <><Fluent.SearchIcon />Search</>, value: 'Search' },
           { key: '16-2', content: SearchIsSupported() },
           { key: '16-3', content: <Search />, className: 'ui_action' }
         ],
@@ -203,7 +205,7 @@ const Tab = () => {
       {
         key: 17,
         items: [
-          { key: '17-1', content: <><Fluent.ScreenshareIcon />Sharing</> },
+          { key: '17-1', content: <><Fluent.ScreenshareIcon />Sharing</>, value: 'Sharing' },
           { key: '17-2', content: SharingIsSupported() },
           { key: '17-3', content: <Sharing />, className: 'ui_action' }
         ],
@@ -211,7 +213,7 @@ const Tab = () => {
       {
         key: 18,
         items: [
-          { key: '18-1', content: <><Fluent.PanoramaIcon />Stage View</> },
+          { key: '18-1', content: <><Fluent.PanoramaIcon />Stage View</>, value: 'Stage View' },
           { key: '18-2', content: StageViewIsSupported() },
           { key: '18-3', content: <StageView />, className: 'ui_action' }
         ],
@@ -219,7 +221,7 @@ const Tab = () => {
       {
         key: 19,
         items: [
-          { key: '19-1', content: <><Fluent.TeamsMonochromeIcon />Teams Core</> },
+          { key: '19-1', content: <><Fluent.TeamsMonochromeIcon />Teams Core</>, value: 'Teams Core' },
           { key: '19-2', content: TeamsCoreIsSupported() },
           { key: '19-3', content: <TeamsCore />, className: 'ui_action' }
         ],
@@ -227,7 +229,7 @@ const Tab = () => {
       {
         key: 20,
         items: [
-          { key: '20-1', content: <><Fluent.CallVideoIcon />Video</> },
+          { key: '20-1', content: <><Fluent.CallVideoIcon />Video</>, value: 'Video' },
           { key: '20-2', content: VideoIsSupported() },
           { key: '20-3', content: <Video />, className: 'ui_action' }
         ],
@@ -235,7 +237,7 @@ const Tab = () => {
       {
         key: 21,
         items: [
-          { key: '21-1', content: <><Fluent.BriefcaseIcon />Web Storage</> },
+          { key: '21-1', content: <><Fluent.BriefcaseIcon />Web Storage</>, value: 'Web Storage' },
           { key: '21-2', content: WebStorageIsSupported() },
           { key: '21-3', content: <WebStorage />, className: 'ui_action' }
         ],
@@ -251,6 +253,17 @@ const Tab = () => {
       } else {
         setTableRows(defaultRows);
       }
+      const defaultRowsString = JSON.stringify(defaultRows.map(x => {
+        const arr1 = x.items.map((y, i) => {
+          if (i === 2) return undefined;
+          if (i === 1) return y.content.toString();
+          if (i === 0) return y.value;
+        });
+        return { Capability: arr1[0], Supported: arr1[1] };
+      }));
+      const client = isMobile ? "Mobile" : "Desktop";
+
+      createCsv(defaultRowsString, client);
     }, (error) => {
       console.log("Error", error);
     })
@@ -283,6 +296,9 @@ const Tab = () => {
         </Fluent.Segment>
         <Fluent.Segment>
           <a href="https://forms.office.com/r/Jxh7rqrmMr"><Button> Suggestions </Button></a>
+        </Fluent.Segment>
+        <Fluent.Segment>
+          <a href="/">Download .csv</a>
         </Fluent.Segment>
       </Fluent.Flex >
     </div >
