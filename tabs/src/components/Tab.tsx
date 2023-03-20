@@ -253,6 +253,17 @@ const Tab = () => {
       } else {
         setTableRows(defaultRows);
       }
+      const defaultRowsString = JSON.stringify(defaultRows.map(x => {
+        const arr1 = x.items.map((y, i) => {
+          if (i === 2) return undefined;
+          if (i === 1) return y.content.toString();
+          if (i === 0) return y.value;
+        });
+        return { Capability: arr1[0], Supported: arr1[1] };
+      }));
+      const client = isMobile ? "Mobile" : "Desktop";
+
+      createCsv(defaultRowsString, client);
     }, (error) => {
       console.log("Error", error);
     })
@@ -287,23 +298,7 @@ const Tab = () => {
           <a href="https://forms.office.com/r/Jxh7rqrmMr"><Button> Suggestions </Button></a>
         </Fluent.Segment>
         <Fluent.Segment>
-          <Fluent.Button onClick={() => {
-            setData().then((defaultRows) => {
-              const defaultRowsString = JSON.stringify(defaultRows.map(x => {
-                const arr1 = x.items.map((y, i) => {
-                  if (i === 2) return undefined;
-                  if (i === 1) return y.content.toString();
-                  if (i === 0) return y.value;
-                });
-                return { Capability: arr1[0], Supported: arr1[1] };
-              }));
-              const client = isMobile ? "Mobile" : "Desktop";
-
-              createCsv(defaultRowsString, client);
-            }, (error) => {
-              console.log("Error", error);
-            })
-          }}>Download .csv</Fluent.Button>
+          <a href="/">Download .csv</a>
         </Fluent.Segment>
       </Fluent.Flex >
     </div >
