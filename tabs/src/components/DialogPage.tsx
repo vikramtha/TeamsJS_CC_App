@@ -22,7 +22,7 @@ const DialogPage = () => {
                     onSubmit={(event, data) => {
                         const formData = new FormData(event.currentTarget as any);
                         const json: any = {};
-                        const appIDs = ['b6f092c0-e405-4dbf-93d0-032352fd9b2a', '6ed302af-364e-4e90-806d-96503539f98f', '06805961-cc87-4861-abb7-f9ec47b545a4', '260f72f0-1c3d-4829-ab39-09d7afff5e24', ...findAppId()] //this is the state.local.json AppID - probably won't work if you use this for anything else
+                        const appIDs = ['ab50b441-083d-46c3-924a-d456bb19e25f','b6f092c0-e405-4dbf-93d0-032352fd9b2a', '6ed302af-364e-4e90-806d-96503539f98f', '06805961-cc87-4861-abb7-f9ec47b545a4', '260f72f0-1c3d-4829-ab39-09d7afff5e24', ...findAppId()] //this is the state.local.json AppID - probably won't work if you use this for anything else
                         formData.forEach((value, key) => (json[key] = value));
                         dialog.url.submit(json, appIDs);
                     }}
