@@ -26,7 +26,7 @@ export const Pages = () => {
 
     return (
         <Flex gap="gap.small" vAlign="center">
-            <Text content="Please check the Pages Tab" />
+            <Text content="Please check the Tabs (Navigate Back, Navigate To App, Return Focus To App, Return Focus To Search, Share Link, Set Current frame)" />
 
         </Flex>
     )
