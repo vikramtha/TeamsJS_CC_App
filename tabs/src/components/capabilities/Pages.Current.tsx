@@ -29,4 +29,4 @@ export const PagesCurrent = () => {
     return (<></>);
 }
 
-export const PagesIsCurrent = () => booleanToString(pages.currentApp.isSupported());
+export const IsPagesCurrentAppSupported = () => booleanToString(pages.currentApp.isSupported());

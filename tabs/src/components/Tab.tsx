@@ -8,11 +8,11 @@ import { Call, CallIsSupported } from "./capabilities/Call";
 import { Chat, ChatIsSupported } from "./capabilities/Chat";
 import { Dialog, DialogAdaptivecardIsSupported, DialogUrlIsSupported } from "./capabilities/Dialog";
 import { GeoLocation, GeoLocationIsSupported } from "./capabilities/GeoLocation";
+import { IsPagesCurrentAppSupported, PagesCurrent } from "./capabilities/Pages.Current";
 import { Mail, MailIsSupported } from "./capabilities/Mail";
 import { Menus, MenusIsSupported } from "./capabilities/Menus";
 import { Monetization, MonetizationIsSupported } from "./capabilities/Monetization";
 import { Pages, PagesIsSupported } from "./capabilities/Pages";
-import { PagesCurrent, PagesIsCurrent } from "./capabilities/Pages.Current";
 import { PagesDeprecated, PagesDeprecatedIsSupported } from "./capabilities/Pages.deprecated";
 import { People, PeopleIsSupported } from "./capabilities/People";
 import { Profile, ProfileIsSupported } from "./capabilities/Profile";
@@ -107,11 +107,11 @@ const Tab = () => {
         ],
       },
       {
-        key: 23,
+        key: 22,
         items: [
-          { key: '23-1', content: <><Fluent.CustomerHubIcon />Dialog AdaptiveCard</>, value: 'Dialog AdaptiveCard' },
-          { key: '23-2', content: DialogAdaptivecardIsSupported() },
-          { key: '23-3', content: <Dialog />, className: 'ui_action' }
+          { key: '22-1', content: <><Fluent.CustomerHubIcon />Dialog AdaptiveCard</>, value: 'Dialog AdaptiveCard' },
+          { key: '22-2', content: DialogAdaptivecardIsSupported() },
+          { key: '22-3', content: <Dialog />, className: 'ui_action' }
         ],
       },
       {
@@ -157,8 +157,8 @@ const Tab = () => {
       {
         key: 12,
         items: [
-          { key: '12-1', content: <><Fluent.FilesTxtIcon />Pages.current</>, value: 'Pages.current' },
-          { key: '12-2', content: PagesIsCurrent() },
+          { key: '12-1', content: <><Fluent.FilesTxtIcon />pages.CurrentApp</>, value: 'pages.CurrentApp' },
+          { key: '12-2', content: IsPagesCurrentAppSupported() },
           { key: '12-3', content: <PagesCurrent />, className: 'ui_action' }
         ],
       },
