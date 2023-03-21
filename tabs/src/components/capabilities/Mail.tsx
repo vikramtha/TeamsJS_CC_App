@@ -1,7 +1,11 @@
-import { Flex, Button } from "@fluentui/react-northstar";
-import { mail } from "@microsoft/teams-js";
-import { booleanToString } from "../../helpers";
+import { Button, Flex } from "@fluentui/react-northstar";
 
+import { booleanToString } from "../../helpers";
+import { mail } from "@microsoft/teams-js";
+
+/**
+ * This component compose a new mail and open's an existing mail with mailItemId
+ */
 export const Mail = () => {
     // check to see if capability is supported
     if (mail.isSupported()) {

@@ -1,7 +1,10 @@
 import { Button } from "@fluentui/react-northstar";
-import { webStorage } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
+import { webStorage } from "@microsoft/teams-js";
 
+/**
+ * Checks if web storage gets cleared when a user logs out from host client
+ */
 export const WebStorage = () => {
     // check to see if capability is supported
     if (webStorage.isSupported()) {

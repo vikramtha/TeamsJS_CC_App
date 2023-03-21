@@ -3,6 +3,10 @@ import { Flex, Text } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 import { pages } from "@microsoft/teams-js";
 
+/**
+ * The content of the pages capibility can be seen in pages tab 
+ * separately.
+ */
 export const Pages = () => {
     // check to see if capability is supported
     // see TabConfig.tsx for more details on pages.config namespace usage

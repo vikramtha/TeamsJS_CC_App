@@ -4,6 +4,10 @@ import { app } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
 import { useState } from "react";
 
+/**
+ * This component return button to get context and displays the 
+ * information/ context in the resizeable text area
+ */
 export const App = () => {
     const [text, setText] = useState("");
     const [showText, setShowText] = useState(false);
@@ -13,7 +17,6 @@ export const App = () => {
             console.log("Theme changed");
         });
 
-        // return button to get context and displays the information/ context in the resizeable text area
         return (
             <Flex gap="gap.small" vAlign="center">
                 <Button className="ui_context" onClick={async () => {

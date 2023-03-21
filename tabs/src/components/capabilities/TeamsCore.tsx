@@ -1,7 +1,12 @@
 import { Button, Flex } from "@fluentui/react-northstar";
-import { teamsCore } from "@microsoft/teams-js";
-import { booleanToString } from "../../helpers";
 
+import { booleanToString } from "../../helpers";
+import { teamsCore } from "@microsoft/teams-js";
+
+/**
+ * This component enable print capability to support printing page using 
+ * Ctrl+P and cmd+P and opens a default print page 
+ */
 export const TeamsCore = () => {
     // check to see if capability is supported
     if (teamsCore.isSupported()) {
