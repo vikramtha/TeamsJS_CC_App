@@ -237,6 +237,21 @@ const Tab = () => {
     ];
   }
 
+  const updateCapabilityOnchange = (text: string) => {
+    setData().then((defaultRows) => {
+      if (showSupportedOnly) setShowSupportedOnly(false);
+
+      const rows = defaultRows.filter((defaultRow) => {
+        if (defaultRow.items[0].value?.toLowerCase()?.search(text.toLowerCase()) !== -1) {
+          return defaultRow;
+        }
+      });
+      setTableRows(rows);
+    }, (error) => {
+      console.log("Error", error);
+    })
+  }
+
   useEffect(() => {
     setData().then((defaultRows) => {
       if (showSupportedOnly) {
@@ -289,6 +304,10 @@ const Tab = () => {
           }}>Download .csv</Fluent.Button>
         </Fluent.Segment>
         <Fluent.Segment>
+          <Fluent.Input icon={<Fluent.SearchIcon />} placeholder="Search capability" onChange={(e: any) => {
+            const event = e as React.SyntheticEvent<HTMLInputElement, Event>;
+            updateCapabilityOnchange(event.currentTarget.value);
+          }} />
           <Fluent.Table
             aria-label="Static table"
             header={header}
