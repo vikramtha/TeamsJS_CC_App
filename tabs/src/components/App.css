@@ -15,10 +15,6 @@
     align-items: center;
 }
 
-.ui_action .ui-table__cell__content textarea {
-    margin-left: 1rem;
-}
-
 .ui-pagessegment {
     display: flex;
     flex-direction: column;
@@ -33,6 +29,11 @@
     max-width: fit-content !important;
 }
 
+.ui-table__row:nth-child(2) {
+    height: auto;
+    min-height: 46.4px;
+}
+
 @media screen and (min-width: 700px) {
     .ui-table__cell:not(:last-child) {
         max-width: 6%;
@@ -40,6 +41,11 @@
 
     .ui-table__cell:first-child {
         max-width: 10%;
+    }
+
+    .ui_action .ui-table__cell__content textarea {
+        height: 100px;
+        width: 600px;
     }
 }
 
