@@ -9,10 +9,10 @@ export const PagesCurrent = () => {
 
         if (pages.currentApp.isSupported()) {
             return (
-                <Flex>
+                <Flex gap="gap.small" vAlign="center">
                     <Button onClick={async () => {
                         await pages.currentApp.navigateTo({
-                            pageId: '72c73d2e-a890-4580-9c68-513c8cb6efcd'
+                            pageId: 'pagesTab'
                         })
                     }}>
                         Navigate Current App
