@@ -24,4 +24,4 @@ export const BarCode = async () => {
     return (<></>);
 }
 
-export const BarCodeIsSupported = async () => booleanToString(barCode.isSupported());
+export const BarCodeIsSupported = () => booleanToString(barCode.isSupported());
