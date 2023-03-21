@@ -157,7 +157,7 @@ const Tab = () => {
       {
         key: 12,
         items: [
-          { key: '12-1', content: <><Fluent.FilesTxtIcon />pages.CurrentApp</>, value: 'pages.CurrentApp' },
+          { key: '12-1', content: <><Fluent.FilesTxtIcon />Pages.CurrentApp</>, value: 'Pages.CurrentApp' },
           { key: '12-2', content: IsPagesCurrentAppSupported() },
           { key: '12-3', content: <PagesCurrent />, className: 'ui_action' }
         ],

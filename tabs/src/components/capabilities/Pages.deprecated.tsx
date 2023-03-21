@@ -1,13 +1,25 @@
 import { Button, Flex } from "@fluentui/react-northstar";
+import { app, pages } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
-import { pages } from "@microsoft/teams-js";
+import { useData } from "@microsoft/teamsfx-react";
 
 /**
  * Provides APIs for querying and navigating between contextual tabs of an application. 
  * Unlike personal tabs, contextual tabs are pages associated with a specific context, such as channel or chat.
  */
 export const PagesDeprecated = () => {
+
+    const hubName = useData(async () => {
+        await app.initialize();
+        const context = await app.getContext();
+        return context.app.host.name;
+    })?.data;
+
+    let commingSoon = <>Comming Soon</>;
+    if (hubName === "Teams") {
+        commingSoon = <></>;
+    }
     // check to see if capability is supported
     // see TabConfig.tsx for more details on pages.config namespace usage
     if (!pages.isSupported()) { return (<></>); }
@@ -41,6 +53,7 @@ export const PagesDeprecated = () => {
 
     return (
         <Flex gap="gap.small" vAlign="center">
+            {commingSoon}
             {pages.tabs.isSupported() &&
                 <>
                     <Button onClick={async () => {
