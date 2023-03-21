@@ -27,6 +27,10 @@ export const GeoLocation = () => {
                     try {
                         const location = await geoLocation.getCurrentLocation();
                         console.log(`GeoLocation consented: ${location}`);
+                        console.log(`GeoLocation accuracy: ${location.accuracy}`);
+                        console.log(`GeoLocation longitude: ${location.longitude}`);
+                        console.log(`GeoLocation latitude: ${location.latitude}`);
+
                     } catch (e) {
                         console.log(`GeoLocation error: ${e}`);
                     }
@@ -50,6 +54,7 @@ export const GeoLocation = () => {
                                 await geoLocation.map.showLocation(location);
                             } catch (e) {
                                 console.log(`GeoLocation error: ${e}`);
+                                
                             }
                         }}>
                             Map: Show Location
