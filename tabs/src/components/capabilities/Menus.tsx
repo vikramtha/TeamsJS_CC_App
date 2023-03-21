@@ -3,6 +3,11 @@ import { Button, Flex } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 import { menus } from "@microsoft/teams-js";
 
+/**
+ * This component returns button to setupViews
+ * Sets Navbar menus and shows action menu
+ * works on mobile app.
+ */
 export const Menus = () => {
     // check to see if capability is supported
     if (menus.isSupported()) {

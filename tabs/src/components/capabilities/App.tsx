@@ -1,9 +1,13 @@
-import { Button, TextArea } from "@fluentui/react-northstar";
+import { Button, Flex, TextArea } from "@fluentui/react-northstar";
 
 import { app } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
 import { useState } from "react";
 
+/**
+ * This component return button to get context and displays the 
+ * information/ context in the resizeable text area
+ */
 export const App = () => {
     const [text, setText] = useState("");
     const [showText, setShowText] = useState(false);
@@ -13,20 +17,19 @@ export const App = () => {
             console.log("Theme changed");
         });
 
-        // return button to get context and displays the information/ context in the resizeable text area
-        return (<>
-            <Button onClick={async () => {
-                const context = await app.getContext();
-                const contextString = JSON.stringify(context);
-                setText(contextString);
-                setShowText(true);
-                console.log(context);
-            }}>
-                Get Context
-            </Button>
-            {showText &&
-                <TextArea resize="horizontal" value={text} />}
-        </>
+        return (
+            <Flex gap="gap.small" vAlign="center">
+                <Button className="ui_context" onClick={async () => {
+                    const context = await app.getContext();
+                    const contextString = JSON.stringify(context);
+                    setText(contextString);
+                    setShowText(true);
+                    console.log(context);
+                }}> Get Context
+                </Button>
+                {showText &&
+                    <TextArea fluid inverted value={text} />}
+            </Flex>
         )
     }
     // return empty fragment if app has not been initialized

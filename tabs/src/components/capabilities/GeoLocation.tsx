@@ -1,7 +1,12 @@
 import { Button, Flex } from "@fluentui/react-northstar";
-import { geoLocation } from "@microsoft/teams-js";
-import { booleanToString } from "../../helpers";
 
+import { booleanToString } from "../../helpers";
+import { geoLocation } from "@microsoft/teams-js";
+
+/**
+ * This component check if the user has granted permission to access their location,
+ * request permission to access the user's location and get the user's location.
+ */
 export const GeoLocation = () => {
     // check to see if capability is supported
     // this isn't released yet, so it's not surprising that it doesn't work

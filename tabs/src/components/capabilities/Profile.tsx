@@ -1,6 +1,9 @@
-import { profile } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
+import { profile } from "@microsoft/teams-js";
 
+/**
+ * This component is comming soon
+ */
 export const Profile = () => {
     // check to see if capability is supported
     if (profile.isSupported()) {

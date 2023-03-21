@@ -3,6 +3,10 @@ import { Flex, Text } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 import { pages } from "@microsoft/teams-js";
 
+/**
+ * The content of the pages capibility can be seen in pages tab 
+ * separately.
+ */
 export const Pages = () => {
     // check to see if capability is supported
     // see TabConfig.tsx for more details on pages.config namespace usage
@@ -26,11 +30,10 @@ export const Pages = () => {
 
     return (
         <Flex gap="gap.small" vAlign="center">
-            <Text content="Please check the Tabs (Navigate Back, Navigate To App, Return Focus To App, Return Focus To Search, Share Link, Set Current frame)" />
+            <Text content="Please check the Pages Tab" />
 
         </Flex>
     )
 }
 
 export const PagesIsSupported = () => booleanToString(pages.isSupported());
-export const PagesCurrent = () => booleanToString(pages.currentApp.isSupported());

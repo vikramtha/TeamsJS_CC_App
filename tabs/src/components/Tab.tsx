@@ -6,13 +6,13 @@ import { BarCode, BarCodeIsSupported } from "./capabilities/BarCode";
 import { Calendar, CalendarIsSupported } from "./capabilities/Calendar";
 import { Call, CallIsSupported } from "./capabilities/Call";
 import { Chat, ChatIsSupported } from "./capabilities/Chat";
-import { Dialog, DialogAdaptivecardIsSupported, DialogIsSupported, DialogUrlIsSupported } from "./capabilities/Dialog";
+import { Dialog, DialogAdaptivecardIsSupported, DialogUrlIsSupported } from "./capabilities/Dialog";
 import { GeoLocation, GeoLocationIsSupported } from "./capabilities/GeoLocation";
+import { IsPagesCurrentAppSupported, PagesCurrent } from "./capabilities/Pages.Current";
 import { Mail, MailIsSupported } from "./capabilities/Mail";
 import { Menus, MenusIsSupported } from "./capabilities/Menus";
 import { Monetization, MonetizationIsSupported } from "./capabilities/Monetization";
 import { Pages, PagesIsSupported } from "./capabilities/Pages";
-import { PagesCurrent, PagesIsCurrent } from "./capabilities/Pages.Current";
 import { PagesDeprecated, PagesDeprecatedIsSupported } from "./capabilities/Pages.deprecated";
 import { People, PeopleIsSupported } from "./capabilities/People";
 import { Profile, ProfileIsSupported } from "./capabilities/Profile";
@@ -101,25 +101,17 @@ const Tab = () => {
       {
         key: 6,
         items: [
-          { key: '6-1', content: <><Fluent.CustomerHubIcon />Dialog</>, value: 'Dialog' },
-          { key: '6-2', content: DialogIsSupported() },
+          { key: '6-1', content: <><Fluent.CustomerHubIcon />Dialog Url </>, value: 'Dialog Url' },
+          { key: '6-2', content: DialogUrlIsSupported() },
           { key: '6-3', content: <Dialog />, className: 'ui_action' }
         ],
       },
       {
         key: 22,
         items: [
-          { key: '22-1', content: <><Fluent.CustomerHubIcon />Dialog Url </>, value: 'Dialog Url' },
-          { key: '22-2', content: DialogUrlIsSupported() },
+          { key: '22-1', content: <><Fluent.CustomerHubIcon />Dialog AdaptiveCard</>, value: 'Dialog AdaptiveCard' },
+          { key: '22-2', content: DialogAdaptivecardIsSupported() },
           { key: '22-3', content: <Dialog />, className: 'ui_action' }
-        ],
-      },
-      {
-        key: 23,
-        items: [
-          { key: '23-1', content: <><Fluent.CustomerHubIcon />Dialog AdaptiveCard</>, value: 'Dialog AdaptiveCard' },
-          { key: '23-2', content: DialogAdaptivecardIsSupported() },
-          { key: '23-3', content: <Dialog />, className: 'ui_action' }
         ],
       },
       {
@@ -165,8 +157,8 @@ const Tab = () => {
       {
         key: 12,
         items: [
-          { key: '12-1', content: <><Fluent.FilesTxtIcon />Pages.current</>, value: 'Pages.current' },
-          { key: '12-2', content: PagesIsCurrent() },
+          { key: '12-1', content: <><Fluent.FilesTxtIcon />Pages.CurrentApp</>, value: 'Pages.CurrentApp' },
+          { key: '12-2', content: IsPagesCurrentAppSupported() },
           { key: '12-3', content: <PagesCurrent />, className: 'ui_action' }
         ],
       },
@@ -245,6 +237,21 @@ const Tab = () => {
     ];
   }
 
+  const updateCapabilityOnchange = (text: string) => {
+    setData().then((defaultRows) => {
+      if (showSupportedOnly) setShowSupportedOnly(false);
+
+      const rows = defaultRows.filter((defaultRow) => {
+        if (defaultRow.items[0].value?.toLowerCase()?.search(text.toLowerCase()) !== -1) {
+          return defaultRow;
+        }
+      });
+      setTableRows(rows);
+    }, (error) => {
+      console.log("Error", error);
+    })
+  }
+
   useEffect(() => {
     setData().then((defaultRows) => {
       if (showSupportedOnly) {
@@ -253,17 +260,6 @@ const Tab = () => {
       } else {
         setTableRows(defaultRows);
       }
-      const defaultRowsString = JSON.stringify(defaultRows.map(x => {
-        const arr1 = x.items.map((y, i) => {
-          if (i === 2) return undefined;
-          if (i === 1) return y.content.toString();
-          if (i === 0) return y.value;
-        });
-        return { Capability: arr1[0], Supported: arr1[1] };
-      }));
-      const client = isMobile ? "Mobile" : "Desktop";
-
-      createCsv(defaultRowsString, client);
     }, (error) => {
       console.log("Error", error);
     })
@@ -289,6 +285,29 @@ const Tab = () => {
           </Fluent.Flex>
         </Fluent.Segment>
         <Fluent.Segment>
+          <Fluent.Button onClick={() => {
+            setData().then((defaultRows) => {
+              const defaultRowsString = JSON.stringify(defaultRows.map(x => {
+                const arr1 = x.items.map((y, i) => {
+                  if (i === 2) return undefined;
+                  if (i === 1) return y.content.toString();
+                  if (i === 0) return y.value;
+                });
+                return { Capability: arr1[0], Supported: arr1[1] };
+              }));
+              const client = isMobile ? "Mobile" : "Desktop";
+
+              createCsv(defaultRowsString, client);
+            }, (error) => {
+              console.log("Error", error);
+            })
+          }}>Download .csv</Fluent.Button>
+        </Fluent.Segment>
+        <Fluent.Segment>
+          <Fluent.Input icon={<Fluent.SearchIcon />} placeholder="Search capability" onChange={(e: any) => {
+            const event = e as React.SyntheticEvent<HTMLInputElement, Event>;
+            updateCapabilityOnchange(event.currentTarget.value);
+          }} />
           <Fluent.Table
             aria-label="Static table"
             header={header}
@@ -296,9 +315,6 @@ const Tab = () => {
         </Fluent.Segment>
         <Fluent.Segment>
           <a href="https://forms.office.com/r/Jxh7rqrmMr"><Button> Suggestions </Button></a>
-        </Fluent.Segment>
-        <Fluent.Segment>
-          <a href="/">Download .csv</a>
         </Fluent.Segment>
       </Fluent.Flex >
     </div >

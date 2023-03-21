@@ -3,16 +3,20 @@ import { Button, Flex } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 import { pages } from "@microsoft/teams-js";
 
+/**
+ * This component returns a button which navigates to particular tab
+ * with pageId or to a default page.
+ */
 export const PagesCurrent = () => {
     // check to see if capability is supported
     if (pages.isSupported()) {
 
         if (pages.currentApp.isSupported()) {
             return (
-                <Flex>
+                <Flex gap="gap.small" vAlign="center">
                     <Button onClick={async () => {
                         await pages.currentApp.navigateTo({
-                            pageId: '72c73d2e-a890-4580-9c68-513c8cb6efcd'
+                            pageId: 'pagesTab'
                         })
                     }}>
                         Navigate Current App
@@ -29,4 +33,4 @@ export const PagesCurrent = () => {
     return (<></>);
 }
 
-export const PagesIsCurrent = () => booleanToString(pages.currentApp.isSupported());
+export const IsPagesCurrentAppSupported = () => booleanToString(pages.currentApp.isSupported());
