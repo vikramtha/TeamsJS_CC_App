@@ -6,7 +6,7 @@ import { BarCode, BarCodeIsSupported } from "./capabilities/BarCode";
 import { Calendar, CalendarIsSupported } from "./capabilities/Calendar";
 import { Call, CallIsSupported } from "./capabilities/Call";
 import { Chat, ChatIsSupported } from "./capabilities/Chat";
-import { Dialog, DialogAdaptivecardIsSupported, DialogIsSupported, DialogUrlIsSupported } from "./capabilities/Dialog";
+import { Dialog, DialogAdaptivecardIsSupported, DialogUrlIsSupported } from "./capabilities/Dialog";
 import { GeoLocation, GeoLocationIsSupported } from "./capabilities/GeoLocation";
 import { Mail, MailIsSupported } from "./capabilities/Mail";
 import { Menus, MenusIsSupported } from "./capabilities/Menus";
@@ -101,17 +101,9 @@ const Tab = () => {
       {
         key: 6,
         items: [
-          { key: '6-1', content: <><Fluent.CustomerHubIcon />Dialog</>, value: 'Dialog' },
-          { key: '6-2', content: DialogIsSupported() },
+          { key: '6-1', content: <><Fluent.CustomerHubIcon />Dialog Url </>, value: 'Dialog Url' },
+          { key: '6-2', content: DialogUrlIsSupported() },
           { key: '6-3', content: <Dialog />, className: 'ui_action' }
-        ],
-      },
-      {
-        key: 22,
-        items: [
-          { key: '22-1', content: <><Fluent.CustomerHubIcon />Dialog Url </>, value: 'Dialog Url' },
-          { key: '22-2', content: DialogUrlIsSupported() },
-          { key: '22-3', content: <Dialog />, className: 'ui_action' }
         ],
       },
       {
