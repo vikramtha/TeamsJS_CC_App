@@ -37,7 +37,6 @@ export const Dialog = () => {
     return (<></>);
 }
 
-export const DialogIsSupported = () => booleanToString(dialog.isSupported());
 export const DialogUrlIsSupported = () => booleanToString(dialog.url.isSupported());
 export const DialogAdaptivecardIsSupported = () => booleanToString(dialog.adaptiveCard.isSupported());
 

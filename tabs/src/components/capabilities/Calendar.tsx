@@ -1,11 +1,14 @@
-import { Button } from "@fluentui/react-northstar";
 import { calendar, people } from "@microsoft/teams-js";
+
+import { Button } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 
+/**
+ * This component returns button to compose a meeting
+ */
 export const Calendar = () => {
     // check to see if capability is supported
     if (calendar.isSupported()) {
-        // return button to compose a meeting
         return (
             <Button onClick={async () => {
                 const picked = await people.selectPeople();

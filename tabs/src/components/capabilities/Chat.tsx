@@ -1,11 +1,14 @@
 import { Button, Flex } from "@fluentui/react-northstar";
-import { chat } from "@microsoft/teams-js";
-import { booleanToString } from "../../helpers";
 
+import { booleanToString } from "../../helpers";
+import { chat } from "@microsoft/teams-js";
+
+/**
+ * This component returns button to start 1:1 and group chat
+ */
 export const Chat = () => {
     // check to see if capability is supported
     if (chat.isSupported()) {
-        // return buttons to start 1:1 and group chat
         return (
             <Flex gap="gap.small" vAlign="center">
                 <Button onClick={async () => {

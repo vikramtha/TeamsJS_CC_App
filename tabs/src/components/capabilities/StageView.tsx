@@ -1,7 +1,10 @@
 import { Button } from "@fluentui/react-northstar";
-import { stageView } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
+import { stageView } from "@microsoft/teams-js";
 
+/**
+ * This component open Developer Portal app in stage view
+ */
 export const StageView = () => {
     // check to see if capability is supported
     if (stageView.isSupported()) {

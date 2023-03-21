@@ -1,7 +1,10 @@
 import { Button } from "@fluentui/react-northstar";
-import { call } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
+import { call } from "@microsoft/teams-js";
 
+/**
+ * This component returns button to start a call.
+ */
 export const Call = () => {
     // check to see if capability is supported
     if (call.isSupported()) {
