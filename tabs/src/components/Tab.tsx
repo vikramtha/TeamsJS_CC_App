@@ -13,7 +13,7 @@ import { Mail, MailIsSupported } from "./capabilities/Mail";
 import { Menus, MenusIsSupported } from "./capabilities/Menus";
 import { Monetization, MonetizationIsSupported } from "./capabilities/Monetization";
 import { Pages, PagesIsSupported } from "./capabilities/Pages";
-import { PagesDeprecated, PagesDeprecatedIsSupported } from "./capabilities/Pages.deprecated";
+import { PagesDeprecated, PagesTabsIsSupported } from "./capabilities/Pages.deprecated";
 import { People, PeopleIsSupported } from "./capabilities/People";
 import { Profile, ProfileIsSupported } from "./capabilities/Profile";
 import { Search, SearchIsSupported } from "./capabilities/Search";
@@ -149,8 +149,8 @@ const Tab = () => {
       {
         key: 11,
         items: [
-          { key: '11-1', content: <><Fluent.FilesErrorIcon />Pages.deprecated</>, value: 'Pages.deprecated' },
-          { key: '11-2', content: PagesDeprecatedIsSupported() },
+          { key: '11-1', content: <><Fluent.FilesErrorIcon />Pages.tabs</>, value: 'Pages.tabs' },
+          { key: '11-2', content: PagesTabsIsSupported() },
           { key: '11-3', content: <PagesDeprecated />, className: 'ui_action' }
         ],
       },
@@ -285,29 +285,35 @@ const Tab = () => {
           </Fluent.Flex>
         </Fluent.Segment>
         <Fluent.Segment>
-          <Fluent.Button onClick={() => {
-            setData().then((defaultRows) => {
-              const defaultRowsString = JSON.stringify(defaultRows.map(x => {
-                const arr1 = x.items.map((y, i) => {
-                  if (i === 2) return undefined;
-                  if (i === 1) return y.content.toString();
-                  if (i === 0) return y.value;
-                });
-                return { Capability: arr1[0], Supported: arr1[1] };
-              }));
-              const client = isMobile ? "Mobile" : "Desktop";
+          <Fluent.Flex gap="gap.small" styles={{ justifyContent: 'space-between' }}>
+            <Fluent.Flex.Item>
+              <Fluent.Input icon={<Fluent.SearchIcon />} placeholder="Search capability" onChange={(e: any) => {
+                const event = e as React.SyntheticEvent<HTMLInputElement, Event>;
+                updateCapabilityOnchange(event.currentTarget.value);
+              }} />
+            </Fluent.Flex.Item>
+            <Fluent.Flex.Item>
+              <Fluent.Button onClick={() => {
+                setData().then((defaultRows) => {
+                  const defaultRowsString = JSON.stringify(defaultRows.map(x => {
+                    const arr1 = x.items.map((y, i) => {
+                      if (i === 2) return undefined;
+                      if (i === 1) return y.content.toString();
+                      if (i === 0) return y.value;
+                    });
+                    return { Capability: arr1[0], Supported: arr1[1] };
+                  }));
+                  const client = isMobile ? "Mobile" : "Desktop";
 
-              createCsv(defaultRowsString, client);
-            }, (error) => {
-              console.log("Error", error);
-            })
-          }}>Download .csv</Fluent.Button>
+                  createCsv(defaultRowsString, client);
+                }, (error) => {
+                  console.log("Error", error);
+                })
+              }}>Download .csv</Fluent.Button>
+            </Fluent.Flex.Item>
+          </Fluent.Flex>
         </Fluent.Segment>
-        <Fluent.Segment>
-          <Fluent.Input icon={<Fluent.SearchIcon />} placeholder="Search capability" onChange={(e: any) => {
-            const event = e as React.SyntheticEvent<HTMLInputElement, Event>;
-            updateCapabilityOnchange(event.currentTarget.value);
-          }} />
+        <Fluent.Segment className="tableFixHead">
           <Fluent.Table
             aria-label="Static table"
             header={header}

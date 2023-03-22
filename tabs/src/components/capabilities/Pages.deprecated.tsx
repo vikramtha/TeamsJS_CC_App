@@ -1,25 +1,16 @@
-import { Button, Flex } from "@fluentui/react-northstar";
-import { app, pages } from "@microsoft/teams-js";
+import { Button, Flex, Text, TextArea } from "@fluentui/react-northstar";
 
 import { booleanToString } from "../../helpers";
-import { useData } from "@microsoft/teamsfx-react";
+import { pages } from "@microsoft/teams-js";
+import { useState } from "react";
 
 /**
  * Provides APIs for querying and navigating between contextual tabs of an application. 
  * Unlike personal tabs, contextual tabs are pages associated with a specific context, such as channel or chat.
  */
 export const PagesDeprecated = () => {
-
-    const hubName = useData(async () => {
-        await app.initialize();
-        const context = await app.getContext();
-        return context.app.host.name;
-    })?.data;
-
-    let commingSoon = <>Comming Soon</>;
-    if (hubName === "Teams") {
-        commingSoon = <></>;
-    }
+    const [text, setText] = useState("");
+    const [showText, setShowText] = useState(false);
     // check to see if capability is supported
     // see TabConfig.tsx for more details on pages.config namespace usage
     if (!pages.isSupported()) { return (<></>); }
@@ -53,18 +44,22 @@ export const PagesDeprecated = () => {
 
     return (
         <Flex gap="gap.small" vAlign="center">
-            {commingSoon}
             {pages.tabs.isSupported() &&
                 <>
                     <Button onClick={async () => {
                         const config = await pages.tabs.getTabInstances();
-                        console.log(config)
+                        console.log(config);
+                        setText(`Get tab instances: ${JSON.stringify(config)}`);
+                        setShowText(true);
+
                     }}>
                         Get tab instances
                     </Button>
                     <Button onClick={async () => {
                         const config = await pages.tabs.getMruTabInstances();
                         console.log(config);
+                        setText(`Most Recently Used tab instances: ${JSON.stringify(config)}`);
+                        setShowText(true);
                     }}>
                         Get Most Recently Used tab instances
                     </Button>
@@ -82,10 +77,13 @@ export const PagesDeprecated = () => {
                     }}>
                         Navigate to tab
                     </Button>
+                    {showText &&
+                        <TextArea className="ui_location" value={text} />}
+                    <Text className="ui_deprecated" size="small" content="*Deprecated" />
                 </>
             }
         </Flex>
     )
 }
 
-export const PagesDeprecatedIsSupported = () => booleanToString(pages.isSupported());
+export const PagesTabsIsSupported = () => booleanToString(pages.tabs.isSupported());
