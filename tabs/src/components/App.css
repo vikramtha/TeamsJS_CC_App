@@ -35,10 +35,6 @@
 }
 
 .tableFixHead {
-    overflow-y: auto;
-    /* make the table scrollable if height is more than 200 px  */
-    height: 250px;
-    /* gives an initial height of 200px to the table */
     margin-top: 4px;
     padding-top: unset !important;
 
@@ -65,7 +61,7 @@
 
 @media screen and (min-width: 700px) {
     .ui-table__cell:not(:last-child) {
-        max-width: 6%;
+        max-width: 10%;
     }
 
     .ui-table__cell:first-child {
@@ -78,9 +74,24 @@
     }
 }
 
+@media screen and (min-width: 1000px) {
+    .ui-table__cell:not(:last-child) {
+        max-width: 6%;
+    }
+
+    .ui-table__cell:first-child {
+        max-width: 9%;
+    }
+
+    .ui_action .ui-table__cell__content textarea {
+        height: 100px;
+        width: 600px;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .ui-table__cell:not(:last-child) {
-        max-width: 13%;
+        max-width: 15%;
     }
 
     .ui-table__cell:first-child {
