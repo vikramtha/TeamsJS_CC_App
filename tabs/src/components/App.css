@@ -34,6 +34,35 @@
     min-height: 46.4px;
 }
 
+.tableFixHead {
+    overflow-y: auto;
+    /* make the table scrollable if height is more than 200 px  */
+    height: 250px;
+    /* gives an initial height of 200px to the table */
+    margin-top: 4px;
+    padding-top: unset !important;
+
+}
+
+.tableFixHead .ui-table__header {
+    position: sticky;
+    /* make the table heads sticky */
+    top: 0px;
+    /* table head will be placed from the top of the table and sticks to it */
+    z-index: 1;
+}
+
+.ui-table {
+    border-collapse: collapse;
+    /* make the table borders collapse to each other */
+    width: 100%;
+}
+
+.ui_deprecated {
+    right: 0px;
+    position: absolute;
+}
+
 @media screen and (min-width: 700px) {
     .ui-table__cell:not(:last-child) {
         max-width: 6%;
@@ -57,4 +86,14 @@
     .ui-table__cell:first-child {
         max-width: 20%;
     }
+}
+
+.ui_teamscore {
+    height: unset !important;
+    width: 200px !important;
+}
+
+.ui_location {
+    height: unset !important;
+    width: 300px !important;
 }

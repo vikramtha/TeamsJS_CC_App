@@ -1,12 +1,13 @@
 import { Button, Flex } from "@fluentui/react-northstar";
+import { app, mail } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
-import { mail } from "@microsoft/teams-js";
 
 /**
  * This component compose a new mail and open's an existing mail with mailItemId
  */
 export const Mail = () => {
+    app.initialize();
     // check to see if capability is supported
     if (mail.isSupported()) {
         return (
@@ -26,7 +27,7 @@ export const Mail = () => {
                 </Button>
                 <Button onClick={async () => {
                     mail.openMailItem({
-                        itemId: '',
+                        itemId: '0',
                     })
                 }}>
                     Open Mail Item

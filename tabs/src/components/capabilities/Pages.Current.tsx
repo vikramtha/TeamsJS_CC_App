@@ -19,7 +19,7 @@ export const PagesCurrent = () => {
                             pageId: 'pagesTab'
                         })
                     }}>
-                        Navigate Current App
+                        Navigate Current App (PagesTab)
                     </Button>
                     <Button onClick={async () => {
                         await pages.currentApp.navigateToDefaultPage();

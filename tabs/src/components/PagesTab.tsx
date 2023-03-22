@@ -3,10 +3,11 @@ import * as Fluent from "@fluentui/react-northstar";
 import React, { useContext, useState } from "react";
 import { app, pages } from "@microsoft/teams-js";
 
+import NavigateBack from "./capabilities/NavigateBack";
 import { TeamsFxContext } from "./Context";
 
 /**
- * This component is used to display all the supported pages functions.
+ * This component is used to Navigate back in the hosted application.
  */
 const PagesTab = () => {
     const [isText, showText] = useState(false);
@@ -15,29 +16,9 @@ const PagesTab = () => {
     app.initialize();
     // Check if app is initialized
     if (app.isInitialized()) {
-        // register back button event handler
-        pages.backStack.registerBackButtonHandler(() => {
-            console.log("Back button pressed");
-            return true;
-        });
         return (
             <div className={themeString === "default" ? "" : "dark"}>
-                <Fluent.Segment className="ui-pagessegment">
-                    <Fluent.Header content="Navigate Back" as="h2" />
-                    <Fluent.Flex gap="gap.small" vAlign="center">
-                        <Fluent.Text className="ui-pagestext" content="Navigates back in the hosted application." />
-                    </Fluent.Flex>
-                    <Fluent.Flex gap="gap.small" vAlign="center">
-                        {/* // check to see if capability is supported */}
-                        {pages.backStack.isSupported() &&
-                            <Fluent.Button onClick={async () => {
-                                await pages.backStack.navigateBack();
-                            }}>
-                                Click me to Navigate Back
-                            </Fluent.Button>
-                        }
-                    </Fluent.Flex>
-                </Fluent.Segment>
+                <NavigateBack />
                 <Fluent.Segment className="ui-pagessegment">
                     <Fluent.Header content="Navigate To App" as="h2" />
                     <Fluent.Flex gap="gap.small" vAlign="center">
@@ -119,7 +100,6 @@ const PagesTab = () => {
     }
     // return empty fragment if capability is not initialized
     return (<></>);
-
 }
 
 
