@@ -8,8 +8,8 @@ Sample application to demonstrate the capabilities of Teams JS SDK v2 in Microso
 - Visual Studio Code
 - Teams Toolkit v4.1.0
 
-## Minimal path to awesome
+## Instructions to Start
 
 - Clone repo, open in Visual Studio Code
 - Run debug (F5)
-    - Sideload app
+    - Sideload app in Outlook or Office
