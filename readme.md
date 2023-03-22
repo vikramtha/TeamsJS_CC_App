@@ -6,7 +6,7 @@ Sample application to demonstrate the capabilities of Teams JS SDK v2 in Microso
 
 - Microsoft 365 Tenant with Sideloading enabled
 - Visual Studio Code
-- Teams Toolkit v4.1.0
+- Teams Toolkit v4.2.4
 
 ## Instructions to Start
 
