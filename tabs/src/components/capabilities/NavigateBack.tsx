@@ -44,7 +44,6 @@ export default class NavigateBack extends React.PureComponent<{}, INavBackState>
         }
     }
     render() {
-
         return (<>{this.state.element}</>);
     }
 }

@@ -1,3 +1,4 @@
+import { Text } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 import { monetization } from "@microsoft/teams-js";
 
@@ -8,11 +9,11 @@ export const Monetization = () => {
     // check to see if capability is supported
     if (monetization.isSupported()) {
         return (
-            <div>Coming soon</div>
+            <Text content="Coming Soon" />
         )
     };
-    // return empty fragment if capability is not supported
-    return (<></>);
+    // return empty fragment if capability is not supported.
+    return (<>Capability is not supported</>);
 }
 
 export const MonetizationIsSupported = () => booleanToString(monetization.isSupported());

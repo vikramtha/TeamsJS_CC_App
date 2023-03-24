@@ -26,8 +26,9 @@ export const AppInstallDialog = async () => {
             )
         }
     }
-    // return empty fragment if capability is not supported
-    return (<></>);
+    // return empty fragment if capability is not supported.
+    return (<>Capability is not supported</>);
+
 }
 
 export const AppInstallDialogIsSupported = () => booleanToString(appInstallDialog.isSupported());

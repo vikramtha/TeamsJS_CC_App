@@ -1,6 +1,7 @@
 import { Button, Flex } from "@fluentui/react-northstar";
-import { search } from "@microsoft/teams-js";
+
 import { booleanToString } from "../../helpers";
+import { search } from "@microsoft/teams-js";
 
 export const Search = () => {
     // check to see if capability is supported
@@ -35,8 +36,8 @@ export const Search = () => {
             </Flex>
         )
     };
-    // return empty fragment if capability is not supported
-    return (<></>);
+    // return empty fragment if capability is not supported.
+    return (<>Capability is not supported</>);
 }
 
 export const SearchIsSupported = () => booleanToString(search.isSupported());

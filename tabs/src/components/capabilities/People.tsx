@@ -73,8 +73,8 @@ export const People = () => {
             </Flex>
         )
     };
-    // return empty fragment if capability is not supported
-    return (<></>);
+    // return empty fragment if capability is not supported.
+    return (<>Capability is not supported</>);
 }
 
 export const PeopleIsSupported = () => booleanToString(people.isSupported());

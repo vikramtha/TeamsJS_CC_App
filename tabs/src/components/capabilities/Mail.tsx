@@ -13,7 +13,7 @@ export const Mail = () => {
         return (
             <Flex gap="gap.small" vAlign="center">
                 <Button onClick={async () => {
-                    mail.composeMail({
+                    await mail.composeMail({
                         type: mail.ComposeMailType.New,
                         subject: "Hello",
                         message: "Hello World",
@@ -26,7 +26,7 @@ export const Mail = () => {
                     Compose Mail
                 </Button>
                 <Button onClick={async () => {
-                    mail.openMailItem({
+                    await mail.openMailItem({
                         itemId: '0',
                     })
                 }}>

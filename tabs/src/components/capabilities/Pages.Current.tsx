@@ -30,7 +30,8 @@ export const PagesCurrent = () => {
             );
         }
     }
-    return (<></>);
+    // return empty fragment if capability is not supported.
+    return (<>Capability is not supported</>);
 }
 
 export const IsPagesCurrentAppSupported = () => booleanToString(pages.currentApp.isSupported());

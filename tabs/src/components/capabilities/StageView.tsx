@@ -22,8 +22,8 @@ export const StageView = () => {
             </Button>
         )
     };
-    // return empty fragment if capability is not supported
-    return (<></>);
+    // return empty fragment if capability is not supported.
+    return (<>Capability is not supported</>);
 }
 
 export const StageViewIsSupported = () => booleanToString(stageView.isSupported());

@@ -13,7 +13,10 @@ export const PagesDeprecated = () => {
     const [showText, setShowText] = useState(false);
     // check to see if capability is supported
     // see TabConfig.tsx for more details on pages.config namespace usage
-    if (!pages.isSupported()) { return (<></>); }
+    if (!pages.isSupported()) {
+        // return empty fragment if capability is not supported.
+        return (<>Capability is not supported</>);
+    }
     // check to see if navigating back is supported
     if (pages.backStack.isSupported()) {
         // register back button event handler

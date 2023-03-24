@@ -46,8 +46,8 @@ export const TeamsCore = () => {
             </Flex>
         )
     };
-    // return empty fragment if capability is not supported
-    return (<></>);
+    // return empty fragment if capability is not supported.
+    return (<>Capability is not supported</>);
 }
 
 export const TeamsCoreIsSupported = () => booleanToString(teamsCore.isSupported());

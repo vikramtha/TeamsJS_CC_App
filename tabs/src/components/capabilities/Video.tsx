@@ -1,3 +1,4 @@
+import { Text } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 import { video } from "@microsoft/teams-js";
 
@@ -8,7 +9,7 @@ export const Video = () => {
     // check to see if capability is supported
     if (video.isSupported()) {
         return (
-            <div>Coming soon</div>
+            <Text content="Coming Soon" />
         )
     };
     // return empty fragment if capability is not supported

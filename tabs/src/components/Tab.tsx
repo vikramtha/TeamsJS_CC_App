@@ -31,13 +31,18 @@ import { createCsv } from "../helpers/writetoexcel";
 import { isMobile } from 'react-device-detect';
 import packageJSON from "../../package.json";
 
+interface ICapability {
+  capabilityName: string;
+  supported: string;
+}
+
 const Tab = () => {
   const { themeString } = useContext(TeamsFxContext);
 
   const header: Fluent.ShorthandValue<Fluent.TableRowProps> = {
     key: 'header',
     items: [
-      { key: 'capability', content: <Fluent.Text size={"medium"} weight="bold" content="Capabilities" />, },
+      { key: 'capability', content: <Fluent.Text size={"medium"} weight="bold" content="Capabilities" /> },
       { key: 'supported', content: <Fluent.Text size={"medium"} weight="bold" content="Supported" /> },
       { key: 'actions', content: <Fluent.Text size={"medium"} weight="bold" content="Actions" />, className: 'ui_action' }
     ]
@@ -237,7 +242,8 @@ const Tab = () => {
     ];
   }
 
-  const updateCapabilityOnchange = (text: string) => {
+  const updateCapabilityOnChange = (text: string) => {
+    // Calling setData() again for searching capability in the table. 
     setData().then((defaultRows) => {
       if (showSupportedOnly) setShowSupportedOnly(false);
 
@@ -253,6 +259,7 @@ const Tab = () => {
   }
 
   useEffect(() => {
+    //Setting rows in the table for the very first time
     setData().then((defaultRows) => {
       if (showSupportedOnly) {
         const rows = defaultRows.filter((r) => { return r.items[1].content === 'Yes' });
@@ -289,23 +296,33 @@ const Tab = () => {
             <Fluent.Flex.Item>
               <Fluent.Input icon={<Fluent.SearchIcon />} placeholder="Search capability" onChange={(e: any) => {
                 const event = e as React.SyntheticEvent<HTMLInputElement, Event>;
-                updateCapabilityOnchange(event.currentTarget.value);
+                updateCapabilityOnChange(event.currentTarget.value);
               }} />
             </Fluent.Flex.Item>
             <Fluent.Flex.Item>
               <Fluent.Button onClick={() => {
+
+                // Calling setData() for collecting all the capabilities with supported
+                // and non-supported and create a .csv file and downloads it
                 setData().then((defaultRows) => {
-                  const defaultRowsString = JSON.stringify(defaultRows.map(x => {
-                    const arr1 = x.items.map((y, i) => {
-                      if (i === 2) return undefined;
-                      if (i === 1) return y.content.toString();
-                      if (i === 0) return y.value;
+                  const defaultRowList = defaultRows.map(defaultRow => {
+
+                    const row: ICapability[] = defaultRow.items && defaultRow.items.map((item, index) => {
+
+                      let capability: ICapability = { capabilityName: '', supported: '' };
+
+                      if (index === 0) { capability.capabilityName = item?.value ? item!.value : ""; }
+                      if (index === 1) { capability.supported = item.content.toString(); }
+
+                      return capability;
                     });
-                    return { Capability: arr1[0], Supported: arr1[1] };
-                  }));
+                    return { Capability: row[0].capabilityName, Supported: row[1].supported };
+                  })
+                  const defaultRowsString = JSON.stringify(defaultRowList);
                   const client = isMobile ? "Mobile" : "Desktop";
 
                   createCsv(defaultRowsString, client);
+
                 }, (error) => {
                   console.log("Error", error);
                 })

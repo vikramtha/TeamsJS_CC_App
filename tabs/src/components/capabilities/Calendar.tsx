@@ -25,8 +25,8 @@ export const Calendar = () => {
             </Button>
         )
     };
-    // return empty fragment if capability is not supported
-    return (<></>);
+    // return empty fragment if capability is not supported.
+    return (<>Capability is not supported</>);
 }
 
 export const CalendarIsSupported = () => booleanToString(calendar.isSupported());

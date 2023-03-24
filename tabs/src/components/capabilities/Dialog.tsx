@@ -33,8 +33,8 @@ export const Dialog = () => {
             </Button>
         )
     };
-    // return empty fragment if capability is not supported
-    return (<></>);
+    // return empty fragment if capability is not supported.
+    return (<>Capability is not supported</>);
 }
 
 export const DialogUrlIsSupported = () => booleanToString(dialog.url.isSupported());
