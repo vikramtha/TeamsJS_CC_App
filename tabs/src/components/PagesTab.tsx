@@ -98,7 +98,7 @@ const PagesTab = () => {
             </div>
         );
     }
-    // return empty fragment if capability is not initialized
+    // return's if capability is not initialized
     return (<>Capability is not initialized</>);
 }
 

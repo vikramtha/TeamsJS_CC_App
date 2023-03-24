@@ -23,8 +23,8 @@ export const BarCode = async () => {
             )
         };
     }
-    // return empty fragment if capability is not initialized
-    return (<>If you are seeing, it means you didn't call app.initialize()</>);
+    // return's if capability is not supported
+    return (<>Capability is not supported</>);
 }
 
 export const BarCodeIsSupported = () => booleanToString(barCode.isSupported());

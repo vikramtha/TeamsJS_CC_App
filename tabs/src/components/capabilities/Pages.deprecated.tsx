@@ -14,7 +14,7 @@ export const PagesDeprecated = () => {
     // check to see if capability is supported
     // see TabConfig.tsx for more details on pages.config namespace usage
     if (!pages.isSupported()) {
-        // return empty fragment if capability is not supported.
+        // return's  if capability is not supported.
         return (<>Capability is not supported</>);
     }
     // check to see if navigating back is supported

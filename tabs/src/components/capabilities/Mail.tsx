@@ -35,7 +35,7 @@ export const Mail = () => {
             </Flex>
         )
     };
-    // return empty fragment if capability is not supported
+    // return's  if capability is not supported
     return (<></>);
 }
 

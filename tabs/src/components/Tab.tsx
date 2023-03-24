@@ -1,27 +1,6 @@
 import * as Fluent from "@fluentui/react-northstar";
 
-import { App, AppIsSupported } from "./capabilities/App";
-import { AppInstallDialog, AppInstallDialogIsSupported } from "./capabilities/AppInstallDialog";
-import { BarCode, BarCodeIsSupported } from "./capabilities/BarCode";
-import { Calendar, CalendarIsSupported } from "./capabilities/Calendar";
-import { Call, CallIsSupported } from "./capabilities/Call";
-import { Chat, ChatIsSupported } from "./capabilities/Chat";
-import { Dialog, DialogAdaptivecardIsSupported, DialogUrlIsSupported } from "./capabilities/Dialog";
-import { GeoLocation, GeoLocationIsSupported } from "./capabilities/GeoLocation";
-import { IsPagesCurrentAppSupported, PagesCurrent } from "./capabilities/Pages.Current";
-import { Mail, MailIsSupported } from "./capabilities/Mail";
-import { Menus, MenusIsSupported } from "./capabilities/Menus";
-import { Monetization, MonetizationIsSupported } from "./capabilities/Monetization";
-import { Pages, PagesIsSupported } from "./capabilities/Pages";
-import { PagesDeprecated, PagesTabsIsSupported } from "./capabilities/Pages.deprecated";
-import { People, PeopleIsSupported } from "./capabilities/People";
-import { Profile, ProfileIsSupported } from "./capabilities/Profile";
-import { Search, SearchIsSupported } from "./capabilities/Search";
-import { Sharing, SharingIsSupported } from "./capabilities/Sharing";
-import { StageView, StageViewIsSupported } from "./capabilities/StageView";
-import { TeamsCore, TeamsCoreIsSupported } from "./capabilities/TeamsCore";
-import { Video, VideoIsSupported } from "./capabilities/Video";
-import { WebStorage, WebStorageIsSupported } from "./capabilities/WebStorage";
+import { App, AppInstallDialog, AppInstallDialogIsSupported, AppIsSupported, BarCode, BarCodeIsSupported, Calendar, CalendarIsSupported, Call, CallIsSupported, Chat, ChatIsSupported, Dialog, DialogAdaptivecardIsSupported, DialogUrlIsSupported, GeoLocation, GeoLocationIsSupported, IsPagesCurrentAppSupported, Mail, MailIsSupported, Menus, MenusIsSupported, Monetization, MonetizationIsSupported, Pages, PagesCurrent, PagesDeprecated, PagesIsSupported, PagesTabsIsSupported, People, PeopleIsSupported, Profile, ProfileIsSupported, Search, SearchIsSupported, Sharing, SharingIsSupported, StageView, StageViewIsSupported, TeamsCore, TeamsCoreIsSupported, Video, VideoIsSupported, WebStorage, WebStorageIsSupported } from "./capabilities";
 import { useContext, useEffect, useState } from "react";
 
 import { Button } from "@fluentui/react-northstar";
@@ -31,8 +10,8 @@ import { createCsv } from "../helpers/writetoexcel";
 import { isMobile } from 'react-device-detect';
 import packageJSON from "../../package.json";
 
-interface ICapability {
-  capabilityName: string;
+export interface ICapability {
+  capabilityName?: string;
   supported: string;
 }
 
@@ -154,7 +133,7 @@ const Tab = () => {
       {
         key: 11,
         items: [
-          { key: '11-1', content: <><Fluent.FilesErrorIcon />Pages.tabs</>, value: 'Pages.tabs' },
+          { key: '11-1', content: <><Fluent.FilesErrorIcon />Pages.Tabs</>, value: 'Pages.Tabs' },
           { key: '11-2', content: PagesTabsIsSupported() },
           { key: '11-3', content: <PagesDeprecated />, className: 'ui_action' }
         ],
@@ -302,29 +281,21 @@ const Tab = () => {
             <Fluent.Flex.Item>
               <Fluent.Button onClick={() => {
 
-                // Calling setData() for collecting all the capabilities with supported
-                // and non-supported and create a .csv file and downloads it
+                // Calling setData() for collecting all the capabilities whether supported
+                // and non-supported and creates a .csv file and downloads it
                 setData().then((defaultRows) => {
-                  const defaultRowList = defaultRows.map(defaultRow => {
+                  const defaultRowList: ICapability[] = defaultRows.map(defaultRow => {
+                    const capabilityName = defaultRow.items[0].value;
+                    const supported = defaultRow.items[1].content.toString();
 
-                    const row: ICapability[] = defaultRow.items && defaultRow.items.map((item, index) => {
-
-                      let capability: ICapability = { capabilityName: '', supported: '' };
-
-                      if (index === 0) { capability.capabilityName = item?.value ? item!.value : ""; }
-                      if (index === 1) { capability.supported = item.content.toString(); }
-
-                      return capability;
-                    });
-                    return { Capability: row[0].capabilityName, Supported: row[1].supported };
-                  })
-                  const defaultRowsString = JSON.stringify(defaultRowList);
+                    return { capabilityName: capabilityName, supported: supported };
+                  });
                   const client = isMobile ? "Mobile" : "Desktop";
-
-                  createCsv(defaultRowsString, client);
+                  // creates .csv file 
+                  createCsv(defaultRowList, client);
 
                 }, (error) => {
-                  console.log("Error", error);
+                  console.error("Error", error);
                 })
               }}>Download .csv</Fluent.Button>
             </Fluent.Flex.Item>
