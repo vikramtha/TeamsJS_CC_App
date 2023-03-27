@@ -23,7 +23,8 @@ class TermsOfUse extends React.Component {
 
           Mauris ullamcorper condimentum nunc, non laoreet augue egestas lobortis. Cras porttitor dolor sed ex finibus, nec maximus diam rhoncus. Sed non diam sagittis, lacinia mi at, volutpat velit. Phasellus vel pharetra leo. Vivamus accumsan dictum ex, ac gravida nulla hendrerit sed. Donec ultricies maximus tellus a aliquam. Nunc imperdiet metus id tellus pharetra volutpat. Maecenas et risus placerat, placerat ex ut, fermentum eros. Morbi sed sodales nisi, eget facilisis ipsum. Duis vehicula fringilla sem, quis porta nisi pellentesque non. Quisque lacinia ultricies nisl, non fermentum quam lacinia et. Cras hendrerit quam lectus, ultrices lacinia nulla accumsan quis. Fusce ullamcorper ipsum quis arcu suscipit, nec porta est faucibus. Quisque mattis venenatis tincidunt. Donec imperdiet, diam in mollis sagittis, tortor massa consectetur lacus, in imperdiet arcu leo nec ex. Nulla posuere dignissim cursus.
 
-          Pellentesque vel lacinia dolor. Aliquam erat volutpat. Ut ultricies rhoncus magna sollicitudin ornare. Integer maximus dui nec lectus mollis porttitor a id libero. In pharetra tellus vel sapien efficitur, a pulvinar purus imperdiet. Praesent ut imperdiet turpis. Donec at vulputate sapien, non luctus orci. Vivamus tincidunt elit neque`} />
+          Pellentesque vel lacinia dolor. Aliquam erat volutpat. Ut ultricies rhoncus magna sollicitudin ornare. Integer maximus dui nec lectus mollis porttitor a id libero. In pharetra tellus vel sapien efficitur, a pulvinar purus imperdiet. Praesent ut imperdiet turpis. Donec at vulputate sapien, non luctus orci. Vivamus tincidunt elit neque`}
+        />
       </Fluent.Segment>
     );
   }

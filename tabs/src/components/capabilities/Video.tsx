@@ -13,7 +13,7 @@ export const Video = () => {
         )
     };
     // return's  if capability is not supported
-    return (<></>);
+    return (<>Capability is not supported</>);
 }
 
 export const VideoIsSupported = () => booleanToString(video.isSupported());

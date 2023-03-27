@@ -11,7 +11,6 @@ import { useState } from "react";
 export const App = () => {
     const [text, setText] = useState("");
     const [showText, setShowText] = useState(false);
-    app.initialize();
     // check to see if app has been initialized
     if (app.isInitialized()) {
         app.registerOnThemeChangeHandler(() => {
@@ -29,11 +28,11 @@ export const App = () => {
                 }}> Get Context
                 </Button>
                 {showText &&
-                    <TextArea fluid inverted value={text} />}
+                    <TextArea className="ui_app" fluid inverted value={text} />}
             </Flex>
         )
     }
-    // return's  if capability is not supported
+    // return empty fragment if capability is not supported
     return (<>Capability is not supported</>);
 }
 

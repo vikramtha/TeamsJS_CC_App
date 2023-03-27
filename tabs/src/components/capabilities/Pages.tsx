@@ -31,10 +31,14 @@ export const Pages = () => {
         });
     }
 
+    // register handler for full screen event on a tab
+    pages.registerFullScreenHandler(() => {
+        console.log("fullScreenHandler");
+    });
+
     return (
         <Flex gap="gap.small" vAlign="center">
             <Text content="Please check the Pages Tab" />
-
         </Flex>
     )
 }

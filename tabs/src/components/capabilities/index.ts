@@ -4,14 +4,16 @@ import { BarCode, BarCodeIsSupported } from "./BarCode";
 import { Calendar, CalendarIsSupported } from "./Calendar";
 import { Call, CallIsSupported } from "./Call";
 import { Chat, ChatIsSupported } from "./Chat";
-import { Dialog, DialogAdaptivecardIsSupported, DialogUrlIsSupported } from "./Dialog";
+import { Dialog, DialogUrlIsSupported } from "./Dialog";
+import { DialogAdaptiveCard, DialogAdaptiveCardIsSupported } from "./Dialog.AdaptiveCard";
 import { GeoLocation, GeoLocationIsSupported } from "./GeoLocation";
+import { GeoLocationMap, GeoLocationMapIsSupported } from "./GeoLocation.map";
 import { IsPagesCurrentAppSupported, PagesCurrent } from "./Pages.Current";
 import { Mail, MailIsSupported } from "./Mail";
 import { Menus, MenusIsSupported } from "./Menus";
 import { Monetization, MonetizationIsSupported } from "./Monetization";
 import { Pages, PagesIsSupported } from "./Pages";
-import { PagesDeprecated, PagesTabsIsSupported } from "./Pages.deprecated";
+import { PagesTabs, PagesTabsIsSupported } from "./Pages.Tabs";
 import { People, PeopleIsSupported } from "./People";
 import { Profile, ProfileIsSupported } from "./Profile";
 import { Search, SearchIsSupported } from "./Search";
@@ -28,14 +30,15 @@ export {
     Calendar, CalendarIsSupported,
     Call, CallIsSupported,
     Chat, ChatIsSupported,
-    Dialog, DialogAdaptivecardIsSupported, DialogUrlIsSupported,
+    Dialog, DialogAdaptiveCard, DialogAdaptiveCardIsSupported, DialogUrlIsSupported,
     GeoLocation, GeoLocationIsSupported,
+    GeoLocationMap, GeoLocationMapIsSupported,
     IsPagesCurrentAppSupported, PagesCurrent,
     Mail, MailIsSupported,
     Menus, MenusIsSupported,
     Monetization, MonetizationIsSupported,
     Pages, PagesIsSupported,
-    PagesDeprecated, PagesTabsIsSupported,
+    PagesTabs, PagesTabsIsSupported,
     People, PeopleIsSupported,
     Profile, ProfileIsSupported,
     Search, SearchIsSupported,

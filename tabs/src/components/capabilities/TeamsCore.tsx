@@ -29,7 +29,7 @@ export const TeamsCore = () => {
             <Flex gap="gap.small" vAlign="center">
                 <Button onClick={() => {
                     teamsCore.enablePrintCapability();
-                    setText("Use Ctrl+P and cmd+P");
+                    setText("Use ctrl+p and cmd+p");
                     setShowText(true);
 
                 }}>

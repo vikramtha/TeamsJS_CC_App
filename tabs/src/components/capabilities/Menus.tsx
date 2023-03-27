@@ -11,7 +11,6 @@ import { menus } from "@microsoft/teams-js";
 export const Menus = () => {
     // check to see if capability is supported
     if (menus.isSupported()) {
-        menus.initialize();
         const menuItem: menus.MenuItem[] = [
             {
                 id: '0',
@@ -73,10 +72,8 @@ export const Menus = () => {
                 }}>
                     SetNavBarMenu
                 </Button>
-
                 <Button onClick={() => {
                     menus.showActionMenu({ items: menuItem, title: "Menu Title" }, (id: string) => {
-
                         return true;
                     });
                 }}>

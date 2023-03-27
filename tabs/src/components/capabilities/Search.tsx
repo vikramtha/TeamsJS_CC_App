@@ -8,15 +8,15 @@ export const Search = () => {
     if (search.isSupported()) {
         // onClosed handler
         const onClosed = () => {
-            console.log("Search closed");
+            console.log("This handler will be called when the user exits or cancels their search");
         };
         // onExecute handler
         const onExecute = () => {
-            console.log("Search executed");
+            console.log("The handler will be called when the user executes their search (by pressing Enter for example)");
         };
         // onChange handler
         const onChange = () => {
-            console.log("Search changed");
+            console.log(" This optional handler will be called when the user first starts using the host's search box and as the user types their query");
         };
 
         return (

@@ -1,13 +1,13 @@
 import { utils, write, writeFile } from "xlsx";
 
-import { ICapability } from "../components/Tab";
+import { ICapabilityStatus } from "../components/Tab";
 
 /**
  * Creates a .csv file
- * @param defaultRowList, type of ICapability[]
+ * @param defaultRowList, type of ICapabilityStatus[]
  * @param client, type of string 
  */
-export function createCsv(defaultRowList: ICapability[], client: string) {
+export function createCsv(defaultRowList: ICapabilityStatus[], client: string) {
     try {
         //creates a worksheet using json data
         const worksheet = utils.json_to_sheet(defaultRowList);

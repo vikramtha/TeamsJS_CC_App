@@ -34,10 +34,10 @@ export const People = () => {
                 </Button>
                 <Button onClick={async () => {
                     try {
-                        const { user } = await app.getContext();
-                        if (!user?.id) { throw new Error("No user ID"); }
+                        const context = await app.getContext() as app.Context;
+                        if (context.user?.id) { throw new Error("No user ID"); }
                         const picked = await people.selectPeople({
-                            setSelected: [user.id]
+                            setSelected: [context.user ? context.user.id : ""]
                         });
                         console.log(picked);
                     } catch {
