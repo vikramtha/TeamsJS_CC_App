@@ -9,7 +9,7 @@ export const WebStorage = () => {
     // check to see if capability is supported
     if (webStorage.isSupported()) {
         return (
-            <Button onClick={async () => {
+            <Button onClick={() => {
                 const isCleared = webStorage.isWebStorageClearedOnUserLogOut();
                 console.log(isCleared);
             }}>
