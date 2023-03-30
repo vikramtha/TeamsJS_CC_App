@@ -10,8 +10,10 @@ const DialogPage = () => {
                     onSubmit={(event, data) => {
                         const formData = new FormData(event.currentTarget as HTMLFormElement);
                         const json: any = {};
-                        //This is where you would put an AppID that you can return to, probably won't work if you use this for anything else.
-                        const appIDs = [''];
+
+                        // Use const appIDs=['YOUR_APP_IDS_HERE']; instead of the following one 
+                        // if you want to restrict which applications your dialog can submit to
+                        const appIDs = undefined;
 
                         formData.forEach((value, key) => (json[key] = value));
                         dialog.url.submit(json, appIDs);

@@ -32,8 +32,8 @@ export const App = () => {
             </Flex>
         )
     }
-    // return empty fragment if capability is not supported
-    return (<>Capability is not supported</>);
+    // return's if capability is not initialized
+    return (<>Capability is not initialized</>);
 }
 
 export const AppIsSupported = () => booleanToString(true);

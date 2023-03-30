@@ -1,6 +1,8 @@
-import React from "react";
 import "./App.css";
+
 import { app, pages } from "@microsoft/teams-js";
+
+import React from "react";
 
 /**
  * The 'Config' component is used to display your group tabs
@@ -10,7 +12,7 @@ import { app, pages } from "@microsoft/teams-js";
  */
 class TabConfig extends React.Component {
   render() {
-    // Initialize the Microsoft Teams SDK
+    // Initialize the Microsoft TeamsJS
     app.initialize().then(() => {
       /**
        * When the user clicks "Save", save the url for your configured tab.
