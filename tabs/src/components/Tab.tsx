@@ -50,7 +50,7 @@ const Tab = () => {
       {
         key: 'App',
         items: [
-          { key: 'App-1', content: <><Fluent.AppsIcon/><Fluent.Text content="App"/></> },
+          { key: 'App-1', content: <><Fluent.AppsIcon /><Fluent.Text content="App" /></> },
           { key: 'App-2', content: AppIsSupported(), },
           { key: 'App-3', content: <App />, className: 'ui_action' }
         ]
@@ -58,7 +58,7 @@ const Tab = () => {
       {
         key: 'App-Install-Dialog',
         items: [
-          { key: 'App-Install-Dialog-1', content: <><Fluent.DownloadIcon /><Fluent.Text content="App Install Dialog"/></> },
+          { key: 'App-Install-Dialog-1', content: <><Fluent.DownloadIcon /><Fluent.Text content="App Install Dialog" /></> },
           { key: 'App-Install-Dialog-2', content: AppInstallDialogIsSupported() },
           { key: 'App-Install-Dialog-3', content: <AppInstallDialog />, className: 'ui_action' }
         ]
@@ -66,7 +66,7 @@ const Tab = () => {
       {
         key: 'Bar-Code',
         items: [
-          { key: 'Bar Code-1', content: <><Fluent.TranscriptIcon /><Fluent.Text content="Bar Code"/></> },
+          { key: 'Bar Code-1', content: <><Fluent.TranscriptIcon /><Fluent.Text content="Bar Code" /></> },
           { key: 'Bar Code-2', content: BarCodeIsSupported() },
           { key: 'Bar Code-3', content: <BarCode />, className: 'ui_action' }
         ],
@@ -74,7 +74,7 @@ const Tab = () => {
       {
         key: 'Calendar',
         items: [
-          { key: 'Calendar-1', content: <><Fluent.CalendarIcon /><Fluent.Text content="Calendar"/></> },
+          { key: 'Calendar-1', content: <><Fluent.CalendarIcon /><Fluent.Text content="Calendar" /></> },
           { key: 'Calendar-2', content: CalendarIsSupported() },
           { key: 'Calendar-3', content: <Calendar />, className: 'ui_action' }
         ],
@@ -82,7 +82,7 @@ const Tab = () => {
       {
         key: 'Call',
         items: [
-          { key: 'Call-1', content: <><Fluent.CallIcon /><Fluent.Text content="Call"/></> },
+          { key: 'Call-1', content: <><Fluent.CallIcon /><Fluent.Text content="Call" /></> },
           { key: 'Call-2', content: CallIsSupported() },
           { key: 'Call-3', content: <Call />, className: 'ui_action' }
         ],
@@ -90,7 +90,7 @@ const Tab = () => {
       {
         key: 'Chat',
         items: [
-          { key: 'Chat-1', content: <><Fluent.ChatIcon /><Fluent.Text content="Chat"/></> },
+          { key: 'Chat-1', content: <><Fluent.ChatIcon /><Fluent.Text content="Chat" /></> },
           { key: 'Chat-2', content: ChatIsSupported() },
           { key: 'Chat-3', content: <Chat />, className: 'ui_action' }
         ],
@@ -98,7 +98,7 @@ const Tab = () => {
       {
         key: 'Dialog-Url',
         items: [
-          { key: 'Dialog-Url-1', content: <><Fluent.CustomerHubIcon /><Fluent.Text content="Dialog Url"/></> },
+          { key: 'Dialog-Url-1', content: <><Fluent.CustomerHubIcon /><Fluent.Text content="Dialog Url" /></> },
           { key: 'Dialog-Url-2', content: DialogUrlIsSupported() },
           { key: 'Dialog-Url-3', content: <Dialog />, className: 'ui_action' }
         ],
@@ -106,7 +106,7 @@ const Tab = () => {
       {
         key: 'Dialog-Url-Bot',
         items: [
-          { key: 'Dialog-Url-Bot-1', content: <><Fluent.CustomerHubIcon /><Fluent.Text content="Dialog Url Bot"/></> },
+          { key: 'Dialog-Url-Bot-1', content: <><Fluent.CustomerHubIcon /><Fluent.Text content="Dialog Url Bot" /></> },
           { key: 'Dialog-Url-Bot-2', content: DialogUrlBotIsSupported() },
           { key: 'Dialog-Url-Bot-3', content: <DialogBot />, className: 'ui_action' }
         ],
@@ -114,7 +114,7 @@ const Tab = () => {
       {
         key: 'Dialog-AdaptiveCard',
         items: [
-          { key: 'Dialog-AdaptiveCard-1', content: <><Fluent.CustomerHubIcon /><Fluent.Text content="Dialog Adaptive Card"/></> },
+          { key: 'Dialog-AdaptiveCard-1', content: <><Fluent.CustomerHubIcon /><Fluent.Text content="Dialog Adaptive Card" /></> },
           { key: 'Dialog-AdaptiveCard-2', content: DialogAdaptiveCardIsSupported() },
           { key: 'Dialog-AdaptiveCard-3', content: <DialogAdaptiveCard />, className: 'ui_action' }
         ],
@@ -122,7 +122,7 @@ const Tab = () => {
       {
         key: 'Geo-Location',
         items: [
-          { key: 'Geo-Location-1', content: <><Fluent.LocationIcon /><Fluent.Text content="Geo Location"/></> },
+          { key: 'Geo-Location-1', content: <><Fluent.LocationIcon /><Fluent.Text content="Geo Location" /></> },
           { key: 'Geo-Location-2', content: GeoLocationIsSupported() },
           { key: 'Geo-Location-3', content: <GeoLocation />, className: 'ui_action' }
         ],
@@ -130,7 +130,7 @@ const Tab = () => {
       {
         key: 'Geo-Location-Map',
         items: [
-          { key: 'Geo-Location-Map-1', content: <><Fluent.ShareLocationIcon /><Fluent.Text content="Geo Location Map"/></> },
+          { key: 'Geo-Location-Map-1', content: <><Fluent.ShareLocationIcon /><Fluent.Text content="Geo Location Map" /></> },
           { key: 'Geo-Location-Map-2', content: GeoLocationMapIsSupported() },
           { key: 'Geo-Location-Map-3', content: <GeoLocationMap />, className: 'ui_action' }
         ],
@@ -138,7 +138,7 @@ const Tab = () => {
       {
         key: 'Mail',
         items: [
-          { key: 'Mail-1', content: <><Fluent.EmailIcon /><Fluent.Text content="Mail"/></> },
+          { key: 'Mail-1', content: <><Fluent.EmailIcon /><Fluent.Text content="Mail" /></> },
           { key: 'Mail-2', content: MailIsSupported() },
           { key: 'Mail-3', content: <Mail />, className: 'ui_action' }
         ],
@@ -146,7 +146,7 @@ const Tab = () => {
       {
         key: 'Menus',
         items: [
-          { key: 'Menus-1', content: <><Fluent.MenuIcon /><Fluent.Text content="Menus"/></>},
+          { key: 'Menus-1', content: <><Fluent.MenuIcon /><Fluent.Text content="Menus" /></> },
           { key: 'Menus-2', content: MenusIsSupported() },
           { key: 'Menus-3', content: <Menus />, className: 'ui_action' }
         ],
@@ -154,7 +154,7 @@ const Tab = () => {
       {
         key: 'Monetization',
         items: [
-          { key: 'Monetization-1', content: <><Fluent.PollIcon /><Fluent.Text content="Monetization"/></> },
+          { key: 'Monetization-1', content: <><Fluent.PollIcon /><Fluent.Text content="Monetization" /></> },
           { key: 'Monetization-2', content: MonetizationIsSupported() },
           { key: 'Monetization-3', content: <Monetization />, className: 'ui_action' }
         ],
@@ -162,7 +162,7 @@ const Tab = () => {
       {
         key: 'Pages-Tabs',
         items: [
-          { key: 'Pages-Tabs-1', content: <><Fluent.FilesErrorIcon /><Fluent.Text content="Pages.Tabs"/></> },
+          { key: 'Pages-Tabs-1', content: <><Fluent.FilesErrorIcon /><Fluent.Text content="Pages.Tabs" /></> },
           { key: 'Pages-Tabs-2', content: PagesTabsIsSupported() },
           { key: 'Pages-Tabs-3', content: <PagesTabs />, className: 'ui_action' }
         ],
@@ -170,7 +170,7 @@ const Tab = () => {
       {
         key: 'Pages-Current-App',
         items: [
-          { key: 'Pages-Current-App-1', content: <><Fluent.FilesTxtIcon /><Fluent.Text content="Pages.CurrentApp"/></> },
+          { key: 'Pages-Current-App-1', content: <><Fluent.FilesTxtIcon /><Fluent.Text content="Pages.CurrentApp" /></> },
           { key: 'Pages-Current-App-2', content: IsPagesCurrentAppSupported() },
           { key: 'Pages-Current-App-3', content: <PagesCurrent />, className: 'ui_action' }
         ],
@@ -178,7 +178,7 @@ const Tab = () => {
       {
         key: 'Pages',
         items: [
-          { key: 'Pages-1', content: <><Fluent.FilesTxtIcon /><Fluent.Text content="Pages"/></> },
+          { key: 'Pages-1', content: <><Fluent.FilesTxtIcon /><Fluent.Text content="Pages" /></> },
           { key: 'Pages-2', content: PagesIsSupported() },
           { key: 'Pages-3', content: <Pages />, className: 'ui_action' }
         ],
@@ -186,7 +186,7 @@ const Tab = () => {
       {
         key: 'People',
         items: [
-          { key: 'People-1', content: <><Fluent.AttendeeIcon /><Fluent.Text content=""/>People</> },
+          { key: 'People-1', content: <><Fluent.AttendeeIcon /><Fluent.Text content="" />People</> },
           { key: 'People-2', content: PeopleIsSupported() },
           { key: 'People-3', content: <People />, className: 'ui_action' }
         ]
@@ -194,7 +194,7 @@ const Tab = () => {
       {
         key: 'Profile',
         items: [
-          { key: 'Profile-1', content: <><Fluent.ContactCardIcon /><Fluent.Text content="Profile"/></> },
+          { key: 'Profile-1', content: <><Fluent.ContactCardIcon /><Fluent.Text content="Profile" /></> },
           { key: 'Profile-2', content: ProfileIsSupported() },
           { key: 'Profile-3', content: <Profile />, className: 'ui_action' }
         ],
@@ -202,7 +202,7 @@ const Tab = () => {
       {
         key: 'Search',
         items: [
-          { key: 'Search-1', content: <><Fluent.SearchIcon /><Fluent.Text content="Search"/></> },
+          { key: 'Search-1', content: <><Fluent.SearchIcon /><Fluent.Text content="Search" /></> },
           { key: 'Search-2', content: SearchIsSupported() },
           { key: 'Search-3', content: <Search />, className: 'ui_action' }
         ],
@@ -210,7 +210,7 @@ const Tab = () => {
       {
         key: 'Sharing',
         items: [
-          { key: 'Sharing-1', content: <><Fluent.ScreenshareIcon /><Fluent.Text content="Sharing"/></> },
+          { key: 'Sharing-1', content: <><Fluent.ScreenshareIcon /><Fluent.Text content="Sharing" /></> },
           { key: 'Sharing-2', content: SharingIsSupported() },
           { key: 'Sharing-3', content: <Sharing />, className: 'ui_action' }
         ],
@@ -218,7 +218,7 @@ const Tab = () => {
       {
         key: 'Stage-View',
         items: [
-          { key: 'Stage-View-1', content: <><Fluent.PanoramaIcon /><Fluent.Text content="Stage View"/></> },
+          { key: 'Stage-View-1', content: <><Fluent.PanoramaIcon /><Fluent.Text content="Stage View" /></> },
           { key: 'Stage-View-2', content: StageViewIsSupported() },
           { key: 'Stage-View-3', content: <StageView />, className: 'ui_action' }
         ],
@@ -226,7 +226,7 @@ const Tab = () => {
       {
         key: 'Teams-Core',
         items: [
-          { key: 'Teams-Core-1', content: <><Fluent.TeamsMonochromeIcon /><Fluent.Text content="Teams Core"/></> },
+          { key: 'Teams-Core-1', content: <><Fluent.TeamsMonochromeIcon /><Fluent.Text content="Teams Core" /></> },
           { key: 'Teams-Core-2', content: TeamsCoreIsSupported() },
           { key: 'Teams-Core-3', content: <TeamsCore />, className: 'ui_action' }
         ],
@@ -234,7 +234,7 @@ const Tab = () => {
       {
         key: 'Video',
         items: [
-          { key: 'Video-1', content: <><Fluent.CallVideoIcon /><Fluent.Text content="Video"/></> },
+          { key: 'Video-1', content: <><Fluent.CallVideoIcon /><Fluent.Text content="Video" /></> },
           { key: 'Video-2', content: VideoIsSupported() },
           { key: 'Video-3', content: <Video />, className: 'ui_action' }
         ],
@@ -242,7 +242,7 @@ const Tab = () => {
       {
         key: 'Web-Storage',
         items: [
-          { key: 'Web-Storage-1', content: <><Fluent.BriefcaseIcon /><Fluent.Text content="Web Storage"/></> },
+          { key: 'Web-Storage-1', content: <><Fluent.BriefcaseIcon /><Fluent.Text content="Web Storage" /></> },
           { key: 'Web-Storage-2', content: WebStorageIsSupported() },
           { key: 'Web-Storage-3', content: <WebStorage />, className: 'ui_action' }
         ],
@@ -260,7 +260,7 @@ const Tab = () => {
 
       // searching for the capability based on user search text
       const rows = defaultTableRows.filter((defaultRow) => {
-        if (defaultRow.key.replaceAll('-', ' ').toLowerCase()?.search(searchText.toLowerCase()) !== -1) {
+        if (defaultRow.key.replaceAll('-', ' ').toLowerCase().match(searchText)) {
           return defaultRow;
         }
         return undefined;
