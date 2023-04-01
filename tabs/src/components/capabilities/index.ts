@@ -6,6 +6,7 @@ import { Call, CallIsSupported } from "./Call";
 import { Chat, ChatIsSupported } from "./Chat";
 import { Dialog, DialogUrlIsSupported } from "./Dialog";
 import { DialogAdaptiveCard, DialogAdaptiveCardIsSupported } from "./Dialog.AdaptiveCard";
+import { DialogBot, DialogUrlBotIsSupported } from "./DialogBot";
 import { GeoLocation, GeoLocationIsSupported } from "./GeoLocation";
 import { GeoLocationMap, GeoLocationMapIsSupported } from "./GeoLocation.map";
 import { IsPagesCurrentAppSupported, PagesCurrent } from "./Pages.Current";
@@ -30,7 +31,7 @@ export {
     Calendar, CalendarIsSupported,
     Call, CallIsSupported,
     Chat, ChatIsSupported,
-    Dialog, DialogAdaptiveCard, DialogAdaptiveCardIsSupported, DialogUrlIsSupported,
+    Dialog,DialogBot,DialogUrlBotIsSupported ,DialogAdaptiveCard, DialogAdaptiveCardIsSupported, DialogUrlIsSupported,
     GeoLocation, GeoLocationIsSupported,
     GeoLocationMap, GeoLocationMapIsSupported,
     IsPagesCurrentAppSupported, PagesCurrent,

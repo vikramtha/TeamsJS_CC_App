@@ -60,21 +60,11 @@
 
 @media screen and (min-width: 700px) {
     .ui-table__cell:not(:last-child) {
-        max-width: 10%;
+        max-width: 12%;
     }
 
     .ui-table__cell:first-child {
-        max-width: 10%;
-    }
-}
-
-@media screen and (min-width: 1000px) {
-    .ui-table__cell:not(:last-child) {
-        max-width: 6%;
-    }
-
-    .ui-table__cell:first-child {
-        max-width: 9%;
+        max-width: 15%;
     }
 }
 
@@ -85,5 +75,15 @@
 
     .ui-table__cell:first-child {
         max-width: 20%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .ui-table__cell:not(:last-child) {
+        max-width: 9%;
+    }
+
+    .ui-table__cell:first-child {
+        max-width: 9%;
     }
 }
