@@ -12,7 +12,6 @@ import React from "react";
  */
 class TabConfig extends React.Component {
   render() {
-    // Initialize the Microsoft TeamsJS
     app.initialize().then(() => {
       /**
        * When the user clicks "Save", save the url for your configured tab.

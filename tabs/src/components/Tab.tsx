@@ -44,7 +44,6 @@ const Tab = () => {
   const [tableRows, setTableRows] = useState([] as Fluent.ShorthandCollection<Fluent.TableRowProps, Record<string, {}>>);
 
   const setData = async (): Promise<ICapabilityTable[]> => {
-    // Initialize the Microsoft TeamsJS
     await app.initialize();
     return [
       {

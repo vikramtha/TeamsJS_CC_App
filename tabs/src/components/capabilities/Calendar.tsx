@@ -40,7 +40,7 @@ export const Calendar = () => {
                                 'AlexW@6plbfs.onmicrosoft.com'
                             ],
                             content: "Meeting Agenda",
-                            subject: "Meeting created by Teams JS"
+                            subject: "Meeting created by TeamsJS"
                         })
                     }}>
                         Compose Meeting
@@ -49,8 +49,8 @@ export const Calendar = () => {
                     <Button disabled={data?.calendars === undefined ? true : false} onClick={async () => {
                         if (data && data.calendars.value.length > 0 && data.calendars.value[0].id) {
                             await calendar.openCalendarItem({
-                                // Item id for calendar item can be retrieved using grapgh api, 
-                                // and convert retrieved EWS id to Rest id
+                                // Item id for calendar item can be retrieved using the graph api, 
+                                // the following line converts the retrieved EWS id to Rest id
                                 itemId: convertRestIdToEwsId(data.calendars.value[0].id)
                             });
                         } else {

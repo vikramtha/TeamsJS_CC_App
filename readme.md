@@ -1,4 +1,4 @@
-# Teams JS Capability Checker
+# TeamsJS Capability Checker
 
 Sample application to demonstrate the capabilities of TeamsJS in Microsoft Teams apps extended across Outlook and Microsoft 365.
 
