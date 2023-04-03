@@ -14,7 +14,7 @@ export const Host = () => {
         return context.app.host.name;
     })?.data;
     return (
-        <Fluent.Flex gap="gap.small" padding="padding.medium" styles={{ justifyContent: 'space-between' }}>
+        <Fluent.Flex gap="gap.small" styles={{ justifyContent: 'space-between' }}>
             <Fluent.Flex.Item>
                 {hostName && (
                     <Fluent.Text weight="bold">Current Host: {hostName}</Fluent.Text>

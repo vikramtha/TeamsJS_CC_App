@@ -11,6 +11,11 @@ import { createCsv } from "../helpers/writetoexcel";
 import { isMobile } from 'react-device-detect';
 import packageJSON from "../../package.json";
 
+export enum ClientType {
+  mobile = "Mobile",
+  desktop = "Desktop"
+}
+
 export interface ICapabilityStatus {
   capabilityName?: string;
   supported: string;
@@ -161,7 +166,7 @@ const Tab = () => {
       {
         key: 'Pages-Tabs',
         items: [
-          { key: 'Pages-Tabs-1', content: <><Fluent.FilesErrorIcon /><Fluent.Text content="Pages.Tabs" /></> },
+          { key: 'Pages-Tabs-1', content: <><Fluent.FilesTxtIcon /><Fluent.Text content="Pages.Tabs" /></> },
           { key: 'Pages-Tabs-2', content: PagesTabsIsSupported() },
           { key: 'Pages-Tabs-3', content: <PagesTabs />, className: 'ui_action' }
         ],
@@ -281,7 +286,7 @@ const Tab = () => {
 
         return { capabilityName: capabilityName, supported: supported };
       });
-      const client = isMobile ? "Mobile" : "Desktop";
+      const client = isMobile ? ClientType.mobile : ClientType.desktop;
       // creates .csv file 
       createCsv(defaultRowList, client);
     } catch (error) {
@@ -311,7 +316,7 @@ const Tab = () => {
           <Host />
         </Fluent.Segment>
         <Fluent.Segment>
-          <Fluent.Flex space="between">
+          <Fluent.Flex gap={"gap.small"} space="between">
             <Fluent.Checkbox
               label="Show supported only"
               checked={showSupportedOnly}

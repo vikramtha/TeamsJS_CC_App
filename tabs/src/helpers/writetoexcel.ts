@@ -1,15 +1,15 @@
+import { ClientType, ICapabilityStatus } from "../components/Tab";
 import { utils, write, writeFile } from "xlsx";
 
-import { ICapabilityStatus } from "../components/Tab";
-
 /**
- * Creates a .csv file
- * @param defaultRowList, type of ICapabilityStatus[]
- * @param client, type of string 
+ * This function is used to compile list, which is a type of ICapabilityStatus[] and creates an excel worksheet
+ * and writes a workbook 
+ * @param defaultRowList type of ICapabilityStatus[]
+ * @param client type of ClientType 
  */
-export function createCsv(defaultRowList: ICapabilityStatus[], client: string) {
+export function createCsv(defaultRowList: ICapabilityStatus[], client: ClientType) {
     try {
-        //creates a worksheet using json data
+        //creates a worksheet using json data 
         const worksheet = utils.json_to_sheet(defaultRowList);
         //creates a new workbook
         const workBook = utils.book_new();

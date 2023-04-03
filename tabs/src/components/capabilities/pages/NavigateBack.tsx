@@ -23,7 +23,6 @@ export const NavigateBack = () => {
                         <Fluent.Text className="ui-pagestext" content="Navigates back in the hosted application." />
                     </Fluent.Flex>
                     <Fluent.Flex gap="gap.small" vAlign="center">
-
                         <Fluent.Button onClick={async () => {
                             await pages.backStack.navigateBack();
                         }}>
