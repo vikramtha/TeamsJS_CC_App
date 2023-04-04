@@ -18,12 +18,14 @@ export const TeamsCore = () => {
             // register a handler for page unload event
             teamsCore.registerBeforeUnloadHandler(() => {
                 console.log("BeforeUnloadHandler");
-                return true;
+                return false;
             });
 
             // register a handler for page unload event
             teamsCore.registerOnLoadHandler(() => {
+                
                 console.log("OnLoadHandler");
+
                 return true;
             });
 

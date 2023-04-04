@@ -25,7 +25,10 @@ const App = () => {
 
   return (
     <TeamsFxContext.Provider value={{ theme, themeString, teamsfx }}>
-      <Provider theme={theme || teamsTheme} styles={{ backgroundColor: "#eeeeee" }}>
+      <Provider
+        theme={theme || teamsTheme}
+        styles={{ backgroundColor: "#eeeeee" }}
+      >
         <Router>
           <Fluent.Segment>
             <Nav />
@@ -46,5 +49,5 @@ const App = () => {
       </Provider>
     </TeamsFxContext.Provider>
   );
-}
+};
 export default App;

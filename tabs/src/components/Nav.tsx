@@ -3,21 +3,30 @@ import * as Fluent from "@fluentui/react-northstar";
 import { useNavigate } from "react-router-dom";
 
 export const Nav = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleClick = (link: string) => {
-        navigate(`/${link}`);
-    }
+  const handleClick = (link: string) => {
+    navigate(`/${link}`);
+  };
 
-    return (
-        <Fluent.Flex gap="gap.small">
-            <Fluent.Flex.Item>
-                <Fluent.Menu
-                    items={[
-                        { key: 0, content: 'Capabilities', onClick: () => handleClick('tab') },
-                        { key: 1, content: 'Pages', onClick: () => handleClick('pagesTab') }
-                    ]}
-                />
-            </Fluent.Flex.Item>
-        </Fluent.Flex>)
-}
+  return (
+    <Fluent.Flex gap="gap.small">
+      <Fluent.Flex.Item>
+        <Fluent.Menu
+          items={[
+            {
+              key: 0,
+              content: "Capabilities",
+              onClick: () => handleClick("tab"),
+            },
+            {
+              key: 1,
+              content: "Pages",
+              onClick: () => handleClick("pagesTab"),
+            },
+          ]}
+        />
+      </Fluent.Flex.Item>
+    </Fluent.Flex>
+  );
+};
