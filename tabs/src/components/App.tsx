@@ -31,7 +31,7 @@ const App = () => {
       >
         <Router>
           <Fluent.Segment>
-            <Nav />
+            {/* <Nav />  Uncomment this HTML component to enable react router toggle (Experimental) */}
           </Fluent.Segment>
           {loading ? (
             <Loader style={{ margin: 100 }} />
