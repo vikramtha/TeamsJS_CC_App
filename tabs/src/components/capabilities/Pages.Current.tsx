@@ -24,13 +24,6 @@ export const PagesCurrent = () => {
             >
               Navigate Current App (PagesTab)
             </Button>
-            <Button
-              onClick={async () => {
-                await pages.currentApp.navigateToDefaultPage();
-              }}
-            >
-              Navigate To Default Page
-            </Button>
           </Flex>
         );
       }

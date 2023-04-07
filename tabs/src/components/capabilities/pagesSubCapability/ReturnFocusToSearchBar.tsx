@@ -3,29 +3,29 @@ import * as Fluent from "@fluentui/react-northstar";
 import { app, pages } from "@microsoft/teams-js";
 
 /**
- * This component returns a button which returns focus to app bar.
+ * This component returns a button which returns focus to search bar.
  */
-export const ReturnFocusToAppBar = () => {
-  // cCheck if app is initialized;
+export const ReturnFocusToSearchBar = () => {
+  // Check if app is initialized;
   if (app.isInitialized()) {
     return (
       <>
         {pages.isSupported() && (
           <Fluent.Segment className="ui-pagessegment">
-            <Fluent.Header content="Return Focus To App Bar" as="h2" />
+            <Fluent.Header content="Return Focus To Search Box" as="h3" />
             <Fluent.Flex gap="gap.small" vAlign="center">
               <Fluent.Text
                 className="ui-pagestext"
-                content="Returns focus to the host's App bar. (Curently works only in teams)"
+                content="Returns focus to the host's Search box. (Curently works only in teams)"
               />
             </Fluent.Flex>
             <Fluent.Flex space="between">
               <Fluent.Button
-                onClick={() => {
-                  pages.returnFocus(false);
+                onClick={async () => {
+                  pages.returnFocus(true);
                 }}
               >
-                Click me Return focus to App Bar
+                Click me to Return focus to search box
               </Fluent.Button>
             </Fluent.Flex>
           </Fluent.Segment>
@@ -33,6 +33,6 @@ export const ReturnFocusToAppBar = () => {
       </>
     );
   }
-  // return's  if capability is not supported.
-  return <>Capability is not initialized</>;
+  // return's if sub capability is not supported.
+  return <>SubCapability is not initialized</>;
 };
