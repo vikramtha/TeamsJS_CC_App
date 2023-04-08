@@ -57,6 +57,15 @@
   width: 300px;
 }
 
+.ui_content_mobile {
+  display: block;
+  align-self: center;
+}
+
+.ui-header_mobile {
+  min-width: 90px;
+}
+
 @media screen and (min-width: 700px) {
   .ui-table__cell:not(:last-child) {
     max-width: 12%;

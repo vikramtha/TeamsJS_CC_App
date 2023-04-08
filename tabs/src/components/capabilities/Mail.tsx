@@ -49,32 +49,25 @@ export const Mail = () => {
             Compose Mail
           </Button>
           <Button
-            primary
-            content="Authorize"
-            disabled={data?.mail ? false : true}
-            onClick={reload}
-          />
-          {!loading && (
-            <Button
-              onClick={async () => {
-                if (
-                  data &&
-                  data.mail.value.length > 0 &&
-                  data.mail.value[0].id
-                ) {
-                  // Item id for mail item can be retrieved using grapgh api,
-                  // and convert retrieved EWS id to Rest id.
-                  await mail.openMailItem({
-                    itemId: convertRestIdToEwsId(data.mail.value[0].id),
-                  });
-                } else {
-                  console.log("Please check if you are authenticated", error);
-                }
-              }}
-            >
-              Open Mail Item
-            </Button>
-          )}
+            onClick={async () => {
+              if (!loading && !data) {
+                reload();
+              }
+
+              if (!loading && data && data.mail.value.length > 0 && data.mail.value[0].id) {
+                // Item id for mail item can be retrieved using grapgh api,
+                // and convert retrieved EWS id to Rest id.
+                await mail.openMailItem({
+                  itemId: convertRestIdToEwsId(data.mail.value[0].id),
+                });
+              } else {
+                console.log("Please check if you are authenticated", error);
+              }
+            }}
+          >
+            Open Mail Item
+          </Button>
+
         </Flex>
       );
     } else {

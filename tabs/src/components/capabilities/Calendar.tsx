@@ -50,15 +50,12 @@ export const Calendar = () => {
             Compose Meeting
           </Button>
           <Button
-            primary
-            content="Authorize"
-            disabled={data?.calendars ? false : true}
-            onClick={reload}
-          />
-          <Button
-            disabled={data?.calendars === undefined ? true : false}
+            disabled={loading}
             onClick={async () => {
-              if (
+              if (!loading && !data) {
+                reload();
+              }
+              if (!loading &&
                 data &&
                 data.calendars.value.length > 0 &&
                 data.calendars.value[0].id
@@ -74,7 +71,7 @@ export const Calendar = () => {
             }}
           >
             Open Calendar Item
-          </Button>
+          </Button >
         </>
       );
     } else {
