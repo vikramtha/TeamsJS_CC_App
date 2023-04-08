@@ -1,7 +1,8 @@
+import { Button, Flex } from "@fluentui/react-northstar";
 import { app, barCode } from "@microsoft/teams-js";
 
-import { Button } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
  * This component returns button to scan barcode
@@ -13,7 +14,7 @@ export const BarCode = () => {
     if (barCode.isSupported()) {
       // return button to scan barcode
       return (
-        <>
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Button
             onClick={async () => {
               await barCode.hasPermission();
@@ -38,12 +39,12 @@ export const BarCode = () => {
           >
             Scan Bar Code
           </Button>
-        </>
+        </Flex>
       );
     }
   }
   // return's if capability is not supported
-  return <>Capability is not supported</>;
+  return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
 };
 
 export const BarCodeIsSupported = () => booleanToString(barCode.isSupported());

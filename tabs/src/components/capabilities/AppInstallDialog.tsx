@@ -1,8 +1,9 @@
+import { Button, Flex } from "@fluentui/react-northstar";
 import { app, appInstallDialog } from "@microsoft/teams-js";
 
-import { Button } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
 import { developersPortalAppId } from "../../helpers/constants";
+import { isMobile } from "react-device-detect";
 
 /**
  * This component Open's a dialog with particular application to install.
@@ -14,21 +15,23 @@ export const AppInstallDialog = () => {
     if (appInstallDialog.isSupported()) {
       // return button to open dialog
       return (
-        <Button
-          onClick={async () => {
-            // open the install dialog for the Developer Portal app
-            await appInstallDialog.openAppInstallDialog({
-              appId: developersPortalAppId,
-            });
-          }}
-        >
-          Open App Install Dialog
-        </Button>
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
+          <Button
+            onClick={async () => {
+              // open the install dialog for the Developer Portal app
+              await appInstallDialog.openAppInstallDialog({
+                appId: developersPortalAppId,
+              });
+            }}
+          >
+            Open App Install Dialog
+          </Button>
+        </Flex>
       );
     }
   }
   // return's if capability is not supported.
-  return <>Capability is not supported</>;
+  return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
 };
 
 export const AppInstallDialogIsSupported = () =>

@@ -2,6 +2,7 @@ import { Button, Flex } from "@fluentui/react-northstar";
 import { app, geoLocation } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
  * This component check if the user has granted permission to access their location,
@@ -13,7 +14,7 @@ export const GeoLocationMap = () => {
     // check to see if capability is supported
     if (geoLocation.map.isSupported()) {
       return (
-        <Flex gap="gap.small" vAlign="center">
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Button
             onClick={async () => {
               try {
@@ -42,7 +43,7 @@ export const GeoLocationMap = () => {
       );
     } else {
       // return's  if capability is not supported.
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's  if capability is not initialized.

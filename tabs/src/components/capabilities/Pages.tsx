@@ -2,6 +2,7 @@ import { Flex, Text } from "@fluentui/react-northstar";
 import { app, pages } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
  * The content of the pages capibility can be seen in pages tab
@@ -14,7 +15,7 @@ export const Pages = () => {
   if (app.isInitialized()) {
     if (!pages.isSupported()) {
       // return's  if capability is not supported.
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
 
     // check to see if app button is supported
@@ -39,7 +40,7 @@ export const Pages = () => {
     });
 
     return (
-      <Flex gap="gap.small" vAlign="center">
+      <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
         <Text content="Please check the Pages Tab" />
       </Flex>
     );

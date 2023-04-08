@@ -1,10 +1,11 @@
+import { Button, Flex } from "@fluentui/react-northstar";
 import { ProviderState, Providers } from "@microsoft/mgt-element";
 import { app, calendar } from "@microsoft/teams-js";
 import { booleanToString, convertRestIdToEwsId } from "../../helpers";
 
-import { Button } from "@fluentui/react-northstar";
 import { TeamsFxContext } from "../Context";
 import { TeamsFxProvider } from "@microsoft/mgt-teamsfx-provider";
+import { isMobile } from "react-device-detect";
 import { useContext } from "react";
 import { useGraphWithCredential } from "@microsoft/teamsfx-react";
 
@@ -34,7 +35,7 @@ export const Calendar = () => {
     // check to see if capability is supported
     if (calendar.isSupported()) {
       return (
-        <>
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Button
             onClick={async () => {
               await calendar.composeMeeting({
@@ -72,11 +73,11 @@ export const Calendar = () => {
           >
             Open Calendar Item
           </Button >
-        </>
+        </Flex>
       );
     } else {
       // return's  if capability is not supported.
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's  if capability is not initialized.

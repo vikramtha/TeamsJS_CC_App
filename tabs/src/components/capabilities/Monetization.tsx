@@ -1,7 +1,8 @@
+import { Button, Flex } from "@fluentui/react-northstar";
 import { app, monetization } from "@microsoft/teams-js";
 
-import { Button } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
  * This component is for monetizing purpose
@@ -12,7 +13,7 @@ export const Monetization = () => {
     // check to see if capability is supported
     if (monetization.isSupported()) {
       return (
-        <>
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Button
             onClick={async () => {
               // To use this provide plan id and term of plan
@@ -22,13 +23,13 @@ export const Monetization = () => {
               });
             }}
           >
-            Monetization OpenPurchaseExperience
+            OpenPurchaseExperience
           </Button>
-        </>
+        </Flex>
       );
     } else {
       // return's if capability is not supported
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's if capability is not initialized.

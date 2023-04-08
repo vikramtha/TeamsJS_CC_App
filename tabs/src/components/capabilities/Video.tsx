@@ -1,10 +1,11 @@
+import { Flex, Text } from "@fluentui/react-northstar";
 import { app, video } from "@microsoft/teams-js";
 
-import { Text } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
- * This component is comming soon
+ * This component is coming soon
  */
 export const Video = () => {
   // Check to see if capability is isInitialized
@@ -12,10 +13,12 @@ export const Video = () => {
     // check to see if capability is supported
     if (video.isSupported()) {
       //video.notifySelectedVideoEffectChanged(0, "");
-      return <Text content="Coming Soon" />;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
+        <Text content="Coming Soon" />
+      </Flex>;
     } else {
       // return's if capability is not supported
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's if capability is not initialized.

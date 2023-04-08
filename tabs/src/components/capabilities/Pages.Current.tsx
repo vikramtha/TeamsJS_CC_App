@@ -2,6 +2,7 @@ import { Button, Flex } from "@fluentui/react-northstar";
 import { app, pages } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
  * This component returns a button which navigates to particular tab
@@ -14,7 +15,7 @@ export const PagesCurrent = () => {
     if (pages.isSupported()) {
       if (pages.currentApp.isSupported()) {
         return (
-          <Flex gap="gap.small" vAlign="center">
+          <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
             <Button
               onClick={async () => {
                 await pages.currentApp.navigateTo({
@@ -29,7 +30,7 @@ export const PagesCurrent = () => {
       }
     } else {
       // return's if capability is not supported
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's if capability is not initialized.

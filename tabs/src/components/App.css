@@ -66,6 +66,15 @@
   min-width: 90px;
 }
 
+.ui-button {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.ui_flex_button_mobile {
+  flex-flow: column;
+}
+
 @media screen and (min-width: 700px) {
   .ui-table__cell:not(:last-child) {
     max-width: 12%;

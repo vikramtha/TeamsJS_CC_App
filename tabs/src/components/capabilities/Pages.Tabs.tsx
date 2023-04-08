@@ -2,6 +2,7 @@ import { Button, Flex, TextArea } from "@fluentui/react-northstar";
 import { app, pages } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
 /**
@@ -18,10 +19,10 @@ export const PagesTabs = () => {
   if (app.isInitialized()) {
     if (!pages.tabs.isSupported()) {
       // return's  if capability is not supported.
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
     return (
-      <Flex gap="gap.small" vAlign="center">
+      <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
         {pages.tabs.isSupported() && (
           <>
             <Button

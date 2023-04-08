@@ -1,11 +1,12 @@
+import { Button, Flex } from "@fluentui/react-northstar";
 import { app, stageView } from "@microsoft/teams-js";
 import {
   developersPortalAppId,
   developersPortalThreadId,
 } from "../../helpers/constants";
 
-import { Button } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
  * This component open Developer Portal app in stage view
@@ -16,23 +17,25 @@ export const StageView = () => {
     // check to see if capability is supported
     if (stageView.isSupported()) {
       return (
-        <Button
-          onClick={async () => {
-            // open Developer Portal app in stage view
-            await stageView.open({
-              appId: developersPortalAppId,
-              contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
-              threadId: developersPortalThreadId,
-              title: "Developer Portal",
-            });
-          }}
-        >
-          Open Stage View
-        </Button>
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
+          <Button
+            onClick={async () => {
+              // open Developer Portal app in stage view
+              await stageView.open({
+                appId: developersPortalAppId,
+                contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
+                threadId: developersPortalThreadId,
+                title: "Developer Portal",
+              });
+            }}
+          >
+            Open Stage View
+          </Button>
+        </Flex>
       );
     } else {
       // return's if capability is not supported
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's if capability is not initialized.

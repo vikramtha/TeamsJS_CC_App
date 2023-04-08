@@ -1,9 +1,10 @@
 import * as adaptiveCardJsonData from "./data/dialog.adaptivecard.json";
 
+import { Button, Flex } from "@fluentui/react-northstar";
 import { app, dialog } from "@microsoft/teams-js";
 
-import { Button } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
  * This component Open's a dialog with an adaptive card
@@ -15,26 +16,28 @@ export const DialogAdaptiveCard = () => {
     if (dialog.adaptiveCard.isSupported()) {
       // return buttons to open dialog
       return (
-        <Button
-          onClick={() => {
-            dialog.adaptiveCard.open(
-              {
-                card: JSON.stringify(adaptiveCardJsonData),
-                size: { height: 400, width: 400 },
-                title: "Dialog Adaptive Card",
-              },
-              (response) => {
-                console.log(response);
-              }
-            );
-          }}
-        >
-          Open Dialog Adaptive Card
-        </Button>
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
+          <Button
+            onClick={() => {
+              dialog.adaptiveCard.open(
+                {
+                  card: JSON.stringify(adaptiveCardJsonData),
+                  size: { height: 400, width: 400 },
+                  title: "Dialog Adaptive Card",
+                },
+                (response) => {
+                  console.log(response);
+                }
+              );
+            }}
+          >
+            Open Dialog Adaptive Card
+          </Button>
+        </Flex>
       );
     } else {
       // return's  if capability is not supported.
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's  if capability is not initialized.
