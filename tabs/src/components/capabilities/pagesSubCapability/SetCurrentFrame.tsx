@@ -10,7 +10,7 @@ import { useState } from "react";
 export const SetCurrentFrame = () => {
   const [isText, showText] = useState(false);
 
-  // cCheck if app is initialized;
+  // Check if app is initialized;
   if (app.isInitialized()) {
     return (
       <>
@@ -18,7 +18,7 @@ export const SetCurrentFrame = () => {
           <Fluent.Segment className="ui-pagessegment">
             <Fluent.Header
               content="Set Current Frame to 'Terms of Use'"
-              as="h2"
+              as="h3"
             />
             <Fluent.Flex gap="gap.small" vAlign="center">
               <Fluent.Text
@@ -53,6 +53,6 @@ export const SetCurrentFrame = () => {
       </>
     );
   }
-  // return's  if capability is not supported.
-  return <>Capability is not initialized</>;
+  // return's if sub capability is not supported.
+  return <>SubCapability is not initialized</>;
 };

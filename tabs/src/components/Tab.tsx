@@ -56,6 +56,7 @@ import { useContext, useEffect, useState } from "react";
 
 import { Button } from "@fluentui/react-northstar";
 import { Host } from "./Host";
+import { MobileView } from "../helpers/MobileView";
 import { TeamsFxContext } from "./Context";
 import { app } from "@microsoft/teams-js";
 import { createCsv } from "../helpers/writetoexcel";
@@ -84,9 +85,7 @@ interface Item {
 }
 
 const Tab = () => {
-  const [defaultTableRows, setDefaultTableRows] = useState(
-    [] as ICapabilityTable[]
-  );
+  const [defaultTableRows, setDefaultTableRows] = useState([] as ICapabilityTable[]);
   const { themeString } = useContext(TeamsFxContext);
 
   const header: Fluent.ShorthandValue<Fluent.TableRowProps> = {
@@ -115,9 +114,7 @@ const Tab = () => {
   };
 
   const [showSupportedOnly, setShowSupportedOnly] = useState(true);
-  const [tableRows, setTableRows] = useState(
-    [] as Fluent.ShorthandCollection<Fluent.TableRowProps, Record<string, {}>>
-  );
+  const [tableRows, setTableRows] = useState([] as Fluent.ShorthandCollection<Fluent.TableRowProps, Record<string, {}>>);
 
   const setData = async (): Promise<ICapabilityTable[]> => {
     await app.initialize();
@@ -582,15 +579,13 @@ const Tab = () => {
   const updateCapabilityOnChange = (searchText: string) => {
     try {
       // setting supported content to false
-      if (showSupportedOnly){
+      if (showSupportedOnly) {
         setShowSupportedOnly(false);
-      } 
+      }
 
       // searching for the capability based on user search text
       const rows = defaultTableRows.filter((defaultRow) => {
-        if (
-          defaultRow.key.replaceAll("-", " ").toLowerCase().match(searchText)
-        ) {
+        if (defaultRow.key.replaceAll("-", " ").toLowerCase().match(searchText)) {
           return defaultRow;
         }
         return undefined;
@@ -624,18 +619,15 @@ const Tab = () => {
 
   useEffect(() => {
     //Setting rows in the table for the very first time
-    setData().then(
-      (defaultRows) => {
-        setDefaultTableRows(defaultRows);
-        if (showSupportedOnly) {
-          const rows = defaultRows.filter((rows) => {
-            return rows.items[1].content === "Yes";
-          });
-          setTableRows(rows);
-        } else {
-          setTableRows(defaultRows);
-        }
-      },
+    setData().then((defaultRows) => {
+      setDefaultTableRows(defaultRows);
+      if (showSupportedOnly) {
+        const rows = defaultRows.filter((rows) => { return rows.items[1].content === "Yes"; });
+        setTableRows(rows);
+      } else {
+        setTableRows(defaultRows);
+      }
+    },
       (error) => {
         console.log("Error", error);
       }
@@ -689,13 +681,16 @@ const Tab = () => {
             </Fluent.Flex.Item>
           </Fluent.Flex>
         </Fluent.Segment>
-        <Fluent.Segment className="tableFixHead">
-          <Fluent.Table
-            aria-label="Static table"
-            header={header}
-            rows={tableRows}
-          />
-        </Fluent.Segment>
+        {!isMobile &&
+          <Fluent.Segment className="tableFixHead">
+            <Fluent.Table
+              aria-label="Static table"
+              header={header}
+              rows={tableRows}
+            />
+          </Fluent.Segment>
+        }
+        {isMobile && MobileView(tableRows, showSupportedOnly)}
         <Fluent.Segment>
           <a href="https://forms.office.com/r/Jxh7rqrmMr">
             <Button> Suggestions </Button>

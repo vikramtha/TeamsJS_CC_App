@@ -5,6 +5,7 @@ import { booleanToString, convertRestIdToEwsId } from "../../helpers";
 
 import { TeamsFxContext } from "../Context";
 import { TeamsFxProvider } from "@microsoft/mgt-teamsfx-provider";
+import { isMobile } from "react-device-detect";
 import { useContext } from "react";
 import { useGraphWithCredential } from "@microsoft/teamsfx-react";
 
@@ -32,7 +33,7 @@ export const Mail = () => {
     // check to see if capability is supported
     if (mail.isSupported()) {
       return (
-        <Flex gap="gap.small" vAlign="center">
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Button
             onClick={async () => {
               await mail.composeMail({
@@ -49,37 +50,30 @@ export const Mail = () => {
             Compose Mail
           </Button>
           <Button
-            primary
-            content="Authorize"
-            disabled={data?.mail ? false : true}
-            onClick={reload}
-          />
-          {!loading && (
-            <Button
-              onClick={async () => {
-                if (
-                  data &&
-                  data.mail.value.length > 0 &&
-                  data.mail.value[0].id
-                ) {
-                  // Item id for mail item can be retrieved using grapgh api,
-                  // and convert retrieved EWS id to Rest id.
-                  await mail.openMailItem({
-                    itemId: convertRestIdToEwsId(data.mail.value[0].id),
-                  });
-                } else {
-                  console.log("Please check if you are authenticated", error);
-                }
-              }}
-            >
-              Open Mail Item
-            </Button>
-          )}
+            onClick={async () => {
+              if (!loading && !data) {
+                reload();
+              }
+
+              if (!loading && data && data.mail.value.length > 0 && data.mail.value[0].id) {
+                // Item id for mail item can be retrieved using grapgh api,
+                // and convert retrieved EWS id to Rest id.
+                await mail.openMailItem({
+                  itemId: convertRestIdToEwsId(data.mail.value[0].id),
+                });
+              } else {
+                console.log("Please check if you are authenticated", error);
+              }
+            }}
+          >
+            Open Mail Item
+          </Button>
+
         </Flex>
       );
     } else {
       // return's if capability is not supported
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's if capability is not initialized.

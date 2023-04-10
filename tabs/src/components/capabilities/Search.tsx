@@ -2,6 +2,7 @@ import { Button, Flex } from "@fluentui/react-northstar";
 import { app, search } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 export const Search = () => {
   // Check to see if capability is isInitialized
@@ -9,7 +10,7 @@ export const Search = () => {
     // check to see if capability is supported
     if (search.isSupported()) {
       return (
-        <Flex gap="gap.small" vAlign="center">
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Button
             onClick={async () => {
               // register search handlers
@@ -43,7 +44,7 @@ export const Search = () => {
       );
     } else {
       // return's if capability is not supported
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's if capability is not initialized.

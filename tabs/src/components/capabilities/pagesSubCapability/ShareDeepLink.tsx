@@ -6,13 +6,13 @@ import { app, pages } from "@microsoft/teams-js";
  * This component returns a button which share's deep link.
  */
 export const ShareDeepLink = () => {
-  // cCheck if app is initialized;
+  // Check if app is initialized;
   if (app.isInitialized()) {
     return (
       <>
         {pages.isSupported() && (
           <Fluent.Segment className="ui-pagessegment">
-            <Fluent.Header content="Share Deep Link" as="h2" />
+            <Fluent.Header content="Share Deep Link" as="h3" />
             <Fluent.Flex gap="gap.small" vAlign="center">
               <Fluent.Text
                 className="ui-pagestext"
@@ -36,6 +36,6 @@ export const ShareDeepLink = () => {
       </>
     );
   }
-  // return's  if capability is not supported.
-  return <>Capability is not initialized</>;
+  // return's if sub capability is not supported.
+  return <>SubCapability is not initialized</>;
 };

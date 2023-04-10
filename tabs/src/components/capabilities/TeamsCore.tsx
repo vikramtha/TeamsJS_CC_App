@@ -2,6 +2,7 @@ import { Button, Flex, TextArea } from "@fluentui/react-northstar";
 import { app, teamsCore } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
 /**
@@ -23,14 +24,12 @@ export const TeamsCore = () => {
 
             // register a handler for page unload event
             teamsCore.registerOnLoadHandler(() => {
-                
                 console.log("OnLoadHandler");
-
                 return true;
             });
 
             return (
-                <Flex gap="gap.small" vAlign="center">
+                <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
                     <Button onClick={() => {
                         teamsCore.enablePrintCapability();
                         setText("Use ctrl+p and cmd+p");
@@ -51,7 +50,7 @@ export const TeamsCore = () => {
             )
         } else {
             // return's if capability is not supported
-            return (<>Capability is not supported</>);
+            return (<Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>);
         }
     }
     // return's if capability is not initialized.

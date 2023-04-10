@@ -10,13 +10,13 @@ import {
  * This component returns a button which navigates to an App with provided appId.
  */
 export const NavigateToApp = () => {
-  // cCheck if app is initialized;
+  // Check if app is initialized;
   if (app.isInitialized()) {
     return (
       <>
         {pages.isSupported() && (
           <Fluent.Segment className="ui-pagessegment">
-            <Fluent.Header content="Navigate To App" as="h2" />
+            <Fluent.Header content="Navigate To App" as="h3" />
             <Fluent.Flex gap="gap.small" vAlign="center">
               <Fluent.Text
                 className="ui-pagestext"
@@ -41,6 +41,6 @@ export const NavigateToApp = () => {
       </>
     );
   }
-  // return's  if capability is not supported.
-  return <>Capability is not initialized</>;
+  // return's if sub capability is not supported.
+  return <>SubCapability is not initialized</>;
 };

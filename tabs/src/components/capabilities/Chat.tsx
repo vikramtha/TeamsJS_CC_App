@@ -2,6 +2,7 @@ import { Button, Flex } from "@fluentui/react-northstar";
 import { app, chat } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
  * This component returns button to start 1:1 and group chat
@@ -12,7 +13,7 @@ export const Chat = () => {
     // Check to see if capability is supported
     if (chat.isSupported()) {
       return (
-        <Flex gap="gap.small" vAlign="center">
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Button
             onClick={async () => {
               await chat.openChat({
@@ -42,7 +43,7 @@ export const Chat = () => {
       );
     } else {
       // return's  if capability is not supported.
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's  if capability is not initialized.

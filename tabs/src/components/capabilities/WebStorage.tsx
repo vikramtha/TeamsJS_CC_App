@@ -1,7 +1,8 @@
+import { Button, Flex } from "@fluentui/react-northstar";
 import { app, webStorage } from "@microsoft/teams-js";
 
-import { Button } from "@fluentui/react-northstar";
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 /**
  * Checks if web storage gets cleared when a user logs out from host client
@@ -12,18 +13,20 @@ export const WebStorage = () => {
     // check to see if capability is supported
     if (webStorage.isSupported()) {
       return (
-        <Button
-          onClick={() => {
-            const isCleared = webStorage.isWebStorageClearedOnUserLogOut();
-            console.log(isCleared);
-          }}
-        >
-          Is Storage Cleared On LogOut
-        </Button>
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
+          <Button
+            onClick={() => {
+              const isCleared = webStorage.isWebStorageClearedOnUserLogOut();
+              console.log(isCleared);
+            }}
+          >
+            Is Storage Cleared On LogOut
+          </Button>
+        </Flex>
       );
     } else {
       // return's if capability is not supported
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;
     }
   }
   // return's if capability is not initialized.

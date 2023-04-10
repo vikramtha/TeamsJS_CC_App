@@ -2,6 +2,7 @@ import { Button, Flex, TextArea } from "@fluentui/react-northstar";
 
 import { app } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
 /**
@@ -18,7 +19,7 @@ export const App = () => {
     });
 
     return (
-      <Flex gap="gap.small" vAlign="center">
+      <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
         <Button
           className="ui_context"
           onClick={async () => {

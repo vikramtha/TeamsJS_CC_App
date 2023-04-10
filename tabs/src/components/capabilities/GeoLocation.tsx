@@ -2,6 +2,7 @@ import { Button, Flex, TextArea } from "@fluentui/react-northstar";
 import { app, geoLocation } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
+import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
 /**
@@ -18,7 +19,7 @@ export const GeoLocation = () => {
     // Check to see if capability is supported
     if (geoLocation.isSupported()) {
       return (
-        <Flex gap="gap.small" vAlign="center">
+        <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Button
             onClick={async () => {
               // check if the user has granted permission to access their location
@@ -50,13 +51,10 @@ export const GeoLocation = () => {
                 console.log(`GeoLocation accuracy: ${location.accuracy}`);
                 console.log(`GeoLocation longitude: ${location.longitude}`);
                 console.log(`GeoLocation latitude: ${location.latitude}`);
-                const text = `GeoLocation consented: ${
-                  location ? true : false
-                } \n GeoLocation accuracy: ${
-                  location.accuracy
-                }\n GeoLocation longitude: ${
-                  location.longitude
-                }\n GeoLocation latitude: ${location.latitude}`;
+                const text = `GeoLocation consented: ${location ? true : false
+                  } \n GeoLocation accuracy: ${location.accuracy
+                  }\n GeoLocation longitude: ${location.longitude
+                  }\n GeoLocation latitude: ${location.latitude}`;
                 setText(text);
                 setShowText(true);
               } catch (e) {
@@ -73,7 +71,7 @@ export const GeoLocation = () => {
       );
     } else {
       // return's  if capability is not supported.
-      return <>Capability is not supported</>;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
   }
   // return's  if capability is not initialized.
