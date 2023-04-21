@@ -1,5 +1,6 @@
 // This file contains all constants used in capabilities.
-export const developersPortalAppId = "14072831-8a2a-4f76-9294-057bf0b42a68";
+export const developersPortal = { appId: "14072831-8a2a-4f76-9294-057bf0b42a68", name: "Developer Portal" };
+export const powerBI = { appId: "1c4340de-2a85-40e5-8eb0-4f295368978b", name: "Power BI" };
 
 export const developersPortalThreadId =
   "28:0c5cfdbb-596f-4d39-b557-5d9516c94107";
@@ -10,3 +11,10 @@ export const developersPortalHomePageId =
 
 export const openMailItemId =
   "AAMkAGFkYWU5NWVhLWFhZjktNDIzNS04ZWI2LWQyMWJlZjUwMzNlMQBGAAAAAAAAjo5k7I4XR5Lcb6tO7_DwBwAIcSpdLs0sSZBA8-aubh9DAAAAAAEJAAAIcSpdLs0sSZBA8-aubh9DAABcm8n8AAA=";
+
+export const userList: string[] = [
+  "AdeleV@6plbfs.onmicrosoft.com",
+  "AlexW@6plbfs.onmicrosoft.com",
+  "AdamB@M365x18932945.onmicrosoft.com",
+  "JoniS@M365x18932945.OnMicrosoft.com"
+];

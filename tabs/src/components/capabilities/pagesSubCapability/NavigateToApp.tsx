@@ -2,7 +2,7 @@ import * as Fluent from "@fluentui/react-northstar";
 
 import { app, pages } from "@microsoft/teams-js";
 import {
-  developersPortalAppId,
+  developersPortal,
   developersPortalAppPageId,
 } from "../../../helpers/constants";
 
@@ -29,7 +29,7 @@ export const NavigateToApp = () => {
                   onClick={async () => {
                     // navigate to the Apps tab in the Developer Portal app
                     await pages.navigateToApp({
-                      appId: developersPortalAppId,
+                      appId: developersPortal.appId,
                       pageId: developersPortalAppPageId,
                     });
                   }}

@@ -1,7 +1,7 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, stageView } from "@microsoft/teams-js";
 import {
-  developersPortalAppId,
+  developersPortal,
   developersPortalThreadId,
 } from "../../helpers/constants";
 
@@ -23,10 +23,10 @@ export const StageView = () => {
               onClick={async () => {
                 // open Developer Portal app in stage view
                 await stageView.open({
-                  appId: developersPortalAppId,
+                  appId: developersPortal.appId,
                   contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
                   threadId: developersPortalThreadId,
-                  title: "Developer Portal",
+                  title: developersPortal.name,
                 });
               }}
             >

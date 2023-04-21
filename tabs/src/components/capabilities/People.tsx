@@ -50,7 +50,7 @@ export const People = () => {
               onClick={async () => {
                 try {
                   const context = (await app.getContext()) as app.Context;
-                  if (context.user?.id) {
+                  if (context.user && !context.user.id) {
                     throw new Error("No user ID");
                   }
                   const picked = await people.selectPeople({
@@ -65,13 +65,11 @@ export const People = () => {
               Open People Picker (Preselected)
             </Button>
           } />
-          <Tooltip content="people.selectPeople({openOrgWideSearchInChatOrChannel: false})" trigger={
+          <Tooltip content="people.selectPeople({ openOrgWideSearchInChatOrChannel: false})" trigger={
             <Button
               onClick={async () => {
                 try {
-                  const picked = await people.selectPeople({
-                    openOrgWideSearchInChatOrChannel: false,
-                  });
+                  const picked = await people.selectPeople({ openOrgWideSearchInChatOrChannel: true });
                   console.log(picked);
                 } catch {
                   console.log("User aborted");
