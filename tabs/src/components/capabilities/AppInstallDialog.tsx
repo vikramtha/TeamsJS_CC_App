@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, appInstallDialog } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -16,16 +16,17 @@ export const AppInstallDialog = () => {
       // return button to open dialog
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={async () => {
-              // open the install dialog for the Developer Portal app
-              await appInstallDialog.openAppInstallDialog({
-                appId: developersPortalAppId,
-              });
-            }}
-          >
-            Open App Install Dialog
-          </Button>
+          <Tooltip trigger={
+            <Button
+              onClick={async () => {
+                // open the install dialog for the Developer Portal app
+                await appInstallDialog.openAppInstallDialog({
+                  appId: developersPortalAppId,
+                });
+              }}
+            >
+              Open App Install Dialog
+            </Button>} content="appInstallDialog.openAppInstallDialog()" />
         </Flex>
       );
     }

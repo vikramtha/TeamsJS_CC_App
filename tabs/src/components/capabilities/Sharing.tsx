@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, sharing } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -14,27 +14,27 @@ export const Sharing = () => {
     if (sharing.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={async () => {
-              try {
-                await sharing.shareWebContent({
-                  content: [
-                    {
-                      type: "URL",
-                      url: "https://www.microsoft.com",
-                      message: "Check out this link!",
-                      preview: true,
-                    },
-                  ],
-                });
-              } catch {
-                console.log("User aborted");
-              }
-            }}
-          >
-            {" "}
-            Share web content
-          </Button>
+          <Tooltip content="sharing.shareWebContent()" trigger={
+            <Button
+              onClick={async () => {
+                try {
+                  await sharing.shareWebContent({
+                    content: [
+                      {
+                        type: "URL",
+                        url: "https://www.microsoft.com",
+                        message: "Check out this link!",
+                        preview: true,
+                      },
+                    ],
+                  });
+                } catch {
+                  console.log("User aborted");
+                }
+              }}
+            >Share web content
+            </Button>
+          } />
         </Flex>
       );
     } else {

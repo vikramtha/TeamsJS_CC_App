@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, call } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -15,24 +15,26 @@ export const Call = () => {
       // return button to start a call
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={async () => {
-              await call.startCall({
-                targets: [
-                  "AdeleV@6plbfs.onmicrosoft.com",
-                  "AlexW@6plbfs.onmicrosoft.com",
-                ],
-                requestedModalities: [
-                  call.CallModalities.Audio,
-                  call.CallModalities.Video,
-                  call.CallModalities.VideoBasedScreenSharing,
-                  call.CallModalities.Data,
-                ],
-              });
-            }}
-          >
-            Start Call
-          </Button>
+          <Tooltip content="call.startCall()" trigger={
+            <Button
+              onClick={async () => {
+                await call.startCall({
+                  targets: [
+                    "AdeleV@6plbfs.onmicrosoft.com",
+                    "AlexW@6plbfs.onmicrosoft.com",
+                  ],
+                  requestedModalities: [
+                    call.CallModalities.Audio,
+                    call.CallModalities.Video,
+                    call.CallModalities.VideoBasedScreenSharing,
+                    call.CallModalities.Data,
+                  ],
+                });
+              }}
+            >
+              Start Call
+            </Button>
+          } />
         </Flex>
       );
     } else {

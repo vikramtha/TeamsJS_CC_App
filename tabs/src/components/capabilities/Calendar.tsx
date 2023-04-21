@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { ProviderState, Providers } from "@microsoft/mgt-element";
 import { app, calendar } from "@microsoft/teams-js";
 import { booleanToString, convertRestIdToEwsId } from "../../helpers";
@@ -36,41 +36,45 @@ export const Calendar = () => {
     if (calendar.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={async () => {
-              await calendar.composeMeeting({
-                attendees: [
-                  "AdeleV@6plbfs.onmicrosoft.com",
-                  "AlexW@6plbfs.onmicrosoft.com",
-                ],
-                content: "Meeting Agenda",
-                subject: "Meeting created by TeamsJS",
-              });
-            }}
-          >
-            Compose Meeting
-          </Button>
+          <Tooltip content="calendar.composeMeeting()" trigger={
+            <Button
+              onClick={async () => {
+                await calendar.composeMeeting({
+                  attendees: [
+                    "AdeleV@6plbfs.onmicrosoft.com",
+                    "AlexW@6plbfs.onmicrosoft.com",
+                  ],
+                  content: "Meeting Agenda",
+                  subject: "Meeting created by TeamsJS",
+                });
+              }}
+            >
+              Compose Meeting
+            </Button>
+          } />
           {!loading && !data &&
             <Button onClick={reload} disabled={loading}>Authorize</Button>
           }
-          <Button disabled={loading} onClick={async () => {
-            if (!loading &&
-              data &&
-              data.calendars.value.length > 0 &&
-              data.calendars.value[0].id
-            ) {
-              await calendar.openCalendarItem({
-                // Item id for calendar item can be retrieved using the graph api,
-                // the following line converts the retrieved EWS id to Rest id
-                itemId: convertRestIdToEwsId(data.calendars.value[0].id),
-              });
-            } else {
-              console.log("Please check if you are authenticated", error);
-            }
-          }}
-          >
-            Open Calendar Item
-          </Button >
+          <Tooltip content="calendar.openCalendarItem()" trigger={
+            <Button disabled={loading} onClick={async () => {
+              if (!loading &&
+                data &&
+                data.calendars.value.length > 0 &&
+                data.calendars.value[0].id
+              ) {
+                await calendar.openCalendarItem({
+                  // Item id for calendar item can be retrieved using the graph api,
+                  // the following line converts the retrieved EWS id to Rest id
+                  itemId: convertRestIdToEwsId(data.calendars.value[0].id),
+                });
+              } else {
+                console.log("Please check if you are authenticated", error);
+              }
+            }}
+            >
+              Open Calendar Item
+            </Button >
+          } />
         </Flex>
       );
     } else {

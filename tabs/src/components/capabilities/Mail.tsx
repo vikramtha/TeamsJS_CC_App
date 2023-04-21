@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { ProviderState, Providers } from "@microsoft/mgt-element";
 import { app, mail } from "@microsoft/teams-js";
 import { booleanToString, convertRestIdToEwsId } from "../../helpers";
@@ -34,6 +34,7 @@ export const Mail = () => {
     if (mail.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
+          <Tooltip content="mail.composeMail()" trigger={
           <Button
             onClick={async () => {
               await mail.composeMail({
@@ -49,9 +50,11 @@ export const Mail = () => {
           >
             Compose Mail
           </Button>
+          }/>
           {!loading && !data &&
             <Button onClick={reload} disabled={loading}>Authorize</Button>
           }
+          <Tooltip content="mail.openMailItem()" trigger={
           <Button disabled={loading} onClick={async () => {
             if (!loading && data && data.mail.value.length > 0 && data.mail.value[0].id) {
               // Item id for mail item can be retrieved using grapgh api,
@@ -66,6 +69,7 @@ export const Mail = () => {
           >
             Open Mail Item
           </Button>
+          }/>
         </Flex>
       );
     } else {

@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, dialog } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -14,24 +14,26 @@ export const DialogBot = () => {
     if (dialog.url.bot.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={() => {
-              const baseUrl = `https://${window.location.host}`;
-              dialog.url.bot.open(
-                {
-                  // Specifies a bot ID to send the result of the user's interaction with the task module
-                  completionBotId: "",
-                  size: { height: 300, width: 500 },
-                  url: `${baseUrl}/index.html#/dialog`,
-                },
-                (handler) => {
-                  console.log("Submithandler called", handler);
-                }
-              );
-            }}
-          >
-            Open Dialog Url Bot
-          </Button>
+          <Tooltip content="dialog.url.bot.open()" trigger={
+            <Button
+              onClick={() => {
+                const baseUrl = `https://${window.location.host}`;
+                dialog.url.bot.open(
+                  {
+                    // Specifies a bot ID to send the result of the user's interaction with the task module
+                    completionBotId: "",
+                    size: { height: 300, width: 500 },
+                    url: `${baseUrl}/index.html#/dialog`,
+                  },
+                  (handler) => {
+                    console.log("Submithandler called", handler);
+                  }
+                );
+              }}
+            >
+              Open Dialog Url Bot
+            </Button>
+          } />
         </Flex>
       );
     } else {

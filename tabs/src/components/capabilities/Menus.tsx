@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, menus } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -59,38 +59,44 @@ export const Menus = () => {
 
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={() => {
-              menus.setUpViews([{ id: "1", title: "View 1" }], (id: string) => {
-                console.log(id);
-                return true;
-              });
-            }}
-          >
-            Setup Views
-          </Button>
-          <Button
-            onClick={() => {
-              menus.setNavBarMenu(menuItem, (id: string) => {
-                console.log(id);
-                return true;
-              });
-            }}
-          >
-            SetNavBarMenu
-          </Button>
-          <Button
-            onClick={() => {
-              menus.showActionMenu(
-                { items: menuItem, title: "Menu Title" },
-                (id: string) => {
+          <Tooltip content="menus.setUpViews()" trigger={
+            <Button
+              onClick={() => {
+                menus.setUpViews([{ id: "1", title: "View 1" }], (id: string) => {
+                  console.log(id);
                   return true;
-                }
-              );
-            }}
-          >
-            Show Action Menu
-          </Button>
+                });
+              }}
+            >
+              Setup Views
+            </Button>
+          } />
+          <Tooltip content="menus.setNavBarMenu()" trigger={
+            <Button
+              onClick={() => {
+                menus.setNavBarMenu(menuItem, (id: string) => {
+                  console.log(id);
+                  return true;
+                });
+              }}
+            >
+              SetNavBarMenu
+            </Button>
+          } />
+          <Tooltip content="menus.showActionMenu()" trigger={
+            <Button
+              onClick={() => {
+                menus.showActionMenu(
+                  { items: menuItem, title: "Menu Title" },
+                  (id: string) => {
+                    return true;
+                  }
+                );
+              }}
+            >
+              Show Action Menu
+            </Button>
+          } />
         </Flex>
       );
     } else {

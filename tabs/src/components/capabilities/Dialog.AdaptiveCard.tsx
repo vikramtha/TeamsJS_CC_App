@@ -1,6 +1,6 @@
 import * as adaptiveCardJsonData from "./data/dialog.adaptivecard.json";
 
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, dialog } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -17,22 +17,24 @@ export const DialogAdaptiveCard = () => {
       // return buttons to open dialog
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={() => {
-              dialog.adaptiveCard.open(
-                {
-                  card: JSON.stringify(adaptiveCardJsonData),
-                  size: { height: 400, width: 400 },
-                  title: "Dialog Adaptive Card",
-                },
-                (response) => {
-                  console.log(response);
-                }
-              );
-            }}
-          >
-            Open Dialog Adaptive Card
-          </Button>
+          <Tooltip content="dialog.adaptiveCard.open()" trigger={
+            <Button
+              onClick={() => {
+                dialog.adaptiveCard.open(
+                  {
+                    card: JSON.stringify(adaptiveCardJsonData),
+                    size: { height: 400, width: 400 },
+                    title: "Dialog Adaptive Card",
+                  },
+                  (response) => {
+                    console.log(response);
+                  }
+                );
+              }}
+            >
+              Open Dialog Adaptive Card
+            </Button>
+          } />
         </Flex>
       );
     } else {

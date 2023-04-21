@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, dialog } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -16,31 +16,32 @@ export const Dialog = () => {
       // return buttons to open dialog
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={() => {
-              const baseUrl = `https://${window.location.host}`;
+          <Tooltip content="dialog.url.submit()" trigger={
+            <Button
+              onClick={() => {
+                const baseUrl = `https://${window.location.host}`;
 
-              dialog.url.open(
-                {
+                dialog.url.open({
                   title: "Dialog Example",
                   fallbackUrl: `${baseUrl}/index.html#/privacy`,
                   url: `${baseUrl}/index.html#/dialog`,
                   size: { height: 300, width: 500 },
                 },
-                (response) => {
-                  if (response.err) {
-                    console.log(response.err);
+                  (response) => {
+                    if (response.err) {
+                      console.log(response.err);
+                    }
+                    console.log("submitHandler:", response.result);
+                  },
+                  (res) => {
+                    console.log("dialogListener", res);
                   }
-                  console.log("submitHandler:", response.result);
-                },
-                (res) => {
-                  console.log("dialogListener", res);
-                }
-              );
-            }}
-          >
-            Open Dialog dialog.url.submit
-          </Button>
+                );
+              }}
+            >
+              Open Dialog Url Submit
+            </Button>
+          } />
         </Flex>
       );
     } else {

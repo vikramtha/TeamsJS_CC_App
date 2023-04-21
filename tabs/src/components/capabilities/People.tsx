@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, people } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -15,78 +15,89 @@ export const People = () => {
     if (people.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={async () => {
-              try {
-                const picked = await people.selectPeople();
-                console.log(picked);
-              } catch {
-                console.log("User aborted");
-              }
-            }}
-          >
-            Open People Picker (Defaults)
-          </Button>
-          <Button
-            onClick={async () => {
-              try {
-                const picked = await people.selectPeople({
-                  singleSelect: true,
-                });
-                console.log(picked);
-              } catch {
-                console.log("User aborted");
-              }
-            }}
-          >
-            Open People Picker (Single)
-          </Button>
-          <Button
-            onClick={async () => {
-              try {
-                const context = (await app.getContext()) as app.Context;
-                if (context.user?.id) {
-                  throw new Error("No user ID");
+          <Tooltip content="people.selectPeople()" trigger={
+            <Button
+              onClick={async () => {
+                try {
+                  const picked = await people.selectPeople();
+                  console.log(picked);
+                } catch {
+                  console.log("User aborted");
                 }
-                const picked = await people.selectPeople({
-                  setSelected: [context.user ? context.user.id : ""],
-                });
-                console.log(picked);
-              } catch {
-                console.log("User aborted");
-              }
-            }}
-          >
-            Open People Picker (Preselected)
-          </Button>
-          <Button
-            onClick={async () => {
-              try {
-                const picked = await people.selectPeople({
-                  openOrgWideSearchInChatOrChannel: false,
-                });
-                console.log(picked);
-              } catch {
-                console.log("User aborted");
-              }
-            }}
-          >
-            Open People Picker (Members Only)
-          </Button>
-          <Button
-            onClick={async () => {
-              try {
-                const picked = await people.selectPeople({
-                  title: "Custom Title",
-                });
-                console.log(picked);
-              } catch {
-                console.log("User aborted");
-              }
-            }}
-          >
-            Open People Picker (Custom Title)
-          </Button>
+              }}
+            >
+              Open People Picker (Defaults)
+            </Button>
+          } />
+          <Tooltip content="people.selectPeople({singleSelect: true,})" trigger={
+            <Button
+              onClick={async () => {
+                try {
+                  const picked = await people.selectPeople({
+                    singleSelect: true,
+                  });
+                  console.log(picked);
+                } catch {
+                  console.log("User aborted");
+                }
+              }}
+            >
+              Open People Picker (Single)
+            </Button>
+          } />
+          <Tooltip content="people.selectPeople({setSelected: [user]})" trigger={
+            <Button
+              onClick={async () => {
+                try {
+                  const context = (await app.getContext()) as app.Context;
+                  if (context.user?.id) {
+                    throw new Error("No user ID");
+                  }
+                  const picked = await people.selectPeople({
+                    setSelected: [context.user ? context.user.id : ""],
+                  });
+                  console.log(picked);
+                } catch {
+                  console.log("User aborted");
+                }
+              }}
+            >
+              Open People Picker (Preselected)
+            </Button>
+          } />
+          <Tooltip content="people.selectPeople({openOrgWideSearchInChatOrChannel: false})" trigger={
+            <Button
+              onClick={async () => {
+                try {
+                  const picked = await people.selectPeople({
+                    openOrgWideSearchInChatOrChannel: false,
+                  });
+                  console.log(picked);
+                } catch {
+                  console.log("User aborted");
+                }
+              }}
+            >
+              Open People Picker (Members Only)
+            </Button>
+          } />
+          <Tooltip content="people.selectPeople({title: `Custom Title`})" trigger={
+            <Button
+              onClick={async () => {
+                try {
+                  const picked = await people.selectPeople({
+                    title: "Custom Title",
+                  });
+                  console.log(picked);
+                } catch {
+                  console.log("User aborted");
+                }
+              }}
+            >
+              Open People Picker (Custom Title)
+            </Button>
+
+          } />
         </Flex>
       );
     } else {
