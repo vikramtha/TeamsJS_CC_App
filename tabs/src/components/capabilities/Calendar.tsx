@@ -50,26 +50,24 @@ export const Calendar = () => {
           >
             Compose Meeting
           </Button>
-          <Button
-            disabled={loading}
-            onClick={async () => {
-              if (!loading && !data) {
-                reload();
-              }
-              if (!loading &&
-                data &&
-                data.calendars.value.length > 0 &&
-                data.calendars.value[0].id
-              ) {
-                await calendar.openCalendarItem({
-                  // Item id for calendar item can be retrieved using the graph api,
-                  // the following line converts the retrieved EWS id to Rest id
-                  itemId: convertRestIdToEwsId(data.calendars.value[0].id),
-                });
-              } else {
-                console.log("Please check if you are authenticated", error);
-              }
-            }}
+          {!loading && !data &&
+            <Button onClick={reload} disabled={loading}>Authorize</Button>
+          }
+          <Button disabled={loading} onClick={async () => {
+            if (!loading &&
+              data &&
+              data.calendars.value.length > 0 &&
+              data.calendars.value[0].id
+            ) {
+              await calendar.openCalendarItem({
+                // Item id for calendar item can be retrieved using the graph api,
+                // the following line converts the retrieved EWS id to Rest id
+                itemId: convertRestIdToEwsId(data.calendars.value[0].id),
+              });
+            } else {
+              console.log("Please check if you are authenticated", error);
+            }
+          }}
           >
             Open Calendar Item
           </Button >
