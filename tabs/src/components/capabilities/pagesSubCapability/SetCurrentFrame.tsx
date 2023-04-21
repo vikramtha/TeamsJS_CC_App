@@ -27,18 +27,20 @@ export const SetCurrentFrame = () => {
               />
             </Fluent.Flex>
             <Fluent.Flex space="between">
-              <Fluent.Button
-                onClick={() => {
-                  const baseUrl = `https://${window.location.host}`;
-                  pages.setCurrentFrame({
-                    contentUrl: `${baseUrl}/#/termsofuse`,
-                    websiteUrl: `${baseUrl}/#/termsofuse`,
-                  });
-                  showText(true);
-                }}
-              >
-                Set Current Frame to 'Terms of Use'
-              </Fluent.Button>
+              <Fluent.Tooltip content="pages.setCurrentFrame()" trigger={
+                <Fluent.Button
+                  onClick={() => {
+                    const baseUrl = `https://${window.location.host}`;
+                    pages.setCurrentFrame({
+                      contentUrl: `${baseUrl}/#/termsofuse`,
+                      websiteUrl: `${baseUrl}/#/termsofuse`,
+                    });
+                    showText(true);
+                  }}
+                >
+                  Set Current Frame to 'Terms of Use'
+                </Fluent.Button>
+              } />
             </Fluent.Flex>
             {isText && (
               <Fluent.Flex gap="gap.small" vAlign="center">

@@ -27,13 +27,15 @@ export const NavigateBack = () => {
                             />
                         </Fluent.Flex>
                         <Fluent.Flex gap="gap.small" vAlign="center">
-                            <Fluent.Button
-                                onClick={async () => {
-                                    await pages.backStack.navigateBack();
-                                }}
-                            >
-                                Click me to Navigate Back
-                            </Fluent.Button>
+                            <Fluent.Tooltip content="pages.backStack.navigateBack()" trigger={
+                                <Fluent.Button
+                                    onClick={async () => {
+                                        await pages.backStack.navigateBack();
+                                    }}
+                                >
+                                    Click me to Navigate Back
+                                </Fluent.Button>
+                            } />
                         </Fluent.Flex>
                     </Fluent.Segment>
                 )}

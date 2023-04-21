@@ -20,13 +20,15 @@ export const ReturnFocusToSearchBar = () => {
               />
             </Fluent.Flex>
             <Fluent.Flex space="between">
-              <Fluent.Button
-                onClick={async () => {
-                  pages.returnFocus(true);
-                }}
-              >
-                Click me to Return focus to search box
-              </Fluent.Button>
+              <Fluent.Tooltip content="pages.returnFocus(true)" trigger={
+                <Fluent.Button
+                  onClick={async () => {
+                    pages.returnFocus(true);
+                  }}
+                >
+                  Click me to Return focus to search box
+                </Fluent.Button>
+              } />
             </Fluent.Flex>
           </Fluent.Segment>
         )}
