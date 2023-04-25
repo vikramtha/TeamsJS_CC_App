@@ -1,6 +1,7 @@
 // This file contains all constants used in capabilities.
 export const developersPortal = { appId: "14072831-8a2a-4f76-9294-057bf0b42a68", name: "Developer Portal" };
 export const powerBI = { appId: "1c4340de-2a85-40e5-8eb0-4f295368978b", name: "Power BI" };
+export const vivaInsight = { appId: "57e078b5-6c0e-44a1-a83f-45f75b030d4a", name: "Viva Insight" };
 
 export const developersPortalThreadId =
   "28:0c5cfdbb-596f-4d39-b557-5d9516c94107";

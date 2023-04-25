@@ -1,8 +1,8 @@
 import { Button, Dropdown, DropdownItemProps, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, appInstallDialog } from "@microsoft/teams-js";
-import { developersPortal, powerBI } from "../../helpers/constants";
+import { booleanToString, validateGuid } from "../../helpers";
+import { developersPortal, powerBI, vivaInsight } from "../../helpers/constants";
 
-import { booleanToString } from "../../helpers";
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
@@ -16,6 +16,9 @@ export const AppInstallDialog = () => {
   }, {
     content: powerBI.appId,
     header: powerBI.name
+  }, {
+    content: vivaInsight.appId,
+    header: vivaInsight.name
   }]
   const [appId, setAppId] = useState("");
   // Check if app is initialized
@@ -31,7 +34,12 @@ export const AppInstallDialog = () => {
             placeholder="Enter app Id or select"
             onSelect={(e: any) => {
               const value = e.target.value ? e.target.value : "";
-              setAppId(value);
+              if (validateGuid(value)) {
+                setAppId(value);
+              } else {
+                const appId = appIds.find(x => { return x.header === value })
+                setAppId(appId && appId.content ? appId.content.toString() : '');
+              }
             }}
           />
           <Tooltip trigger={
