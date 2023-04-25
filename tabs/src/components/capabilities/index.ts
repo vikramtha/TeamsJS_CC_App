@@ -12,7 +12,9 @@ import {
   DialogAdaptiveCard,
   DialogAdaptiveCardIsSupported,
 } from "./Dialog.AdaptiveCard";
+import { DialogAdaptiveCardBot, DialogAdaptiveCardBotIsSupported } from "./Dialog.AdaptiveCard.Bot";
 import { DialogBot, DialogUrlBotIsSupported } from "./DialogBot";
+import { DialogUpdate, DialogUpdateIsSupported } from "./DialogUpdate";
 import { GeoLocation, GeoLocationIsSupported } from "./GeoLocation";
 import { GeoLocationMap, GeoLocationMapIsSupported } from "./GeoLocation.map";
 import { IsPagesCurrentAppSupported, PagesCurrent } from "./Pages.Current";
@@ -46,7 +48,11 @@ export {
   Dialog,
   DialogBot,
   DialogUrlBotIsSupported,
+  DialogUpdate,
+  DialogUpdateIsSupported,
   DialogAdaptiveCard,
+  DialogAdaptiveCardBot,
+  DialogAdaptiveCardBotIsSupported,
   DialogAdaptiveCardIsSupported,
   DialogUrlIsSupported,
   GeoLocation,

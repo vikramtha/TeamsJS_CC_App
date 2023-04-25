@@ -19,3 +19,8 @@ export const userList: string[] = [
   "AdamB@M365x18932945.onmicrosoft.com",
   "JoniS@M365x18932945.OnMicrosoft.com"
 ];
+
+export const urlList: string[] = [
+  "https://www.microsoft.com",
+  "https://outlook.office.com",
+];

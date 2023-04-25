@@ -12,6 +12,18 @@ import { userList } from "../../helpers/constants";
 export const Chat = () => {
   const [users, setUsers] = useState([] as string[]);
   const [user, setUser] = useState("");
+  const getA11ySelectionMessage = {
+    onAdd: (user: any) => {
+      const allusers = [...users, user];
+      setUsers(allusers);
+      return `${user} selected. Press left or right arrow keys to navigate selected items.`
+    },
+    onRemove: (item: any) => {
+      const allusers = users.filter(x => x !== item);
+      setUsers(allusers);
+      return `${item} has been removed.`
+    }
+  }
   // Check to see if capability is isInitialized
   if (app.isInitialized()) {
     // Check to see if capability is supported
@@ -32,7 +44,7 @@ export const Chat = () => {
               onClick={async () => {
                 await chat.openChat({
                   user: user,
-                  message: "This is the first message you are sending to AdeleV",
+                  message: `This is the first message you are sending ${user}`,
                 });
               }}
             >
@@ -41,12 +53,10 @@ export const Chat = () => {
           } />
           <Dropdown
             search
+            multiple
             items={userList}
+            getA11ySelectionMessage={getA11ySelectionMessage}
             placeholder="Start typing a name or select"
-            onSelect={(e: any) => {
-              const value = e.target.value ? e.target.value : "";
-              setUsers([value]);
-            }}
           />
           <Tooltip content="chat.openGroupChat()" trigger={
             <Button

@@ -7,6 +7,7 @@ import { Loader, Provider, teamsTheme } from "@fluentui/react-northstar";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
 
 import DialogPage from "./DialogPage";
+import DialogResizePage from "./DialogResize";
 import { Nav } from "./Nav";
 import PagesTab from "./PagesTab";
 import Privacy from "./Privacy";
@@ -40,6 +41,7 @@ const App = () => {
               <Route path="/tab" Component={Tab} />
               <Route path="/config" Component={TabConfig} />
               <Route path="/dialog" Component={DialogPage} />
+              <Route path="/dialogresize" Component={DialogResizePage} />
               <Route path="/pagesTab" Component={PagesTab} />
             </Routes>
           )}
