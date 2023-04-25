@@ -15,8 +15,12 @@ import {
   ChatIsSupported,
   Dialog,
   DialogAdaptiveCard,
+  DialogAdaptiveCardBot,
+  DialogAdaptiveCardBotIsSupported,
   DialogAdaptiveCardIsSupported,
   DialogBot,
+  DialogUpdate,
+  DialogUpdateIsSupported,
   DialogUrlBotIsSupported,
   DialogUrlIsSupported,
   GeoLocation,
@@ -239,6 +243,26 @@ const Tab = () => {
         ],
       },
       {
+        key: "Dialog-Update",
+        items: [
+          {
+            key: "Dialog-Update",
+            content: (
+              <>
+                <Fluent.CustomerHubIcon />
+                <Fluent.Text content="Dialog Update" />
+              </>
+            ),
+          },
+          { key: "Dialog-Update", content: DialogUpdateIsSupported() },
+          {
+            key: "Dialog-Update",
+            content: <DialogUpdate />,
+            className: "ui_action",
+          },
+        ],
+      },
+      {
         key: "Dialog-Url-Bot",
         items: [
           {
@@ -277,6 +301,29 @@ const Tab = () => {
           {
             key: "Dialog-AdaptiveCard-3",
             content: <DialogAdaptiveCard />,
+            className: "ui_action",
+          },
+        ],
+      },
+      {
+        key: "Dialog-AdaptiveCard-Bot",
+        items: [
+          {
+            key: "Dialog-AdaptiveCard-Bot-1",
+            content: (
+              <>
+                <Fluent.CustomerHubIcon />
+                <Fluent.Text content="Dialog Adaptive Card Bot" />
+              </>
+            ),
+          },
+          {
+            key: "Dialog-AdaptiveCard-Bot-2",
+            content: DialogAdaptiveCardBotIsSupported(),
+          },
+          {
+            key: "Dialog-AdaptiveCard-Bot-3",
+            content: <DialogAdaptiveCardBot />,
             className: "ui_action",
           },
         ],

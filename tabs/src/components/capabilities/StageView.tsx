@@ -22,12 +22,16 @@ export const StageView = () => {
             <Button
               onClick={async () => {
                 // open Developer Portal app in stage view
-                await stageView.open({
-                  appId: developersPortal.appId,
-                  contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
-                  threadId: developersPortalThreadId,
-                  title: developersPortal.name,
-                });
+                try {
+                  await stageView.open({
+                    appId: developersPortal.appId,
+                    contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
+                    threadId: developersPortalThreadId,
+                    title: developersPortal.name,
+                  });
+                } catch (error) {
+                  console.log(error);
+                }
               }}
             >
               Open Stage View

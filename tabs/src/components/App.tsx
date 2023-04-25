@@ -4,9 +4,10 @@ import * as Fluent from "@fluentui/react-northstar";
 
 // https://fluentsite.z22.web.core.windows.net/quick-start
 import { Loader, Provider, teamsTheme } from "@fluentui/react-northstar";
-import { Redirect, Route, HashRouter as Router } from "react-router-dom";
+import { Route, HashRouter as Router, Routes } from "react-router-dom";
 
 import DialogPage from "./DialogPage";
+import DialogResizePage from "./DialogResize";
 import { Nav } from "./Nav";
 import PagesTab from "./PagesTab";
 import Privacy from "./Privacy";
@@ -30,20 +31,19 @@ const App = () => {
         styles={{ backgroundColor: "#eeeeee" }}
       >
         <Router>
-          <Route exact path="/">
-            <Redirect to="/tab" />
-          </Route>
           {loading ? (
             <Loader style={{ margin: 100 }} />
           ) : (
-            <>
-              <Route exact path="/privacy" component={Privacy} />
-              <Route exact path="/termsofuse" component={TermsOfUse} />
-              <Route exact path="/tab" component={Tab} />
-              <Route exact path="/config" component={TabConfig} />
-              <Route exact path="/dialog" component={DialogPage} />
-              <Route exact path="/pagesTab" component={PagesTab} />
-            </>
+            <Routes>
+              <Route path="/" Component={Tab} />
+              <Route path="/privacy" Component={Privacy} />
+              <Route path="/termsofuse" Component={TermsOfUse} />
+              <Route path="/tab" Component={Tab} />
+              <Route path="/config" Component={TabConfig} />
+              <Route path="/dialog" Component={DialogPage} />
+              <Route path="/dialogresize" Component={DialogResizePage} />
+              <Route path="/pagesTab" Component={PagesTab} />
+            </Routes>
           )}
         </Router>
       </Provider>
