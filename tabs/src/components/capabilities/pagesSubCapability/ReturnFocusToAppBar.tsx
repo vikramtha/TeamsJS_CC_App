@@ -20,13 +20,15 @@ export const ReturnFocusToAppBar = () => {
               />
             </Fluent.Flex>
             <Fluent.Flex space="between">
-              <Fluent.Button
-                onClick={() => {
-                  pages.returnFocus(false);
-                }}
-              >
-                Click me Return focus to App Bar
-              </Fluent.Button>
+              <Fluent.Tooltip content="pages.returnFocus(false)" trigger={
+                <Fluent.Button
+                  onClick={() => {
+                    pages.returnFocus(false);
+                  }}
+                >
+                  Click me Return focus to App Bar
+                </Fluent.Button>
+              } />
             </Fluent.Flex>
           </Fluent.Segment>
         )}

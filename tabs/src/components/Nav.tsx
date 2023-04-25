@@ -1,12 +1,12 @@
+import { } from "react-router-dom";
+
 import * as Fluent from "@fluentui/react-northstar";
 
-import { useNavigate } from "react-router-dom";
-
 export const Nav = () => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleClick = (link: string) => {
-    navigate(`/${link}`);
+    // navigate(`/${link}`);
   };
 
   return (

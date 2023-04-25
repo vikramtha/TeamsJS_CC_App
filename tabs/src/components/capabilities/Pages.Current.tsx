@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, pages } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -16,15 +16,17 @@ export const PagesCurrent = () => {
       if (pages.currentApp.isSupported()) {
         return (
           <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-            <Button
-              onClick={async () => {
-                await pages.currentApp.navigateTo({
-                  pageId: "pagesTab",
-                });
-              }}
-            >
-              Navigate Current App (PagesTab)
-            </Button>
+            <Tooltip content="pages.currentApp.navigateTo()" trigger={
+              <Button
+                onClick={async () => {
+                  await pages.currentApp.navigateTo({
+                    pageId: "pagesTab",
+                  });
+                }}
+              >
+                Navigate Current App (PagesTab)
+              </Button>
+            } />
           </Flex>
         );
       }

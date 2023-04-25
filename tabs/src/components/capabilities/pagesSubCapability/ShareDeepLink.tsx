@@ -20,16 +20,18 @@ export const ShareDeepLink = () => {
               />
             </Fluent.Flex>
             <Fluent.Flex space="between">
-              <Fluent.Button
-                onClick={async () => {
-                  pages.shareDeepLink({
-                    subPageId: "",
-                    subPageLabel: "Capability",
-                  });
-                }}
-              >
-                Click me to Share Deep Link
-              </Fluent.Button>
+              <Fluent.Tooltip content="pages.shareDeepLink()" trigger={
+                <Fluent.Button
+                  onClick={async () => {
+                    pages.shareDeepLink({
+                      subPageId: "",
+                      subPageLabel: "Capability",
+                    });
+                  }}
+                >
+                  Click me to Share Deep Link
+                </Fluent.Button>
+              } />
             </Fluent.Flex>
           </Fluent.Segment>
         )}

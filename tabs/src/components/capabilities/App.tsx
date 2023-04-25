@@ -1,4 +1,4 @@
-import { Button, Flex, TextArea } from "@fluentui/react-northstar";
+import { Button, Flex, TextArea, Tooltip } from "@fluentui/react-northstar";
 
 import { app } from "@microsoft/teams-js";
 import { booleanToString } from "../../helpers";
@@ -20,19 +20,20 @@ export const App = () => {
 
     return (
       <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-        <Button
-          className="ui_context"
-          onClick={async () => {
-            const context = await app.getContext();
-            const contextString = JSON.stringify(context);
-            setText(contextString);
-            setShowText(true);
-            console.log(context);
-          }}
-        >
-          {" "}
-          Get Context
-        </Button>
+        <Tooltip
+          trigger={<Button
+            className="ui_context"
+            onClick={async () => {
+              const context = await app.getContext();
+              const contextString = JSON.stringify(context);
+              setText(contextString);
+              setShowText(true);
+              console.log(context);
+            }}>
+            Get Context
+          </Button>}
+          content="app.getContext()"
+        />
         {showText && (
           <TextArea className="ui_app" fluid inverted value={text} />
         )}

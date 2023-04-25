@@ -1,4 +1,4 @@
-import { Button, Flex, TextArea } from "@fluentui/react-northstar";
+import { Button, Flex, TextArea, Tooltip } from "@fluentui/react-northstar";
 import { app, geoLocation } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -20,50 +20,56 @@ export const GeoLocation = () => {
     if (geoLocation.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={async () => {
-              // check if the user has granted permission to access their location
-              const hasPerms = await geoLocation.hasPermission();
-              setText(hasPerms ? "Have permission" : "Do not have permission");
-              setShowText(true);
-              console.log(`GeoLocation: ${hasPerms}`);
-            }}
-          >
-            Has Permission
-          </Button>
-          <Button
-            onClick={async () => {
-              // request permission to access the user's location
-              const hasConsent = await geoLocation.requestPermission();
-              setText(hasConsent ? "Has Consent" : "Do not have Consent");
-              setShowText(true);
-              console.log(`GeoLocation consented: ${hasConsent}`);
-            }}
-          >
-            Request Permission
-          </Button>
-          <Button
-            onClick={async () => {
-              // get the user's location
-              try {
-                const location = await geoLocation.getCurrentLocation();
-                console.log(`GeoLocation consented: ${location}`);
-                console.log(`GeoLocation accuracy: ${location.accuracy}`);
-                console.log(`GeoLocation longitude: ${location.longitude}`);
-                console.log(`GeoLocation latitude: ${location.latitude}`);
-                const text = `GeoLocation consented: ${location ? true : false
-                  } \n GeoLocation accuracy: ${location.accuracy
-                  }\n GeoLocation longitude: ${location.longitude
-                  }\n GeoLocation latitude: ${location.latitude}`;
-                setText(text);
+          <Tooltip content="geoLocation.hasPermission()" trigger={
+            <Button
+              onClick={async () => {
+                // check if the user has granted permission to access their location
+                const hasPerms = await geoLocation.hasPermission();
+                setText(hasPerms ? "Have permission" : "Do not have permission");
                 setShowText(true);
-              } catch (e) {
-                console.log(`GeoLocation error: ${e}`);
-              }
-            }}
-          >
-            Get Location
-          </Button>
+                console.log(`GeoLocation: ${hasPerms}`);
+              }}
+            >
+              Has Permission
+            </Button>
+          } />
+          <Tooltip content="geoLocation.requestPermission()" trigger={
+            <Button
+              onClick={async () => {
+                // request permission to access the user's location
+                const hasConsent = await geoLocation.requestPermission();
+                setText(hasConsent ? "Has Consent" : "Do not have Consent");
+                setShowText(true);
+                console.log(`GeoLocation consented: ${hasConsent}`);
+              }}
+            >
+              Request Permission
+            </Button>
+          } />
+          <Tooltip content="geoLocation.getCurrentLocation()" trigger={
+            <Button
+              onClick={async () => {
+                // get the user's location
+                try {
+                  const location = await geoLocation.getCurrentLocation();
+                  console.log(`GeoLocation consented: ${location}`);
+                  console.log(`GeoLocation accuracy: ${location.accuracy}`);
+                  console.log(`GeoLocation longitude: ${location.longitude}`);
+                  console.log(`GeoLocation latitude: ${location.latitude}`);
+                  const text = `GeoLocation consented: ${location ? true : false
+                    } \n GeoLocation accuracy: ${location.accuracy
+                    }\n GeoLocation longitude: ${location.longitude
+                    }\n GeoLocation latitude: ${location.latitude}`;
+                  setText(text);
+                  setShowText(true);
+                } catch (e) {
+                  console.log(`GeoLocation error: ${e}`);
+                }
+              }}
+            >
+              Get Location
+            </Button>
+          } />
           {showText && (
             <TextArea className="ui_location" inverted value={text} />
           )}

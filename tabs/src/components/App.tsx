@@ -4,7 +4,7 @@ import * as Fluent from "@fluentui/react-northstar";
 
 // https://fluentsite.z22.web.core.windows.net/quick-start
 import { Loader, Provider, teamsTheme } from "@fluentui/react-northstar";
-import { Route, HashRouter as Router, Routes } from "react-router-dom";
+import { Redirect, Route, HashRouter as Router } from "react-router-dom";
 
 import DialogPage from "./DialogPage";
 import { Nav } from "./Nav";
@@ -30,20 +30,20 @@ const App = () => {
         styles={{ backgroundColor: "#eeeeee" }}
       >
         <Router>
-          {/* <Fluent.Segment>
-            <Nav />  Uncomment this HTML component to enable react router toggle (Experimental)
-          </Fluent.Segment> */}
+          <Route exact path="/">
+            <Redirect to="/tab" />
+          </Route>
           {loading ? (
             <Loader style={{ margin: 100 }} />
           ) : (
-            <Routes>
-              <Route path="/privacy" Component={Privacy} />
-              <Route path="/termsofuse" Component={TermsOfUse} />
-              <Route path="/tab" Component={Tab} />
-              <Route path="/config" Component={TabConfig} />
-              <Route path="/dialog" Component={DialogPage} />
-              <Route path="/pagesTab" Component={PagesTab} />
-            </Routes>
+            <>
+              <Route exact path="/privacy" component={Privacy} />
+              <Route exact path="/termsofuse" component={TermsOfUse} />
+              <Route exact path="/tab" component={Tab} />
+              <Route exact path="/config" component={TabConfig} />
+              <Route exact path="/dialog" component={DialogPage} />
+              <Route exact path="/pagesTab" component={PagesTab} />
+            </>
           )}
         </Router>
       </Provider>

@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, geoLocation } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -15,30 +15,34 @@ export const GeoLocationMap = () => {
     if (geoLocation.map.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={async () => {
-              try {
-                const location = await geoLocation.map.chooseLocation();
-                console.log("Map: Choose Location", location);
-              } catch (e) {
-                console.log(`GeoLocation error: ${e}`);
-              }
-            }}
-          >
-            Map: Choose Location
-          </Button>
-          <Button
-            onClick={async () => {
-              try {
-                const location = await geoLocation.getCurrentLocation();
-                await geoLocation.map.showLocation(location);
-              } catch (e) {
-                console.log(`GeoLocation error: ${e}`);
-              }
-            }}
-          >
-            Map: Show Location
-          </Button>
+          <Tooltip content="geoLocation.map.chooseLocation()" trigger={
+            <Button
+              onClick={async () => {
+                try {
+                  const location = await geoLocation.map.chooseLocation();
+                  console.log("Map: Choose Location", location);
+                } catch (e) {
+                  console.log(`GeoLocation error: ${e}`);
+                }
+              }}
+            >
+              Map: Choose Location
+            </Button>
+          } />
+          <Tooltip content="geoLocation.getCurrentLocation() & geoLocation.map.showLocation()" trigger={
+            <Button
+              onClick={async () => {
+                try {
+                  const location = await geoLocation.getCurrentLocation();
+                  await geoLocation.map.showLocation(location);
+                } catch (e) {
+                  console.log(`GeoLocation error: ${e}`);
+                }
+              }}
+            >
+              Map: Show Location
+            </Button>
+          } />
         </Flex>
       );
     } else {
