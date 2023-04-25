@@ -2,7 +2,7 @@ import * as Fluent from "@fluentui/react-northstar";
 
 import { app, pages } from "@microsoft/teams-js";
 import {
-  developersPortalAppId,
+  developersPortal,
   developersPortalAppPageId,
 } from "../../../helpers/constants";
 
@@ -24,17 +24,19 @@ export const NavigateToApp = () => {
               />
             </Fluent.Flex>
             <Fluent.Flex space="between">
-              <Fluent.Button
-                onClick={async () => {
-                  // navigate to the Apps tab in the Developer Portal app
-                  await pages.navigateToApp({
-                    appId: developersPortalAppId,
-                    pageId: developersPortalAppPageId,
-                  });
-                }}
-              >
-                Click me to Navigate to App
-              </Fluent.Button>
+              <Fluent.Tooltip content="pages.navigateToApp()" trigger={
+                <Fluent.Button
+                  onClick={async () => {
+                    // navigate to the Apps tab in the Developer Portal app
+                    await pages.navigateToApp({
+                      appId: developersPortal.appId,
+                      pageId: developersPortalAppPageId,
+                    });
+                  }}
+                >
+                  Click me to Navigate to App
+                </Fluent.Button>
+              } />
             </Fluent.Flex>
           </Fluent.Segment>
         )}

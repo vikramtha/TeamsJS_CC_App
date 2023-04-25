@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, webStorage } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -14,14 +14,16 @@ export const WebStorage = () => {
     if (webStorage.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={() => {
-              const isCleared = webStorage.isWebStorageClearedOnUserLogOut();
-              console.log(isCleared);
-            }}
-          >
-            Is Storage Cleared On LogOut
-          </Button>
+          <Tooltip content="webStorage.isWebStorageClearedOnUserLogOut()" trigger={
+            <Button
+              onClick={() => {
+                const isCleared = webStorage.isWebStorageClearedOnUserLogOut();
+                console.log(isCleared);
+              }}
+            >
+              Is Storage Cleared On LogOut
+            </Button>
+          } />
         </Flex>
       );
     } else {

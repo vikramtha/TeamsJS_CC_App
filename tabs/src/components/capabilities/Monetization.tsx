@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, monetization } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -14,17 +14,19 @@ export const Monetization = () => {
     if (monetization.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
-            onClick={async () => {
-              // To use this provide plan id and term of plan
-              await monetization.openPurchaseExperience({
-                planId: "",
-                term: "",
-              });
-            }}
-          >
-            OpenPurchaseExperience
-          </Button>
+          <Tooltip content="monetization.openPurchaseExperience()" trigger={
+            <Button
+              onClick={async () => {
+                // To use this provide plan id and term of plan
+                await monetization.openPurchaseExperience({
+                  planId: "",
+                  term: "",
+                });
+              }}
+            >
+              OpenPurchaseExperience
+            </Button>
+          } />
         </Flex>
       );
     } else {

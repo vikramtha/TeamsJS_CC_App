@@ -21,12 +21,14 @@ export const NavigateToDefaultPage = () => {
                             />
                         </Fluent.Flex>
                         <Fluent.Flex space="between">
-                            <Fluent.Button
-                                onClick={async () => {
-                                    await pages.currentApp.navigateToDefaultPage();
-                                }}>
-                                Navigate To Default Page
-                            </Fluent.Button>
+                            <Fluent.Tooltip content="pages.currentApp.navigateToDefaultPage()" trigger={
+                                <Fluent.Button
+                                    onClick={async () => {
+                                        await pages.currentApp.navigateToDefaultPage();
+                                    }}>
+                                    Navigate To Default Page
+                                </Fluent.Button>
+                            } />
                         </Fluent.Flex>
                     </Fluent.Segment>
                 )}

@@ -1,4 +1,4 @@
-import { Button, Flex, TextArea } from "@fluentui/react-northstar";
+import { Button, Flex, TextArea, Tooltip } from "@fluentui/react-northstar";
 import { app, pages } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -25,44 +25,50 @@ export const PagesTabs = () => {
       <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
         {pages.tabs.isSupported() && (
           <>
-            <Button
-              onClick={async () => {
-                const config = await pages.tabs.getTabInstances();
-                console.log(config);
-                setText(`Get tab instances: ${JSON.stringify(config)}`);
-                setShowText(true);
-              }}
-            >
-              Get tab instances
-            </Button>
-            <Button
-              onClick={async () => {
-                const config = await pages.tabs.getMruTabInstances();
-                console.log(config);
-                setText(
-                  `Most Recently Used tab instances: ${JSON.stringify(config)}`
-                );
-                setShowText(true);
-              }}
-            >
-              Get Most Recently Used tab instances
-            </Button>
-            <Button
-              onClick={async () => {
-                // only works for channel tabs, see
-                // https://stackoverflow.com/questions/62390440/msteams-development-navigate-between-personal-tabs
-                const baseUrl = `https://${window.location.host}`;
-                // deprecated? check docs
-                await pages.tabs.navigateToTab({
-                  tabName: "Terms of use",
-                  entityId: "tou1",
-                  url: `${baseUrl}/index.html#/termsofuse`,
-                  websiteUrl: `${baseUrl}/index.html#/termsofuse`,
-                });
-              }}
-            >
-              Navigate to tab
-            </Button>
+            <Tooltip content="pages.tabs.getTabInstances()" trigger={
+              <Button
+                onClick={async () => {
+                  const config = await pages.tabs.getTabInstances();
+                  console.log(config);
+                  setText(`Get tab instances: ${JSON.stringify(config)}`);
+                  setShowText(true);
+                }}
+              >
+                Get tab instances
+              </Button>
+            } />
+            <Tooltip content="pages.tabs.getMruTabInstances()" trigger={
+              <Button
+                onClick={async () => {
+                  const config = await pages.tabs.getMruTabInstances();
+                  console.log(config);
+                  setText(
+                    `Most Recently Used tab instances: ${JSON.stringify(config)}`
+                  );
+                  setShowText(true);
+                }}
+              >
+                Get Most Recently Used tab instances
+              </Button>
+            } />
+            <Tooltip content="pages.tabs.navigateToTab()" trigger={
+              <Button
+                onClick={async () => {
+                  // only works for channel tabs, see
+                  // https://stackoverflow.com/questions/62390440/msteams-development-navigate-between-personal-tabs
+                  const baseUrl = `https://${window.location.host}`;
+                  // deprecated? check docs
+                  await pages.tabs.navigateToTab({
+                    tabName: "Terms of use",
+                    entityId: "tou1",
+                    url: `${baseUrl}/index.html#/termsofuse`,
+                    websiteUrl: `${baseUrl}/index.html#/termsofuse`,
+                  });
+                }}
+              >
+                Navigate to tab
+              </Button>
+            } />
             {showText && <TextArea className="ui_location" value={text} />}
           </>
         )}

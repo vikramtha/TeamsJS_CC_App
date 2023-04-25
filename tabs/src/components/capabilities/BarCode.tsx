@@ -1,4 +1,4 @@
-import { Button, Flex } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, barCode } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -15,30 +15,35 @@ export const BarCode = () => {
       // return button to scan barcode
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Button
+          <Tooltip content="barCode.hasPermission()" trigger={<Button
             onClick={async () => {
               await barCode.hasPermission();
             }}
           >
             Bar code has permission
           </Button>
-          <Button
-            onClick={async () => {
-              await barCode.requestPermission();
-            }}
-          >
-            Bar code requests permission
-          </Button>
-          <Button
-            onClick={async () => {
-              const scanString = await barCode.scanBarCode({
-                timeOutIntervalInSec: 30000,
-              });
-              console.log("Scan string", scanString);
-            }}
-          >
-            Scan Bar Code
-          </Button>
+          } />
+          <Tooltip content="barCode.requestPermission()" trigger={
+            <Button
+              onClick={async () => {
+                await barCode.requestPermission();
+              }}
+            >
+              Bar code requests permission
+            </Button>
+          } />
+
+          <Tooltip content="barCode.scanBarCode()" trigger={
+            <Button
+              onClick={async () => {
+                const scanString = await barCode.scanBarCode({
+                  timeOutIntervalInSec: 30000,
+                });
+                console.log("Scan string", scanString);
+              }}
+            >
+              Scan Bar Code
+            </Button>} />
         </Flex>
       );
     }

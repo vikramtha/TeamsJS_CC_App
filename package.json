@@ -4,6 +4,7 @@
   "description": "",
   "author": "",
   "scripts": {
+    "dev": "cd tabs && npm run dev:teamsfx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

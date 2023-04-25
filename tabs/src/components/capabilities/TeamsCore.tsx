@@ -1,4 +1,4 @@
-import { Button, Flex, TextArea } from "@fluentui/react-northstar";
+import { Button, Flex, TextArea, Tooltip } from "@fluentui/react-northstar";
 import { app, teamsCore } from "@microsoft/teams-js";
 
 import { booleanToString } from "../../helpers";
@@ -30,19 +30,23 @@ export const TeamsCore = () => {
 
             return (
                 <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-                    <Button onClick={() => {
-                        teamsCore.enablePrintCapability();
-                        setText("Use ctrl+p and cmd+p");
-                        setShowText(true);
+                    <Tooltip content="teamsCore.enablePrintCapability()" trigger={
+                        <Button onClick={() => {
+                            teamsCore.enablePrintCapability();
+                            setText("Use ctrl+p and cmd+p");
+                            setShowText(true);
 
-                    }}>
-                        Enable Print Capability
-                    </Button>
-                    <Button onClick={() => {
-                        teamsCore.print();
-                    }}>
-                        Print
-                    </Button>
+                        }}>
+                            Enable Print Capability
+                        </Button>
+                    } />
+                    <Tooltip content="teamsCore.print()" trigger={
+                        <Button onClick={() => {
+                            teamsCore.print();
+                        }}>
+                            Print
+                        </Button>
+                    } />
                     {showText &&
                         <TextArea className="ui_teamscore" value={text} />
                     }
