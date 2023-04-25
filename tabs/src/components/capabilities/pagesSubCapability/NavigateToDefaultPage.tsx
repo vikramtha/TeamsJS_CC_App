@@ -12,25 +12,30 @@ export const NavigateToDefaultPage = () => {
         return (
             <>
                 {pages.currentApp.isSupported() && (
-                    <Fluent.Segment className="ui-pagessegment">
-                        <Fluent.Header content="Navigate To Default Page (Pages.CurrentApp)" as="h3" />
-                        <Fluent.Flex gap="gap.small" vAlign="center">
-                            <Fluent.Text
-                                className="ui-pagestext"
-                                content="Navigate to the currently running application's first static page defined in the application manifest"
-                            />
-                        </Fluent.Flex>
-                        <Fluent.Flex space="between">
-                            <Fluent.Tooltip content="pages.currentApp.navigateToDefaultPage()" trigger={
-                                <Fluent.Button
-                                    onClick={async () => {
-                                        await pages.currentApp.navigateToDefaultPage();
-                                    }}>
-                                    Navigate To Default Page
-                                </Fluent.Button>
-                            } />
-                        </Fluent.Flex>
-                    </Fluent.Segment>
+                    <>
+                        <Fluent.Segment>
+                            <Fluent.Header styles={{ margin: "unset" }} as="h2" content="Pages.CurrentApp Capability " />
+                        </Fluent.Segment>
+                        <Fluent.Segment className="ui-pagessegment">
+                            <Fluent.Header content="Navigate To Default Page (Pages.CurrentApp)" as="h3" />
+                            <Fluent.Flex gap="gap.small" vAlign="center">
+                                <Fluent.Text
+                                    className="ui-pagestext"
+                                    content="Navigate to the currently running application's first static page defined in the application manifest"
+                                />
+                            </Fluent.Flex>
+                            <Fluent.Flex space="between">
+                                <Fluent.Tooltip content="pages.currentApp.navigateToDefaultPage()" trigger={
+                                    <Fluent.Button
+                                        onClick={async () => {
+                                            await pages.currentApp.navigateToDefaultPage();
+                                        }}>
+                                        Navigate To Default Page
+                                    </Fluent.Button>
+                                } />
+                            </Fluent.Flex>
+                        </Fluent.Segment>
+                    </>
                 )}
             </>
         );

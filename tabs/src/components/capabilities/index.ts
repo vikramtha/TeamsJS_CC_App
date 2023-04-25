@@ -22,6 +22,9 @@ import { Mail, MailIsSupported } from "./Mail";
 import { Menus, MenusIsSupported } from "./Menus";
 import { Monetization, MonetizationIsSupported } from "./Monetization";
 import { Pages, PagesIsSupported } from "./Pages";
+import { PagesAppButton, PagesAppButtonIsSupported } from "./Pages.AppButton";
+import { PagesBackStack, PagesBackStackIsSupported } from "./Pages.BackStack";
+import { PagesConfig, PagesConfigIsSupported } from "./Pages.Config";
 import { PagesTabs, PagesTabsIsSupported } from "./Pages.Tabs";
 import { People, PeopleIsSupported } from "./People";
 import { Profile, ProfileIsSupported } from "./Profile";
@@ -67,6 +70,12 @@ export {
   MenusIsSupported,
   Monetization,
   MonetizationIsSupported,
+  PagesAppButton,
+  PagesAppButtonIsSupported,
+  PagesBackStack,
+  PagesBackStackIsSupported,
+  PagesConfig,
+  PagesConfigIsSupported,
   Pages,
   PagesIsSupported,
   PagesTabs,

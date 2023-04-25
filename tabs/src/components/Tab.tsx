@@ -35,6 +35,12 @@ import {
   Monetization,
   MonetizationIsSupported,
   Pages,
+  PagesAppButton,
+  PagesAppButtonIsSupported,
+  PagesBackStack,
+  PagesBackStackIsSupported,
+  PagesConfig,
+  PagesConfigIsSupported,
   PagesCurrent,
   PagesIsSupported,
   PagesTabs,
@@ -421,6 +427,66 @@ const Tab = () => {
         ],
       },
       {
+        key: "Pages-AppButton",
+        items: [
+          {
+            key: "Pages-AppButton-1",
+            content: (
+              <>
+                <Fluent.FilesTxtIcon />
+                <Fluent.Text content="Pages AppButton" />
+              </>
+            ),
+          },
+          { key: "Pages-AppButton-2", content: PagesAppButtonIsSupported() },
+          {
+            key: "Pages-AppButton-3",
+            content: <PagesAppButton />,
+            className: "ui_action",
+          },
+        ],
+      },
+      {
+        key: "Pages-BackStack",
+        items: [
+          {
+            key: "Pages-BackStack-1",
+            content: (
+              <>
+                <Fluent.FilesTxtIcon />
+                <Fluent.Text content="Pages BackStack" />
+              </>
+            ),
+          },
+          { key: "Pages-BackStack-2", content: PagesBackStackIsSupported() },
+          {
+            key: "Pages-BackStack-3",
+            content: <PagesBackStack />,
+            className: "ui_action",
+          },
+        ],
+      },
+      {
+        key: "Pages-Config",
+        items: [
+          {
+            key: "Pages-Config-1",
+            content: (
+              <>
+                <Fluent.FilesTxtIcon />
+                <Fluent.Text content="Pages Config" />
+              </>
+            ),
+          },
+          { key: "Pages-Config-2", content: PagesConfigIsSupported() },
+          {
+            key: "Pages-Config-3",
+            content: <PagesConfig />,
+            className: "ui_action",
+          },
+        ],
+      },
+      {
         key: "Pages-Tabs",
         items: [
           {
@@ -428,7 +494,7 @@ const Tab = () => {
             content: (
               <>
                 <Fluent.FilesTxtIcon />
-                <Fluent.Text content="Pages.Tabs" />
+                <Fluent.Text content="Pages Tabs" />
               </>
             ),
           },
@@ -448,7 +514,7 @@ const Tab = () => {
             content: (
               <>
                 <Fluent.FilesTxtIcon />
-                <Fluent.Text content="Pages.CurrentApp" />
+                <Fluent.Text content="Pages CurrentApp" />
               </>
             ),
           },
