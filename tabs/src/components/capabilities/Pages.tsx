@@ -18,22 +18,6 @@ export const Pages = () => {
       return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
     }
 
-    // check to see if app button is supported
-    if (pages.appButton.isSupported()) {
-      // register handler for hover over event
-      pages.appButton.onHoverEnter(() => {
-        console.log("onHoverEnter");
-      });
-      // register handler for hover out event
-      pages.appButton.onHoverLeave(() => {
-        console.log("onHoverLeave");
-      });
-      // register handler for click event
-      pages.appButton.onClick(() => {
-        console.log("onClick");
-      });
-    }
-
     // register handler for full screen event on a tab
     pages.registerFullScreenHandler(() => {
       console.log("fullScreenHandler");

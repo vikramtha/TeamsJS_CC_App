@@ -18,11 +18,11 @@ const PagesTab = () => {
 
     return (
         <div className={themeString === "default" ? "" : "dark"}>
-            <Segment>
-                <Header styles={{ margin: "unset" }} as="h2" content="Pages sub capabilities " />
-            </Segment>
-            <NavigateToDefaultPage />
             <NavigateBack />
+            <NavigateToDefaultPage />
+            <Segment>
+                <Header styles={{ margin: "unset" }} as="h2" content="Pages Capabilities " />
+            </Segment>
             <NavigateToApp />
             <ReturnFocusToAppBar />
             <ReturnFocusToSearchBar />
