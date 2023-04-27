@@ -1,7 +1,7 @@
 import { Button, Dropdown, DropdownItemProps, Flex, Tooltip } from "@fluentui/react-northstar";
+import { adobeAcrobat, developersPortal, powerBI, vivaEngage, vivaInsight } from "../../helpers/constants";
 import { app, appInstallDialog } from "@microsoft/teams-js";
 import { booleanToString, validateGuid } from "../../helpers";
-import { developersPortal, powerBI, vivaInsight } from "../../helpers/constants";
 
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
@@ -10,6 +10,8 @@ import { useState } from "react";
  * This component Open's a dialog with particular application to install.
  */
 export const AppInstallDialog = () => {
+  const [appId, setAppId] = useState("");
+
   const appIds: DropdownItemProps[] = [{
     content: developersPortal.appId,
     header: developersPortal.name
@@ -19,8 +21,15 @@ export const AppInstallDialog = () => {
   }, {
     content: vivaInsight.appId,
     header: vivaInsight.name
-  }]
-  const [appId, setAppId] = useState("");
+  },
+  {
+    content: vivaEngage.appId,
+    header: vivaEngage.name
+  }, {
+    content: adobeAcrobat.appId,
+    header: adobeAcrobat.name
+  }];
+
   // Check if app is initialized
   if (app.isInitialized()) {
     // check to see if capability is supported
