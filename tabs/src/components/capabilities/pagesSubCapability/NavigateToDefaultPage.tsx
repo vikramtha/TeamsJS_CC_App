@@ -2,6 +2,9 @@ import * as Fluent from "@fluentui/react-northstar";
 
 import { app, pages } from "@microsoft/teams-js";
 
+import { CapabilityStatus } from "../../../helpers/constants";
+import { isMobile } from "react-device-detect";
+
 /**
  * This component returns a button which navigate to the currently 
  * running application's first static page defined in the application manifest
@@ -11,12 +14,12 @@ export const NavigateToDefaultPage = () => {
     if (app.isInitialized()) {
         return (
             <>
-                {pages.currentApp.isSupported() && (
-                    <>
-                        <Fluent.Segment>
-                            <Fluent.Header styles={{ margin: "unset" }} as="h2" content="Pages.CurrentApp Capability " />
-                        </Fluent.Segment>
-                        <Fluent.Segment className="ui-pagessegment">
+                <Fluent.Segment>
+                    <Fluent.Header styles={{ margin: "unset" }} as="h2" content="Pages.CurrentApp Capability " />
+                </Fluent.Segment>
+                <Fluent.Segment className="ui-pagessegment">
+                    {pages.currentApp.isSupported() ?
+                        <>
                             <Fluent.Header content="Navigate To Default Page (Pages.CurrentApp)" as="h3" />
                             <Fluent.Flex gap="gap.small" vAlign="center">
                                 <Fluent.Text
@@ -25,6 +28,7 @@ export const NavigateToDefaultPage = () => {
                                 />
                             </Fluent.Flex>
                             <Fluent.Flex space="between">
+
                                 <Fluent.Tooltip content="pages.currentApp.navigateToDefaultPage()" trigger={
                                     <Fluent.Button
                                         onClick={async () => {
@@ -34,12 +38,14 @@ export const NavigateToDefaultPage = () => {
                                     </Fluent.Button>
                                 } />
                             </Fluent.Flex>
-                        </Fluent.Segment>
-                    </>
-                )}
+                        </> :
+                        <Fluent.Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Sub-Capability is not supported</Fluent.Flex>
+                    }
+                </Fluent.Segment>
             </>
-        );
+        )
+
     }
-    // return's if sub capability is not supported.
-    return <>Sub-capability is not initialized</>;
+    // return's if App is not initialized.
+    return <>{CapabilityStatus.NotInitialized}</>;
 };

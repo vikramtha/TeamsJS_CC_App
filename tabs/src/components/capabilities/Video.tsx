@@ -1,6 +1,7 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, video } from "@microsoft/teams-js";
 
+import { CapabilityStatus } from "../../helpers/constants";
 import { booleanToString } from "../../helpers";
 import { isMobile } from "react-device-detect";
 
@@ -16,10 +17,10 @@ export const Video = () => {
       return (<Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
         <Tooltip content="video.registerForVideoFrame()" trigger={
           <Button onClick={() => {
-            video.registerForVideoFrame((e) => {
-              console.log(e)
-            }, {
-              format: video.VideoFrameFormat.NV12
+            video.registerForVideoFrame({
+              videoBufferHandler: (e) => {
+                console.log(e)
+              }, videoFrameHandler: async (receivedVideoFrame: video.VideoFrameData) => { return receivedVideoFrame.videoFrame }, config: { format: video.VideoFrameFormat.NV12 }
             })
           }}>
             RegisterForVideoFrame
@@ -44,11 +45,11 @@ export const Video = () => {
       </Flex>);
     } else {
       // return's if capability is not supported
-      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">{CapabilityStatus.NotSupported}</Flex>;
     }
   }
-  // return's if capability is not initialized.
-  return <>Capability is not initialized</>;
+  // return's if App is not initialized.
+  return <>{CapabilityStatus.NotInitialized}</>;
 };
 
 export const VideoIsSupported = () => booleanToString(video.isSupported());
