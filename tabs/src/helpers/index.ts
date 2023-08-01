@@ -1,11 +1,16 @@
 export const booleanToString = (value: boolean) => {
   return value ? "Yes" : "No";
 };
-
+/**
+ * Convert's restId to Microsoft Exchange Web Services Id (ewsId).
+ * @param restId - It is an itemId of the element
+ * @returns ewsId - It is a Microsoft Exchange Web Services Id, (EWS) is a native API built by Microsoft that allows 
+ * server/client applications to integrate with Exchange Servers and Office 365
+ */
 export const convertRestIdToEwsId = (restId: String) => {
-  let retId = restId.replace(/_/g, "+");
-  retId = retId.replace(/-/g, "/");
-  return retId;
+  let ewsId = restId.replace(/_/g, "+");
+  ewsId = ewsId.replace(/-/g, "/");
+  return ewsId;
 };
 
 export const validateGuid = (str: string) => {

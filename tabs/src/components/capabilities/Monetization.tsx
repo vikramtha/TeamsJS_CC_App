@@ -1,6 +1,7 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, monetization } from "@microsoft/teams-js";
 
+import { CapabilityStatus } from "../../helpers/constants";
 import { booleanToString } from "../../helpers";
 import { isMobile } from "react-device-detect";
 
@@ -31,11 +32,11 @@ export const Monetization = () => {
       );
     } else {
       // return's if capability is not supported
-      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">{CapabilityStatus.NotSupported}</Flex>;
     }
   }
-  // return's if capability is not initialized.
-  return <>Capability is not initialized</>;
+  // return's if App is not initialized.
+  return <>{CapabilityStatus.NotInitialized}</>;
 };
 
 export const MonetizationIsSupported = () =>
