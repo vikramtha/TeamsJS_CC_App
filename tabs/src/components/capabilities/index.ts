@@ -3,6 +3,7 @@ import {
   AppInstallDialog,
   AppInstallDialogIsSupported,
 } from "./AppInstallDialog";
+import { AppOpenLink, AppOpenLinkIsSupported } from "./App.OpenLink"
 import { BarCode, BarCodeIsSupported } from "./BarCode";
 import { Calendar, CalendarIsSupported } from "./Calendar";
 import { Call, CallIsSupported } from "./Call";
@@ -38,6 +39,8 @@ import { WebStorage, WebStorageIsSupported } from "./WebStorage";
 export {
   App,
   AppIsSupported,
+  AppOpenLink,
+  AppOpenLinkIsSupported,
   AppInstallDialog,
   AppInstallDialogIsSupported,
   BarCode,
