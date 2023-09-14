@@ -3,18 +3,19 @@ import {
   AppInstallDialog,
   AppInstallDialogIsSupported,
 } from "./AppInstallDialog";
+import { AppOpenLink, AppOpenLinkIsSupported } from "./App.OpenLink"
 import { BarCode, BarCodeIsSupported } from "./BarCode";
 import { Calendar, CalendarIsSupported } from "./Calendar";
 import { Call, CallIsSupported } from "./Call";
 import { Chat, ChatIsSupported } from "./Chat";
-import { Dialog, DialogUrlIsSupported } from "./Dialog";
+import { Dialog, DialogUrlIsSupported } from "./Dialog.Url";
 import {
   DialogAdaptiveCard,
   DialogAdaptiveCardIsSupported,
 } from "./Dialog.AdaptiveCard";
 import { DialogAdaptiveCardBot, DialogAdaptiveCardBotIsSupported } from "./Dialog.AdaptiveCard.Bot";
-import { DialogBot, DialogUrlBotIsSupported } from "./DialogBot";
-import { DialogUpdate, DialogUpdateIsSupported } from "./DialogUpdate";
+import { DialogBot, DialogUrlBotIsSupported } from "./Dialog.Url.Bot";
+import { DialogUpdate, DialogUpdateIsSupported } from "./Dialog.Update";
 import { GeoLocation, GeoLocationIsSupported } from "./GeoLocation";
 import { GeoLocationMap, GeoLocationMapIsSupported } from "./GeoLocation.map";
 import { IsPagesCurrentAppSupported, PagesCurrent } from "./Pages.Current";
@@ -38,6 +39,8 @@ import { WebStorage, WebStorageIsSupported } from "./WebStorage";
 export {
   App,
   AppIsSupported,
+  AppOpenLink,
+  AppOpenLinkIsSupported,
   AppInstallDialog,
   AppInstallDialogIsSupported,
   BarCode,

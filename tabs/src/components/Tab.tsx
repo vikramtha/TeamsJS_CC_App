@@ -5,6 +5,8 @@ import {
   AppInstallDialog,
   AppInstallDialogIsSupported,
   AppIsSupported,
+  AppOpenLink,
+  AppOpenLinkIsSupported,
   BarCode,
   BarCodeIsSupported,
   Calendar,
@@ -143,6 +145,22 @@ const Tab = () => {
           },
           { key: "App-2", content: AppIsSupported() },
           { key: "App-3", content: <App />, className: "ui_action" },
+        ],
+      },
+      {
+        key: "AppOpenLink",
+        items: [
+          {
+            key: "AppOpenLink-1",
+            content: (
+              <>
+                <Fluent.AppsIcon />
+                <Fluent.Text content="AppOpenLink" />
+              </>
+            ),
+          },
+          { key: "AppOpenLink-2", content: AppOpenLinkIsSupported() },
+          { key: "AppOpenLink-3", content: <AppOpenLink />, className: "ui_action" },
         ],
       },
       {

@@ -1,5 +1,5 @@
 import { Button, Dropdown, DropdownItemProps, Flex, Tooltip } from "@fluentui/react-northstar";
-import { adobeAcrobat, developersPortal, powerBI, vivaEngage, vivaInsight } from "../../helpers/constants";
+import { adobeAcrobat, vivaEngage, CapabilityStatus, developersPortal, powerBI, vivaInsight } from "../../helpers/constants";
 import { app, appInstallDialog } from "@microsoft/teams-js";
 import { booleanToString, validateGuid } from "../../helpers";
 
@@ -64,10 +64,12 @@ export const AppInstallDialog = () => {
             </Button>} content="appInstallDialog.openAppInstallDialog()" />
         </Flex>
       );
+    } else {
+      // return's if capability is not supported.
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">{CapabilityStatus.NotSupported}</Flex>;
     }
   }
-  // return's if capability is not supported.
-  return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
+  return <>{CapabilityStatus.NotInitialized}</>;
 };
 
 export const AppInstallDialogIsSupported = () =>

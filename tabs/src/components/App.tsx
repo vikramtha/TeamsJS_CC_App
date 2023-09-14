@@ -1,14 +1,11 @@
 import "./App.css";
 
-import * as Fluent from "@fluentui/react-northstar";
-
 // https://fluentsite.z22.web.core.windows.net/quick-start
 import { Loader, Provider, teamsTheme } from "@fluentui/react-northstar";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
 
 import DialogPage from "./DialogPage";
 import DialogResizePage from "./DialogResize";
-import { Nav } from "./Nav";
 import PagesTab from "./PagesTab";
 import Privacy from "./Privacy";
 import Tab from "./Tab";

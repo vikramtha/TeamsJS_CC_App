@@ -3,6 +3,7 @@ import { ProviderState, Providers } from "@microsoft/mgt-element";
 import { app, calendar } from "@microsoft/teams-js";
 import { booleanToString, convertRestIdToEwsId } from "../../helpers";
 
+import { CapabilityStatus } from "../../helpers/constants";
 import { TeamsFxContext } from "../Context";
 import { TeamsFxProvider } from "@microsoft/mgt-teamsfx-provider";
 import { isMobile } from "react-device-detect";
@@ -78,12 +79,12 @@ export const Calendar = () => {
         </Flex>
       );
     } else {
-      // return's  if capability is not supported.
-      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Capability is not supported</Flex>;;
+      // return's if capability is not supported.
+      return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">{CapabilityStatus.NotSupported}</Flex>;
     }
   }
-  // return's  if capability is not initialized.
-  return <>Capability is not initialized</>;
+  // return's if App is not initialized.
+  return <>{CapabilityStatus.NotInitialized}</>;
 };
 
 export const CalendarIsSupported = () =>

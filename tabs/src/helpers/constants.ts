@@ -26,3 +26,8 @@ export const urlList: string[] = [
   "https://www.microsoft.com",
   "https://outlook.office.com",
 ];
+
+export enum CapabilityStatus {
+  NotInitialized = "App is not initialized",
+  NotSupported = "Capability is not supported",
+}
