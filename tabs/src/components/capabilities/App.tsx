@@ -26,7 +26,7 @@ export const App = () => {
             className="ui_context"
             onClick={async () => {
               const context = await app.getContext();
-              const contextString = JSON.stringify(context);
+              const contextString = JSON.stringify(context, null, 3);
               setText(contextString);
               setShowText(true);
               console.log(context);
@@ -36,7 +36,10 @@ export const App = () => {
           content="app.getContext()"
         />
         {showText && (
-          <TextArea className="ui_app" fluid inverted value={text} />
+          <>
+            <TextArea className="ui_app" fluid inverted value={text} />
+            <Button onClick={() => { setShowText(false) }}>Hide</Button>
+          </>
         )}
       </Flex>
     );

@@ -160,7 +160,7 @@ const Tab = () => {
             ),
           },
           { key: "AppOpenLink-2", content: AppOpenLinkIsSupported() },
-          { key: "AppOpenLink-3", content: <AppOpenLink />, className: "ui_action" },
+          { key: "AppOpenLink-3", content: <AppOpenLink />, className: "ui_action ui_openlink" },
         ],
       },
       {
@@ -270,7 +270,7 @@ const Tab = () => {
         key: "Dialog-Update",
         items: [
           {
-            key: "Dialog-Update",
+            key: "Dialog-Update-1",
             content: (
               <>
                 <Fluent.CustomerHubIcon />
@@ -278,9 +278,9 @@ const Tab = () => {
               </>
             ),
           },
-          { key: "Dialog-Update", content: DialogUpdateIsSupported() },
+          { key: "Dialog-Update-2", content: DialogUpdateIsSupported() },
           {
-            key: "Dialog-Update",
+            key: "Dialog-Update-3",
             content: <DialogUpdate />,
             className: "ui_action",
           },
