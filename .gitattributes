@@ -1,3 +1,0 @@
-teamsapp.yml !filter
-env/.env.*.user !filter
-env/.env.local !filter
