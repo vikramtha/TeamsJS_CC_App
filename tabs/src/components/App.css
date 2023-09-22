@@ -74,6 +74,22 @@
   flex-flow: column;
 }
 
+.ui_input {
+  width: 70%;
+}
+
+.ui_input div {
+  width: 100%;
+}
+
+.ui_input input {
+  width: 100%;
+}
+
+.ui_openlink .ui-table__cell__content {
+  width: 100%;
+}
+
 @media screen and (min-width: 700px) {
   .ui-table__cell:not(:last-child) {
     max-width: 12%;

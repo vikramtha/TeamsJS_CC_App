@@ -32,8 +32,9 @@ export const AppOpenLink = () => {
     }
 
     return (
-      <Flex gap="gap.medium" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
+      <Flex gap="gap.medium" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center" style={{ width: '100%' }}>
         <Input
+          className={isMobile ? "" : "ui_input"}
           placeholder="Enter any url"
           value={inputVal}
           onChange={(e) => {

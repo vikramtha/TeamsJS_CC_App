@@ -53,14 +53,8 @@ export const GeoLocation = () => {
                 // get the user's location
                 try {
                   const location = await geoLocation.getCurrentLocation();
-                  console.log(`GeoLocation consented: ${location}`);
-                  console.log(`GeoLocation accuracy: ${location.accuracy}`);
-                  console.log(`GeoLocation longitude: ${location.longitude}`);
-                  console.log(`GeoLocation latitude: ${location.latitude}`);
-                  const text = `GeoLocation consented: ${location ? true : false
-                    } \n GeoLocation accuracy: ${location.accuracy
-                    }\n GeoLocation longitude: ${location.longitude
-                    }\n GeoLocation latitude: ${location.latitude}`;
+                  console.log(`GeoLocation consented: ${JSON.stringify(location, null, 2)}`);
+                  const text = `GeoLocation consented: ${JSON.stringify(location, null, 2)}`;
                   setText(text);
                   setShowText(true);
                 } catch (e) {
