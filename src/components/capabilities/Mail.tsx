@@ -1,7 +1,7 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { ProviderState, Providers } from "@microsoft/mgt-element";
 import { app, mail } from "@microsoft/teams-js";
-import { booleanToString, convertRestIdToEwsId } from "../../helpers";
+import { booleanToString, convertRestIdToEwsId } from "../../helpers/convert";
 
 import { CapabilityStatus } from "../../helpers/constants";
 import { TeamsFxContext } from "../Context";

@@ -2,7 +2,7 @@ import { Button, Dropdown, Flex, Tooltip } from "@fluentui/react-northstar";
 import { CapabilityStatus, userList } from "../../helpers/constants";
 import { app, call } from "@microsoft/teams-js";
 
-import { booleanToString } from "../../helpers";
+import { booleanToString } from "../../helpers/convert";
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
 

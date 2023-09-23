@@ -1,7 +1,7 @@
 import { Button, Dropdown, DropdownItemProps, Flex, Tooltip } from "@fluentui/react-northstar";
 import { adobeAcrobat, vivaEngage, CapabilityStatus, developersPortal, powerBI, vivaInsight } from "../../helpers/constants";
 import { app, appInstallDialog } from "@microsoft/teams-js";
-import { booleanToString, validateGuid } from "../../helpers";
+import { booleanToString, validateGuid } from "../../helpers/convert";
 
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
