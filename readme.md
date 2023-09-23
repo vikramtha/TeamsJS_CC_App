@@ -1,37 +1,93 @@
 # TeamsJS Capability Checker
 
-Sample application to demonstrate the capabilities of TeamsJS in Microsoft Teams apps extended across Outlook and Microsoft 365.
+# Personal Tabs
+
+Tabs are Teams-aware webpages embedded in Microsoft Teams. A channel/group tab delivers content to channels and group chats, and are a great way to create collaborative spaces around dedicated web-based content.
+
+ ## Included Features
+* Tabs
+
+## Interaction with app
+
+![Tab Personal QuickstartGif](Images/TabPersonalQuickstartGif.gif)
 
 ## Prerequisites
+-  [NodeJS](https://nodejs.org/en/)
 
-- Microsoft 365 Tenant with Sideloading enabled
-- Visual Studio Code
-- Teams Toolkit v4.2.4
-
-## Instructions to Start without Graph API( This means you will be unable to use all of the Calendar and Mail API functions) 
-
-- Clone repo, open in Visual Studio Code
-- Run debug (F5)
-  - Sideload app in Outlook or Microsoft 365
+-  [M365 developer account](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant) or access to a Teams account with the appropriate permissions to install an app.
+- [dev tunnel](https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started?tabs=windows) or [Ngrok](https://ngrok.com/download) (For local environment testing) latest version (any other tunneling software can also be used)
   
-  
-## Instructions to Start with Graph API
-## Prerequisite
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
-- An [Azure subscription](https://azure.microsoft.com/en-us/free/)
-- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- [Teams](https://teams.microsoft.com) Microsoft Teams is installed and you have an account
 
-## Try the Sample with Visual Studio Code Extension:
+- [Teams Toolkit for VS Code](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension) or [TeamsFx CLI](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-cli?pivots=version-one)
 
-### Local Debug the Sample
-1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
-1. Open the project in Visual Studio Code.
-1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view contact exporter sample app. 
+## Run the app (Using Teams Toolkit for Visual Studio Code)
 
-### Provision and Deploy the Sample to Azure
-> If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
-1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
-1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
-1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+The simplest way to run this sample in Teams is to use Teams Toolkit for Visual Studio Code.
+
+1. Ensure you have downloaded and installed [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)
+1. Install the [Teams Toolkit extension](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
+1. Select **File > Open Folder** in VS Code and choose this samples directory from the repo
+1. Using the extension, sign in with your Microsoft 365 account where you have permissions to upload custom apps
+1. Select **Debug > Start Debugging** or **F5** to run the app in a Teams web client.
+1. In the browser that launches, select the **Add** button to install the app to Teams.
+
+> If you do not have permission to upload custom apps (sideloading), Teams Toolkit will recommend creating and using a Microsoft 365 Developer Program account - a free program to get your own dev environment sandbox that includes Teams.
+
+## Deploy to Teams
+Start debugging the project by hitting the `F5` key or click the debug icon in Visual Studio Code and click the `Start Debugging` green arrow button using Teams Toolkit
+
+### NOTE: First time debug step
+On the first time running and debugging your app you need allow the localhost certificate.  After starting debugging when Chrome is launched and you have installed your app it will fail to load.
+
+### NOTE: Debugging
+Ensure you have the Debugger for Chrome/Edge extension installed for Visual Studio Code from the marketplace.
+
+### Build for production
+`npm run build`
+
+## Running the sample
+
+
+## Outlook on the web
+
+- To view your app in Outlook on the web.
+
+- Go to [Outlook on the web](https://outlook.office.com/mail/)and sign in using your dev tenant account.
+
+**On the side bar, select More Apps. Your sideloaded app title appears among your installed apps**
+
+
+
+**Select your app icon to launch and preview your app running in Outlook on the web**
+
+
+**Note:** Similarly, you can test your application in the Outlook desktop app as well.
+
+## Office on the web
+
+- To preview your app running in Office on the web.
+
+- Log into office.com with test tenant credentials
+
+**Select the Apps icon on the side bar. Your sideloaded app title appears among your installed apps**
+
+
+
+**Select your app icon to launch your app in Office on the web**
+
+
+
+**Note:** Similarly, you can test your application in the Office 365 desktop app as well.
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Further Reading.
+[tab-personal-quickstart](https://learn.microsoft.com/en-us/microsoftteams/platform/tabs/what-are-tabs)
+[Extend Teams apps across Microsoft 365](https://learn.microsoft.com/en-us/microsoftteams/platform/m365-apps/overview)
