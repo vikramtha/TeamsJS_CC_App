@@ -95,6 +95,18 @@
   width: 100%;
 }
 
+.tag-container1 {
+  margin: 0.5rem;
+  margin-right: 20px;
+  border-radius: 8px;
+  padding: 0.9rem;
+}
+
+.timerCount {
+  padding: 10rem;
+  text-align: center;
+}
+
 @media screen and (min-width: 700px) {
   .ui-table__cell:not(:last-child) {
     max-width: 12%;

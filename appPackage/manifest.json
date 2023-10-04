@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.14",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
@@ -25,7 +25,7 @@
     "accentColor": "#FFFFFF",
     "configurableTabs": [
         {
-            "configurationUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/config",
+            "configurationUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/configure",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team",
@@ -66,8 +66,32 @@
                 "personal",
                 "team"
             ]
+        },
+        {
+            "entityId": "meetings",
+            "name": "Meetings",
+            "contentUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/meetings",
+            "websiteUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/meetings",
+            "scopes": [
+                "personal",
+                "team"
+            ]
         }
     ],
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "MeetingStage.Write.Chat",
+                    "type": "Delegated"
+                },
+                {
+                    "name": "ChannelMeetingStage.Write.Group",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
     "permissions": [
         "identity",
         "messageTeamMembers"
