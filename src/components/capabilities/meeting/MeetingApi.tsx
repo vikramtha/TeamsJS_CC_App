@@ -118,6 +118,27 @@ export const MeetingApi = () => {
             alert(JSON.stringify(handler));
         });
     }
+    const stopSharingAppContentToStage = () => {
+        meeting.stopSharingAppContentToStage(handler => {
+            alert(JSON.stringify(handler));
+        });
+    }
+
+    const updateMicState = () => {
+        let result: boolean = false;
+        meeting.getIncomingClientAudioState((errcode, bln) => {
+            if (errcode) {
+                alert(JSON.stringify(errcode));
+            }
+            else {
+                result = bln ? bln : false;
+                setResult(JSON.stringify(bln));
+                alert(result);
+            }
+        });
+        meeting.updateMicState({ isMicMuted: result });
+        alert(result)
+    }
 
     return (
         <>
@@ -166,6 +187,14 @@ export const MeetingApi = () => {
                 <div className="tag-container">
                     <h3>RegisterSpeakingStateChangeHandler</h3>
                     <Tooltip content="meeting.registerSpeakingStateChangeHandler()" trigger={<Button onClick={registerSpeakingStateChangeHandler} >RegisterSpeakingStateChangeHandler</Button>} />
+                </div>
+                <div className="tag-container">
+                    <h3>StopSharingAppContentToStage</h3>
+                    <Tooltip content="meeting.stopSharingAppContentToStage()" trigger={<Button onClick={stopSharingAppContentToStage} >StopSharingAppContentToStage</Button>} />
+                </div>
+                <div className="tag-container">
+                    <h3>UpdateMicState</h3>
+                    <Tooltip content="meeting.updateMicState()" trigger={<Button onClick={updateMicState} >UpdateMicState</Button>} />
                 </div>
             </Flex>
         </>
