@@ -1,6 +1,6 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.14",
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.16",
     "version": "1.0.2",
     "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension",
@@ -87,6 +87,14 @@
                 },
                 {
                     "name": "ChannelMeetingStage.Write.Group",
+                    "type": "Delegated"
+                },
+                {
+                    "name": "InAppPurchase.Allow.User",
+                    "type": "Delegated"
+                },
+                {
+                    "name": "searchQuery.Read.User",
                     "type": "Delegated"
                 }
             ]
