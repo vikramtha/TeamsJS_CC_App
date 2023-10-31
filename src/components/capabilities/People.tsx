@@ -27,7 +27,7 @@ export const People = () => {
                 }
               }}
             >
-              Open People Picker (Defaults)
+              People Picker (Defaults)
             </Button>
           } />
           <Tooltip content="people.selectPeople({singleSelect: true,})" trigger={
@@ -43,7 +43,7 @@ export const People = () => {
                 }
               }}
             >
-              Open People Picker (Single)
+              People Picker (Single)
             </Button>
           } />
           <Tooltip content="people.selectPeople({setSelected: [user]})" trigger={
@@ -63,7 +63,7 @@ export const People = () => {
                 }
               }}
             >
-              Open People Picker (Preselected)
+              People Picker (Preselected)
             </Button>
           } />
           <Tooltip content="people.selectPeople({ openOrgWideSearchInChatOrChannel: false})" trigger={
@@ -77,7 +77,7 @@ export const People = () => {
                 }
               }}
             >
-              Open People Picker (Members Only)
+              People Picker (Members Only)
             </Button>
           } />
           <Tooltip content="people.selectPeople({title: `Custom Title`})" trigger={
@@ -93,7 +93,7 @@ export const People = () => {
                 }
               }}
             >
-              Open People Picker (Custom Title)
+              People Picker (Custom Title)
             </Button>
 
           } />

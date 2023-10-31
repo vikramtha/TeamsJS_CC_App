@@ -107,6 +107,19 @@
   text-align: center;
 }
 
+.short-top-text {
+  font-size: x-small;
+  font-weight: bold;
+  vertical-align: top;
+  padding-left: 1px;
+}
+
+.short-bottom-text {
+  font-size: xx-small;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
 @media screen and (min-width: 700px) {
   .ui-table__cell:not(:last-child) {
     max-width: 12%;
@@ -133,6 +146,6 @@
   }
 
   .ui-table__cell:first-child {
-    max-width: 9%;
+    max-width: 12%;
   }
 }

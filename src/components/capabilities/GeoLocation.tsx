@@ -37,11 +37,16 @@ export const GeoLocation = () => {
           <Tooltip content="geoLocation.requestPermission()" trigger={
             <Button
               onClick={async () => {
-                // request permission to access the user's location
-                const hasConsent = await geoLocation.requestPermission();
-                setText(hasConsent ? "Has Consent" : "Do not have Consent");
-                setShowText(true);
-                console.log(`GeoLocation consented: ${hasConsent}`);
+                try {
+                  // request permission to access the user's location
+                  const hasConsent = await geoLocation.requestPermission();
+                  setText(hasConsent ? "Has Consent" : "Do not have Consent");
+                  setShowText(true);
+                  console.log(`GeoLocation consented: ${hasConsent}`);
+                } catch (error) {
+                  setText(JSON.stringify(error));
+                }
+
               }}
             >
               Request Permission

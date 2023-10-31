@@ -47,7 +47,9 @@ export const NavigateBack = () => {
             )
         } else {
             // return's if capability is not supported.
-            return <Fluent.Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Sub-Capability is not supported</Fluent.Flex>;
+            return (<Fluent.Segment>
+                <Fluent.Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Sub-Capability is not supported</Fluent.Flex>
+            </Fluent.Segment>);
         }
     }
     // return's if app is not initialized.

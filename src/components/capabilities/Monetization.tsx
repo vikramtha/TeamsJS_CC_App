@@ -19,10 +19,14 @@ export const Monetization = () => {
             <Button
               onClick={async () => {
                 // To use this provide plan id and term of plan
-                await monetization.openPurchaseExperience({
-                  planId: "",
-                  term: "",
-                });
+                try {
+                  await monetization.openPurchaseExperience({
+                    planId: "",
+                    term: "",
+                  });
+                } catch (error) {
+                  alert(JSON.stringify(error));
+                }
               }}
             >
               OpenPurchaseExperience

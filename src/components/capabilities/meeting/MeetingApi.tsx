@@ -1,6 +1,7 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, meeting } from "@microsoft/teams-js";
 
+import { Video } from "../Video";
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
@@ -196,6 +197,7 @@ export const MeetingApi = () => {
                     <h3>UpdateMicState</h3>
                     <Tooltip content="meeting.updateMicState()" trigger={<Button onClick={updateMicState} >UpdateMicState</Button>} />
                 </div>
+                <Video />
             </Flex>
         </>
     )

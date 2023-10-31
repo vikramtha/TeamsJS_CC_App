@@ -8,7 +8,7 @@ import { isMobile } from "react-device-detect";
 /**
  * This component Open's a dialag in a bot application
  */
-export const DialogBot = () => {
+export const DialogUrlBot = () => {
   // check to see if capability is isInitialized
   if (app.isInitialized()) {
     // check to see if capability is supported

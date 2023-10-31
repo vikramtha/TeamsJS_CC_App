@@ -9,7 +9,7 @@ import { isMobile } from "react-device-detect";
  * This component returns a button which navigates to particular tab
  * with pageId or to a default page.
  */
-export const PagesCurrent = () => {
+export const PagesCurrentApp = () => {
   // Check to see if capability is isInitialized
   if (app.isInitialized()) {
     // check to see if capability is supported
@@ -40,5 +40,5 @@ export const PagesCurrent = () => {
   return <>{CapabilityStatus.NotInitialized}</>;
 };
 
-export const IsPagesCurrentAppSupported = () =>
+export const PagesCurrentAppIsSupported = () =>
   booleanToString(pages.currentApp.isSupported());

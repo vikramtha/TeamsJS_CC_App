@@ -34,28 +34,239 @@ export const validateGuid = (str: string) => {
   }
 }
 
-export interface IModule {
-  isSupported: () => boolean;
-  [key: string]: any;
-}
-
 export interface IModuleDetails {
   deprecated?: boolean;
   internal?: boolean;
   hidden?: boolean;
   beta?: boolean;
+  iconName?: string
 }
 
-export function isModule(value: any): value is IModule {
-  return typeof value === "object" && typeof value.isSupported === "function";
+export function getModuleDetails(path: string): IModuleDetails | undefined {
+  return moduleDetailsMap.get(path);
 }
 
-export function safeIsSupported(module: IModule): string {
-  let text = "No";
-  try {
-    text = module.isSupported() ? "Yes" : "No";
-  } catch (err: unknown) {
-    text = "No (invalid frame)";
-  }
-  return text;
-}
+const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
+  ["app", { iconName: "AppsIcon" }],
+  ["appopenlink", { iconName: "AppsIcon" }],
+  [
+    "appentity",
+    {
+      hidden: true,
+      internal: true,
+    },
+  ],
+  ["appinstalldialog", { iconName: "DownloadIcon" }],
+  [
+    "barcode",
+    {
+      beta: true,
+      iconName: "TranscriptIcon"
+    },
+  ],
+  ["calendar", { iconName: "CalendarIcon" }],
+  ["call", { iconName: "CallIcon" }],
+  [
+    "chat",
+    {
+      beta: true,
+      iconName: "ChatIcon"
+    },
+  ],
+  [
+    "clipboard",
+    {
+      beta: true,
+      iconName: "ChatIcon"
+    },
+  ],
+  [
+    "conversations",
+    {
+      hidden: true,
+      internal: true,
+    },
+  ],
+  ["dialog", { iconName: "CustomerHubIcon" }],
+  [
+    "dialogurl",
+    {
+      beta: true,
+      iconName: "CustomerHubIcon"
+    },
+  ],
+  [
+    "dialogurlbot",
+    {
+      beta: true,
+      iconName: "CustomerHubIcon"
+    },
+  ],
+  [
+    "dialogupdate",
+    {
+      beta: true,
+      iconName: "CustomerHubIcon"
+    },
+  ],
+  [
+    "dialogadaptivecard",
+    {
+      beta: true,
+      iconName: "CustomerHubIcon"
+    },
+  ],
+  [
+    "dialogadaptivecardbot",
+    {
+      beta: true,
+      iconName: "CustomerHubIcon"
+    },
+  ],
+  [
+    "geolocation",
+    {
+      beta: true,
+      iconName: "LocationIcon"
+    },
+  ],
+  [
+    "geolocationmap",
+    {
+      beta: true,
+      iconName: "ShareLocationIcon"
+    },
+  ],
+  ["liveshare", { iconName: "EmailIcon" }],
+  [
+    "location",
+    {
+      deprecated: true,
+      iconName: "LocationIcon"
+    },
+  ],
+  [
+    "logs",
+    {
+      hidden: true,
+      internal: true,
+    },
+  ],
+  ["mail", {
+    iconName: "EmailIcon"
+  }],
+  [
+    "marketplace",
+    {
+      hidden: true,
+      beta: true,
+    },
+  ],
+  [
+    "meetingroom",
+    {
+      hidden: true,
+      internal: true,
+    },
+  ],
+  ["menus", { iconName: "MenuIcon" }],
+  ["monetization", { iconName: "PollIcon" }],
+  ["notifications", {}],
+  ["pages", { iconName: "FilesTxtIcon" }],
+  ["pagestabs", { iconName: "FilesTxtIcon" }],
+  ["pagesconfig", { iconName: "FilesTxtIcon" }],
+  ["pagesbackstack", { iconName: "FilesTxtIcon" }],
+  [
+    "pagesfulltrust",
+    {
+      hidden: true,
+    },
+  ],
+  ["pagesappbutton", { iconName: "FilesTxtIcon" }],
+  [
+    "pagescurrentapp",
+    {
+      beta: true,
+      iconName: "FilesTxtIcon"
+    },
+  ],
+  ["people", { iconName: "AttendeeIcon" }],
+  [
+    "profile",
+    {
+      beta: true,
+      iconName: "ContactCardIcon"
+    },
+  ],
+  [
+    "remotecamera",
+    {
+      hidden: true,
+      internal: true,
+    },
+  ],
+  [
+    "search",
+    {
+      beta: true,
+      iconName: "SearchIcon"
+    },
+  ],
+  [
+    "secondarybrowser",
+    {
+      beta: true,
+    },
+  ],
+  ["sharing", { iconName: "ScreenshareIcon" }],
+  [
+    "stageview",
+    {
+      beta: true,
+      iconName: "PanoramaIcon"
+    },
+  ],
+  [
+    "teams",
+    {
+      hidden: true,
+      internal: true,
+    },
+  ],
+  [
+    "teamsfulltrust",
+    {
+      hidden: true,
+      internal: true,
+    },
+  ],
+  [
+    "teamsfulltrustjoinedteams",
+    {
+      hidden: true,
+      internal: true,
+    },
+  ],
+  ["teamscore", { iconName: "TeamsMonochromeIcon" }],
+  [
+    "video",
+    {
+      beta: true,
+      iconName: "CallVideoIcon"
+    },
+  ],
+  [
+    "videoex",
+    {
+      beta: true,
+      hidden: true,
+      internal: true,
+    },
+  ],
+  [
+    "webstorage",
+    {
+      beta: true, iconName: "BriefcaseIcon"
+    },
+  ],
+]);
