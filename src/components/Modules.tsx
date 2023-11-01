@@ -3,10 +3,12 @@ import * as capabilities from './capabilities';
 
 import { getModuleDetails } from "../helpers/utils";
 
-export const ModulePage = () => {
+export const AllModules = () => {
     let modules: any = [];
     let modulesIsSupported: any = [];
+
     if (typeof capabilities === "object") {
+        // filtering functions without 'isSupported' name
         modules = Object.entries(capabilities).filter(([_, value]) =>
             value.name.search("IsSupported") !== -1 ? false : value
         ) as [];
@@ -37,9 +39,8 @@ export const ModulePage = () => {
             const Icon = iconName[1];
 
             const Capability = el as Function;
-            // const supported = elString();
 
-            const content: JSX.Element | string = <>
+            const capabilityName: JSX.Element | string = <>
                 <Icon />
                 <Fluent.Text>
                     {moduleName}
@@ -49,6 +50,9 @@ export const ModulePage = () => {
                     {moduleDetails?.beta &&
                         <Fluent.Text className="short-top-text" content="β" />
                     }
+                    {moduleDetails?.internal &&
+                        <Fluent.Text className="short-top-text" content="i" />
+                    }
                 </Fluent.Text>
             </>;
             return {
@@ -56,7 +60,7 @@ export const ModulePage = () => {
                 items: [
                     {
                         key: `${moduleName}-1`,
-                        content: content
+                        content: capabilityName
                     },
                     { key: `${moduleName}-2`, content: supported },
                     { key: `${moduleName}-3`, content: <Capability />, className: `ui_action ${moduleName === 'AppOpenLink' ? 'ui_openlink' : ''}` },
@@ -65,7 +69,7 @@ export const ModulePage = () => {
         } catch (error) {
             console.log(error);
         }
-
+        return [];
     });
     return dataTable;
 }

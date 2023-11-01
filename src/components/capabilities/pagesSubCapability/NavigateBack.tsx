@@ -17,20 +17,21 @@ export const NavigateBack = () => {
                 console.log("Back button pressed");
                 return true;
             });
-
-            return (
-                <>
-                    <Fluent.Segment>
-                        <Fluent.Header styles={{ margin: "unset" }} as="h2" content="Pages.BackStack Capability" />
-                    </Fluent.Segment>
-                    <Fluent.Segment className="ui-pagessegment">
-                        <Fluent.Header content="Navigate Back" as="h3" />
-                        <Fluent.Flex gap="gap.small" vAlign="center">
-                            <Fluent.Text
-                                className="ui-pagestext"
-                                content="Navigates back in the hosted application."
-                            />
-                        </Fluent.Flex>
+        }
+        return (
+            <>
+                <Fluent.Segment>
+                    <Fluent.Header styles={{ margin: "unset" }} as="h2" content="Pages.BackStack Capability" />
+                </Fluent.Segment>
+                <Fluent.Segment className="ui-pagessegment">
+                    <Fluent.Header content="Navigate Back" as="h3" />
+                    <Fluent.Flex gap="gap.small" vAlign="center">
+                        <Fluent.Text
+                            className="ui-pagestext"
+                            content="Navigates back in the hosted application."
+                        />
+                    </Fluent.Flex>
+                    {pages.backStack.isSupported() ?
                         <Fluent.Flex gap="gap.small" vAlign="center">
                             <Fluent.Tooltip content="pages.backStack.navigateBack()" trigger={
                                 <Fluent.Button
@@ -41,16 +42,12 @@ export const NavigateBack = () => {
                                     Click me to Navigate Back
                                 </Fluent.Button>
                             } />
-                        </Fluent.Flex>
-                    </Fluent.Segment>
-                </>
-            )
-        } else {
-            // return's if capability is not supported.
-            return (<Fluent.Segment>
-                <Fluent.Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Sub-Capability is not supported</Fluent.Flex>
-            </Fluent.Segment>);
-        }
+                        </Fluent.Flex> :
+                        <Fluent.Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">Sub-Capability is not supported</Fluent.Flex>
+                    }
+                </Fluent.Segment>
+            </>
+        )
     }
     // return's if app is not initialized.
     return <>{CapabilityStatus.NotInitialized}</>;

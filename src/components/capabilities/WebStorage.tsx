@@ -19,7 +19,7 @@ export const WebStorage = () => {
             <Button
               onClick={() => {
                 const isCleared = webStorage.isWebStorageClearedOnUserLogOut();
-                console.log(isCleared);
+                alert("isWebStorageClearedOnUserLogOut" + isCleared);
               }}
             >
               Is Storage Cleared On LogOut

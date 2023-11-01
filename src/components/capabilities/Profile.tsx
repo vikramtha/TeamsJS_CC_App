@@ -1,4 +1,4 @@
-import { Flex, Text } from "@fluentui/react-northstar";
+import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, profile } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
@@ -15,7 +15,34 @@ export const Profile = () => {
     if (profile.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Text content="Coming Soon" />;
+          <Tooltip content="people.selectPeople({title: `Custom Title`})" trigger={
+            <Button onClick={async () => {
+              const context = await app.getContext();
+              await profile.showProfile({
+                persona: {
+                  identifiers: {
+                    AadObjectId: context.user?.id,
+                    Upn: context.user?.userPrincipalName
+                  },
+                  displayName: context.user?.displayName
+                },
+                targetElementBoundingRect: {
+                  bottom: 300,
+                  height: 300,
+                  left: 300,
+                  right: 300,
+                  x: 300,
+                  y: 300,
+                  top: 300,
+                  width: 300,
+                  toJSON: () => {
+                  }
+                },
+                triggerType: "MouseHover",
+                modality: "Expanded"
+              })
+            }}>Profile ShowProfile</Button>
+          } />
         </Flex>
       );
     } else {

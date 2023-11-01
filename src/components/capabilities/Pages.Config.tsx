@@ -15,7 +15,7 @@ export const PagesConfig = () => {
         if (pages.config.isSupported()) {
             return (
                 <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-                    <Text content="Coming soon" />
+                    <Text content="No implemention, as it requires Settings context" />
                 </Flex>
             );
         }

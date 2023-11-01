@@ -12,6 +12,7 @@ import { useState } from "react";
 export const Chat = () => {
   const [users, setUsers] = useState([] as string[]);
   const [user, setUser] = useState("");
+
   const getA11ySelectionMessage = {
     onAdd: (user: any) => {
       const allusers = [...users, user];
@@ -24,6 +25,11 @@ export const Chat = () => {
       return `${item} has been removed.`
     }
   }
+
+  const onSelect = (element: any) => {
+    const value = element.target.value ? element.target.value : "";
+    setUser(value);
+  }
   // Check to see if capability is isInitialized
   if (app.isInitialized()) {
     // Check to see if capability is supported
@@ -34,10 +40,7 @@ export const Chat = () => {
             search
             items={userList}
             placeholder="Start typing a name or select"
-            onSelect={(e: any) => {
-              const value = e.target.value ? e.target.value : "";
-              setUser(value);
-            }}
+            onSelect={onSelect}
           />
           <Tooltip content="chat.openChat()" trigger={
             <Button

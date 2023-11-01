@@ -14,7 +14,7 @@ export const Search = () => {
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Tooltip content="search.registerHandlers()" trigger={
             <Button
-              onClick={async () => {
+              onClick={() => {
                 // register search handlers
                 search.registerHandlers(
                   (searchText) => {
@@ -37,7 +37,7 @@ export const Search = () => {
           } />
           <Tooltip content="search.unregisterHandlers()" trigger={
             <Button
-              onClick={async () => {
+              onClick={() => {
                 // unregister search handlers
                 search.unregisterHandlers();
               }}

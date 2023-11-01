@@ -94,7 +94,7 @@
                     "type": "Delegated"
                 },
                 {
-                    "name": "searchQuery.Read.User",
+                    "name": "SearchQuery.Read.User",
                     "type": "Delegated"
                 }
             ]

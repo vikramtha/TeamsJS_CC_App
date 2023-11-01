@@ -34,6 +34,27 @@ export const validateGuid = (str: string) => {
   }
 }
 
+export enum ClientType {
+  mobile = "Mobile",
+  desktop = "Desktop",
+}
+
+export interface ICapabilityStatus {
+  capabilityName?: string;
+  supported: string;
+}
+
+export interface ICapabilityTable {
+  key: string;
+  items: Item[];
+}
+
+export interface Item {
+  key: string;
+  content: JSX.Element | string;
+  className?: string;
+}
+
 export interface IModuleDetails {
   deprecated?: boolean;
   internal?: boolean;
@@ -170,7 +191,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     },
   ],
   ["menus", { iconName: "MenuIcon" }],
-  ["monetization", { iconName: "PollIcon" }],
+  ["monetization", { internal: true, iconName: "PollIcon" }],
   ["notifications", {}],
   ["pages", { iconName: "FilesTxtIcon" }],
   ["pagestabs", { iconName: "FilesTxtIcon" }],
