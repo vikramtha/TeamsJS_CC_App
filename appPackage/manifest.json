@@ -6,9 +6,9 @@
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}",
-        "privacyUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/privacy",
-        "termsOfUseUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/termsofuse"
+        "websiteUrl": "${{TAB_ENDPOINT}}/index.html",
+        "privacyUrl": "${{TAB_ENDPOINT}}/index.html#/privacy",
+        "termsOfUseUrl": "${{TAB_ENDPOINT}}/index.html#/termsofuse"
     },
     "icons": {
         "color": "${{CONFIG__MANIFEST__ICONS__COLOR}}",
@@ -25,7 +25,7 @@
     "accentColor": "#FFFFFF",
     "configurableTabs": [
         {
-            "configurationUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/configure",
+            "configurationUrl": "${{TAB_ENDPOINT}}/index.html#/config",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team",
@@ -50,8 +50,8 @@
         {
             "entityId": "index0",
             "name": "Capabilities",
-            "contentUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/tab",
-            "websiteUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/tab",
+            "contentUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
+            "websiteUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
             "scopes": [
                 "personal",
                 "team"
@@ -60,8 +60,8 @@
         {
             "entityId": "pagesTab",
             "name": "Pages",
-            "contentUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/pagesTab",
-            "websiteUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/pagesTab",
+            "contentUrl": "${{TAB_ENDPOINT}}/index.html#/pagesTab",
+            "websiteUrl": "${{TAB_ENDPOINT}}/index.html#/pagesTab",
             "scopes": [
                 "personal",
                 "team"
@@ -112,10 +112,10 @@
         "openExternal"
     ],
     "validDomains": [
-        "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__DOMAIN}}"
+        "${{TAB_DOMAIN}}"
     ],
     "webApplicationInfo": {
         "id": "${{AAD_APP_CLIENT_ID}}",
-        "resource": "api://${{STATE__FX_RESOURCE_FRONTEND_HOSTING__DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
+        "resource": "api://${{TAB_DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
     }
 }
