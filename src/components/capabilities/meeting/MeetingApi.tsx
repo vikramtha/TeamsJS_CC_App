@@ -142,7 +142,7 @@ export const MeetingApi = () => {
     }
 
     return (
-        <>
+        <div style={{ paddingLeft: "10px" }}>
             <Flex style={{ flexDirection: "column", fontSize: "10px" }} gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} >
                 <div className="tag-container">
                     <h3>Share To Stage View</h3>
@@ -197,8 +197,7 @@ export const MeetingApi = () => {
                     <h3>UpdateMicState</h3>
                     <Tooltip content="meeting.updateMicState()" trigger={<Button onClick={updateMicState} >UpdateMicState</Button>} />
                 </div>
-                <Video />
             </Flex>
-        </>
+        </div>
     )
 }

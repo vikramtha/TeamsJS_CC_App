@@ -15,7 +15,7 @@ export const Profile = () => {
     if (profile.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="people.selectPeople({title: `Custom Title`})" trigger={
+          <Tooltip content="profile.showProfile()" trigger={
             <Button onClick={async () => {
               const context = await app.getContext();
               await profile.showProfile({
