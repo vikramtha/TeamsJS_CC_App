@@ -70,8 +70,8 @@
         {
             "entityId": "meetings",
             "name": "Meetings",
-            "contentUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/meetings",
-            "websiteUrl": "${{STATE__FX_RESOURCE_FRONTEND_HOSTING__ENDPOINT}}${{STATE__FX_RESOURCE_FRONTEND_HOSTING__INDEXPATH}}/meetings",
+            "contentUrl": "${{TAB_ENDPOINT}}/index.html#/meetings",
+            "websiteUrl": "${{TAB_ENDPOINT}}/index.html#/meetings",
             "scopes": [
                 "personal",
                 "team"
