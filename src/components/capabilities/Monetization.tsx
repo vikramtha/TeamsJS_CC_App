@@ -2,7 +2,7 @@ import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, monetization } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
-import { booleanToString } from "../../helpers/convert";
+import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 
 /**
@@ -19,10 +19,14 @@ export const Monetization = () => {
             <Button
               onClick={async () => {
                 // To use this provide plan id and term of plan
-                await monetization.openPurchaseExperience({
-                  planId: "",
-                  term: "",
-                });
+                try {
+                  await monetization.openPurchaseExperience({
+                    planId: "",
+                    term: "",
+                  });
+                } catch (error) {
+                  alert(JSON.stringify(error));
+                }
               }}
             >
               OpenPurchaseExperience

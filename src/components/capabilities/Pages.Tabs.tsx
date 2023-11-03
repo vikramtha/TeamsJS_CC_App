@@ -2,7 +2,7 @@ import { Button, Flex, TextArea, Tooltip } from "@fluentui/react-northstar";
 import { app, pages } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
-import { booleanToString } from "../../helpers/convert";
+import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
@@ -31,7 +31,7 @@ export const PagesTabs = () => {
                 onClick={async () => {
                   const config = await pages.tabs.getTabInstances();
                   console.log(config);
-                  setText(`Get tab instances: ${JSON.stringify(config)}`);
+                  setText(`Get tab instances: ${JSON.stringify(config, null, 2)}`);
                   setShowText(true);
                 }}
               >
@@ -44,7 +44,7 @@ export const PagesTabs = () => {
                   const config = await pages.tabs.getMruTabInstances();
                   console.log(config);
                   setText(
-                    `Most Recently Used tab instances: ${JSON.stringify(config)}`
+                    `Most Recently Used tab instances: ${JSON.stringify(config, null, 2)}`
                   );
                   setShowText(true);
                 }}
@@ -55,16 +55,14 @@ export const PagesTabs = () => {
             <Tooltip content="pages.tabs.navigateToTab()" trigger={
               <Button
                 onClick={async () => {
+
+                  const config = await pages.tabs.getMruTabInstances();
+                  const teamTabs = config.teamTabs[0];
                   // only works for channel tabs, see
                   // https://stackoverflow.com/questions/62390440/msteams-development-navigate-between-personal-tabs
-                  const baseUrl = `https://${window.location.host}`;
+                  // const baseUrl = `https://${window.location.host}`;
                   // deprecated? check docs
-                  await pages.tabs.navigateToTab({
-                    tabName: "Terms of use",
-                    entityId: "tou1",
-                    url: `${baseUrl}/index.html#/termsofuse`,
-                    websiteUrl: `${baseUrl}/index.html#/termsofuse`,
-                  });
+                  await pages.tabs.navigateToTab(teamTabs);
                 }}
               >
                 Navigate to tab

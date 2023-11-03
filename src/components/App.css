@@ -95,6 +95,31 @@
   width: 100%;
 }
 
+.tag-container1 {
+  margin: 0.5rem;
+  margin-right: 20px;
+  border-radius: 8px;
+  padding: 0.9rem;
+}
+
+.timerCount {
+  padding: 10rem;
+  text-align: center;
+}
+
+.short-top-text {
+  font-size: x-small;
+  font-weight: bold;
+  vertical-align: top;
+  padding-left: 1px;
+}
+
+.short-bottom-text {
+  font-size: xx-small;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
 @media screen and (min-width: 700px) {
   .ui-table__cell:not(:last-child) {
     max-width: 12%;
@@ -121,6 +146,6 @@
   }
 
   .ui-table__cell:first-child {
-    max-width: 9%;
+    max-width: 12%;
   }
 }

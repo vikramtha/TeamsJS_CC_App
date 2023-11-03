@@ -2,7 +2,7 @@ import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, search } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
-import { booleanToString } from "../../helpers/convert";
+import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 
 export const Search = () => {
@@ -14,7 +14,7 @@ export const Search = () => {
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
           <Tooltip content="search.registerHandlers()" trigger={
             <Button
-              onClick={async () => {
+              onClick={() => {
                 // register search handlers
                 search.registerHandlers(
                   (searchText) => {
@@ -37,7 +37,7 @@ export const Search = () => {
           } />
           <Tooltip content="search.unregisterHandlers()" trigger={
             <Button
-              onClick={async () => {
+              onClick={() => {
                 // unregister search handlers
                 search.unregisterHandlers();
               }}
