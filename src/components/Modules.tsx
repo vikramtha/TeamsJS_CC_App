@@ -9,13 +9,16 @@ export const AllModules = () => {
 
     if (typeof capabilities === "object") {
         // filtering functions without 'isSupported' name
-        modules = Object.entries(capabilities).filter(([_, value]) =>
-            value.name.search("IsSupported") !== -1 ? false : value
-        ) as [];
 
-        modulesIsSupported = Object.entries(capabilities).filter(([_, value]) =>
-            value.name.search("IsSupported") === -1 ? false : value
-        ) as [];
+        const capabs = Object.entries(capabilities);
+
+        modules = capabs.filter((value, index) => {
+            return value[0].search("IsSupported") !== -1 ? false : value
+        }) as [];
+
+        modulesIsSupported = capabs.filter((value, index) => {
+            return value[0].search("IsSupported") === -1 ? false : value
+        }) as [];
     }
 
     const dataTable = modules.map((element: any) => {
@@ -35,10 +38,11 @@ export const AllModules = () => {
             }
 
             const el = element[1];
-            const supported = isSupportedElement[1]();
+            const elSupported = isSupportedElement[1] as Function;
             const Icon = iconName[1];
 
             const Capability = el as Function;
+            const supported: string = elSupported()
 
             const capabilityName: JSX.Element | string = <>
                 <Icon />
