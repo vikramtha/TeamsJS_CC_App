@@ -56,6 +56,13 @@ export const StageView = () => {
                 //
                 // *Enter Code for Bootcamp #1
                 //
+                let stageViewParam = {
+                  appId: "1c4340de-2a85-40e5-8eb0-4f295368978b",
+                  contentUrl: "https://app.powerbi.com/teams/home",
+                  threadId: "",
+                  openMode: stageView.StageViewOpenMode.popout,
+                };
+                stageView.open(stageViewParam);
 
               }}
             >

@@ -1,5 +1,5 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
-import { app, video } from "@microsoft/teams-js";
+import { app, videoEffectsEx as video, videoEffects } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
 import { booleanToString } from "../../helpers/convert";
@@ -20,7 +20,7 @@ export const Video = () => {
             video.registerForVideoFrame({
               videoBufferHandler: (e) => {
                 console.log(e)
-              }, videoFrameHandler: async (receivedVideoFrame: video.VideoFrameData) => { return receivedVideoFrame.videoFrame }, config: { format: video.VideoFrameFormat.NV12 }
+              }, videoFrameHandler: async (receivedVideoFrame: video.VideoFrameData) => { return receivedVideoFrame.videoFrame }, config: { format: videoEffects.VideoFrameFormat.NV12 }
             })
           }}>
             RegisterForVideoFrame
@@ -28,7 +28,7 @@ export const Video = () => {
         } />
         <Tooltip content="video.notifySelectedVideoEffectChanged()" trigger={
           <Button onClick={() => {
-            video.notifySelectedVideoEffectChanged(video.EffectChangeType.EffectChanged, "");
+            video.notifySelectedVideoEffectChanged(videoEffects.EffectChangeType.EffectChanged, "");
           }}>
             NotifySelectedVideoEffectChanged
           </Button>
