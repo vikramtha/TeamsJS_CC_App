@@ -53,9 +53,7 @@ export const StageView = () => {
               onClick={() => {
                 // open Developer Portal app in stage view
                 
-                //
-                // *Enter Code for Bootcamp #1
-                //
+                asdfasdfasdfasdf
 
               }}
             >
