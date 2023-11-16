@@ -26,9 +26,13 @@ export const Clipboard = () => {
           <Tooltip content="clipboard.write()" trigger={
             <Button
               onClick={async () => {
-                const obj = { hello: 'world' };
-                const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
-                await clipboard.write(blob);
+                try {
+                  const obj = "Hello from clipboard";
+                  const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'text/plain' });
+                  await clipboard.write(blob);
+                } catch (error) {
+                  alert(error);
+                }
               }}
             >
               Clipboard Write
