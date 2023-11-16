@@ -1,5 +1,5 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
-import { app, video } from "@microsoft/teams-js";
+import { app, videoEffects } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
 import { booleanToString } from "../../helpers/convert";
@@ -8,34 +8,34 @@ import { isMobile } from "react-device-detect";
 /**
  * This component is coming soon
  */
-export const Video = () => {
+export const VideoEffects = () => {
   // Check to see if capability is isInitialized
   if (app.isInitialized()) {
     // check to see if capability is supported
-    if (video.isSupported()) {
+    if (videoEffects.isSupported()) {
       //video.notifySelectedVideoEffectChanged(0, "");
       return (<Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-        <Tooltip content="video.registerForVideoFrame()" trigger={
+        <Tooltip content="videoEffects.registerForVideoFrame()" trigger={
           <Button onClick={() => {
-            video.registerForVideoFrame({
+            videoEffects.registerForVideoFrame({
               videoBufferHandler: (e) => {
                 console.log(e)
-              }, videoFrameHandler: async (receivedVideoFrame: video.VideoFrameData) => { return receivedVideoFrame.videoFrame }, config: { format: video.VideoFrameFormat.NV12 }
+              }, videoFrameHandler: async (receivedVideoFrame: videoEffects.VideoFrameData) => { return receivedVideoFrame.videoFrame }, config: { format: videoEffects.VideoFrameFormat.NV12 }
             })
           }}>
             RegisterForVideoFrame
           </Button>
         } />
-        <Tooltip content="video.notifySelectedVideoEffectChanged()" trigger={
+        <Tooltip content="videoEffects.notifySelectedVideoEffectChanged()" trigger={
           <Button onClick={() => {
-            video.notifySelectedVideoEffectChanged(video.EffectChangeType.EffectChanged, "");
+            videoEffects.notifySelectedVideoEffectChanged(videoEffects.EffectChangeType.EffectChanged, "");
           }}>
             NotifySelectedVideoEffectChanged
           </Button>
         } />
-        <Tooltip content="video.registerForVideoEffect()" trigger={
+        <Tooltip content="videoEffects.registerForVideoEffect()" trigger={
           <Button onClick={() => {
-            video.registerForVideoEffect(async (e) => {
+            videoEffects.registerForVideoEffect(async (e) => {
               console.log(e);
             });
           }}>
@@ -52,4 +52,4 @@ export const Video = () => {
   return <>{CapabilityStatus.NotInitialized}</>;
 };
 
-export const VideoIsSupported = () => booleanToString(video.isSupported());
+export const VideoIsSupported = () => booleanToString(videoEffects.isSupported());

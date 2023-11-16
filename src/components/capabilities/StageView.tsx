@@ -57,8 +57,9 @@ export const StageView = () => {
                
                 stageView.open({
                   appId : currentappId,
-                  contentUrl : `${baseUrl}/index.html#/pagesTab`,
-                  threadId: ""
+                  contentUrl : `${baseUrl}/index.html#/pagesTab`,  
+                  threadId: "",
+                  openMode : stageView.StageViewOpenMode.popoutWithChat
                 });
 
               }}

@@ -59,7 +59,7 @@ import {
   StageViewIsSupported,
   TeamsCore,
   TeamsCoreIsSupported,
-  Video,
+  VideoEffects,
   VideoIsSupported,
   WebStorage,
   WebStorageIsSupported,
@@ -678,7 +678,7 @@ const Tab = () => {
             ),
           },
           { key: "Video-2", content: VideoIsSupported() },
-          { key: "Video-3", content: <Video />, className: "ui_action" },
+          { key: "Video-3", content: <VideoEffects />, className: "ui_action" },
         ],
       },
       {

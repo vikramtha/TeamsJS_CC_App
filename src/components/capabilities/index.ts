@@ -33,7 +33,7 @@ import { Search, SearchIsSupported } from "./Search";
 import { Sharing, SharingIsSupported } from "./Sharing";
 import { StageView, StageViewIsSupported } from "./StageView";
 import { TeamsCore, TeamsCoreIsSupported } from "./TeamsCore";
-import { Video, VideoIsSupported } from "./Video";
+import { VideoEffects, VideoIsSupported } from "./Video";
 import { WebStorage, WebStorageIsSupported } from "./WebStorage";
 
 export {
@@ -95,7 +95,7 @@ export {
   StageViewIsSupported,
   TeamsCore,
   TeamsCoreIsSupported,
-  Video,
+  VideoEffects,
   VideoIsSupported,
   WebStorage,
   WebStorageIsSupported,
