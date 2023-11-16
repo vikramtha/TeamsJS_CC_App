@@ -2,14 +2,14 @@ import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, dialog } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
-import { booleanToString } from "../../helpers/convert";
+import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 
 /**
  * This component Open's a dialog with a form and
  * on submit it logs the json value in the console and closes the dialog
  */
-export const Dialog = () => {
+export const DialogUrl = () => {
   // Check to see if capability is isInitialized
   if (app.isInitialized()) {
     // check to see if capability is supported

@@ -1,4 +1,4 @@
-import { ClientType, ICapabilityStatus } from "../components/Tab";
+import { ClientType, ICapabilityStatus } from "./utils";
 import { utils, write, writeFile } from "xlsx";
 
 /**
