@@ -7,6 +7,7 @@ import {
   powerBI,
   vivaEngage,
   vivaInsight,
+  currentappId
 } from "../../helpers/constants";
 import { app, stageView } from "@microsoft/teams-js";
 
@@ -51,11 +52,14 @@ export const StageView = () => {
           
             <Button
               onClick={() => {
-                // open Developer Portal app in stage view
                 
-                //
-                // *Enter Code for Bootcamp #1
-                //
+                const baseUrl = `https://${window.location.host}`;
+               
+                stageView.open({
+                  appId : currentappId,
+                  contentUrl : `${baseUrl}/index.html#/pagesTab`,
+                  threadId: ""
+                });
 
               }}
             >
