@@ -62,6 +62,29 @@ export interface IModuleDetails {
   beta?: boolean;
   iconName?: string
 }
+export interface IModule {
+  isSupported: () => boolean;
+  [key: string]: any;
+}
+
+export function isModule(value: any): value is IModule {
+  return typeof value === "object" && typeof value.isSupported === "function";
+}
+
+export function safeIsSupported(module: IModule): string {
+  let text = "No";
+  try {
+    if (module.isSupported()) {
+      text = module.isSupported() ? "Yes" : "No";
+    }
+  } catch (err: unknown) {
+    text = "No";
+    if (module.length) {
+      text = module[0].isSupported() ? "Yes" : "No";
+    }
+  }
+  return text;
+}
 
 export function getModuleDetails(path: string): IModuleDetails | undefined {
   return moduleDetailsMap.get(path);
@@ -73,6 +96,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
   [
     "appentity",
     {
+      iconName: "AppsIcon",
       hidden: true,
       internal: true,
     },
@@ -104,6 +128,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
   [
     "conversations",
     {
+      iconName: "AppsIcon",
       hidden: true,
       internal: true,
     },
@@ -169,6 +194,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
   [
     "logs",
     {
+      iconName: "InfoIcon",
       hidden: true,
       internal: true,
     },
@@ -181,6 +207,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     {
       hidden: true,
       beta: true,
+      iconName: "PollIcon",
     },
   ],
   [
@@ -188,11 +215,12 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     {
       hidden: true,
       internal: true,
+      iconName: "ContactGroupIcon",
     },
   ],
   ["menus", { iconName: "MenuIcon" }],
   ["monetization", { internal: true, iconName: "PollIcon" }],
-  ["notifications", {}],
+  ["notifications", { iconName: "AppsIcon", }],
   ["pages", { iconName: "FilesTxtIcon" }],
   ["pagestabs", { iconName: "FilesTxtIcon" }],
   ["pagesconfig", { iconName: "FilesTxtIcon" }],
@@ -201,6 +229,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     "pagesfulltrust",
     {
       hidden: true,
+      iconName: "AppsIcon",
     },
   ],
   ["pagesappbutton", { iconName: "FilesTxtIcon" }],
@@ -224,6 +253,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     {
       hidden: true,
       internal: true,
+      iconName: "CameraIcon",
     },
   ],
   [
@@ -237,6 +267,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     "secondarybrowser",
     {
       beta: true,
+      iconName: "AppsIcon",
     },
   ],
   ["sharing", { iconName: "ScreenshareIcon" }],
@@ -252,6 +283,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     {
       hidden: true,
       internal: true,
+      iconName: "TeamsMonochromeIcon",
     },
   ],
   [
@@ -259,6 +291,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     {
       hidden: true,
       internal: true,
+      iconName: "TeamsMonochromeIcon",
     },
   ],
   [
@@ -266,6 +299,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     {
       hidden: true,
       internal: true,
+      iconName: "TeamsMonochromeIcon",
     },
   ],
   ["teamscore", { iconName: "TeamsMonochromeIcon" }],
@@ -282,6 +316,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
       beta: true,
       hidden: true,
       internal: true,
+      iconName: "CallVideoIcon",
     },
   ],
   [

@@ -2,7 +2,6 @@ import { Button, Dropdown, Flex, Tooltip } from "@fluentui/react-northstar";
 import { CapabilityStatus, userList } from "../../helpers/constants";
 import { app, call } from "@microsoft/teams-js";
 
-import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
@@ -57,5 +56,3 @@ export const Call = () => {
   // return's if App is not initialized.
   return <>{CapabilityStatus.NotInitialized}</>;
 };
-
-export const CallIsSupported = () => booleanToString(call.isSupported());

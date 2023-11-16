@@ -1,7 +1,6 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, meeting } from "@microsoft/teams-js";
 
-import { Video } from "../Video";
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
 

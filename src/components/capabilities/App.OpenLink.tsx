@@ -2,7 +2,6 @@ import { Button, Flex, Input, Tooltip } from "@fluentui/react-northstar";
 
 import { CapabilityStatus } from "../../helpers/constants";
 import { app } from "@microsoft/teams-js";
-import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
@@ -74,5 +73,3 @@ export const AppOpenLink = () => {
   // return's if app is not initialized
   return <>{CapabilityStatus.NotInitialized}</>;
 };
-
-export const AppOpenLinkIsSupported = () => booleanToString(true);

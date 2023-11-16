@@ -2,7 +2,6 @@ import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, profile } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
-import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 
 /**
@@ -53,5 +52,3 @@ export const Profile = () => {
   // return's if App is not initialized.
   return <>{CapabilityStatus.NotInitialized}</>;
 };
-
-export const ProfileIsSupported = () => booleanToString(profile.isSupported());

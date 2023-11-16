@@ -1,11 +1,11 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { ProviderState, Providers } from "@microsoft/mgt-element";
 import { app, calendar } from "@microsoft/teams-js";
-import { booleanToString, convertRestIdToEwsId } from "../../helpers/utils";
 
 import { CapabilityStatus } from "../../helpers/constants";
 import { TeamsFxContext } from "../Context";
 import { TeamsFxProvider } from "@microsoft/mgt-teamsfx-provider";
+import { convertRestIdToEwsId } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 import { useContext } from "react";
 import { useGraphWithCredential } from "@microsoft/teamsfx-react";
@@ -87,5 +87,3 @@ export const Calendar = () => {
   return <>{CapabilityStatus.NotInitialized}</>;
 };
 
-export const CalendarIsSupported = () =>
-  booleanToString(calendar.isSupported());

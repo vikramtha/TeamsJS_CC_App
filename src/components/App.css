@@ -120,6 +120,10 @@
   vertical-align: bottom;
 }
 
+.appopenlink {
+  align-self: center;
+}
+
 @media screen and (min-width: 700px) {
   .ui-table__cell:not(:last-child) {
     max-width: 12%;

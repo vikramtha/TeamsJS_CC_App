@@ -3,7 +3,6 @@ import { app, pages } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
 import React from "react";
-import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 
 /**
@@ -45,5 +44,3 @@ export const PagesAppButton = () => {
     // return's if App is not initialized.
     return <>{CapabilityStatus.NotInitialized}</>;
 };
-
-export const PagesAppButtonIsSupported = () => booleanToString(pages.appButton.isSupported());

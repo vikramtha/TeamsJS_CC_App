@@ -4,7 +4,6 @@ import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, dialog } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
-import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 
 /**
@@ -44,6 +43,3 @@ export const DialogAdaptiveCardBot = () => {
   // return's if App is not initialized.
   return <>{CapabilityStatus.NotInitialized}</>;
 };
-
-export const DialogAdaptiveCardBotIsSupported = () =>
-  booleanToString(dialog.adaptiveCard.bot.isSupported());

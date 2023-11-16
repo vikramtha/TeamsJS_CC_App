@@ -1,10 +1,10 @@
 import { Button, Dropdown, DropdownItemProps, Flex, Tooltip } from "@fluentui/react-northstar";
 import { CapabilityStatus, adobeAcrobat, developersPortal, powerBI, vivaEngage, vivaInsight } from "../../helpers/constants";
 import { app, appInstallDialog } from "@microsoft/teams-js";
-import { booleanToString, validateGuid } from "../../helpers/utils";
 
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
+import { validateGuid } from "../../helpers/utils";
 
 /**
  * This component Open's a dialog with particular application to install.
@@ -71,6 +71,3 @@ export const AppInstallDialog = () => {
   }
   return <>{CapabilityStatus.NotInitialized}</>;
 };
-
-export const AppInstallDialogIsSupported = () =>
-  booleanToString(appInstallDialog.isSupported());
