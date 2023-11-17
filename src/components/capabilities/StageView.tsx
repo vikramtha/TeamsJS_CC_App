@@ -46,25 +46,35 @@ export const StageView = () => {
     if (stageView.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          
-          
+          <Dropdown
+            items={appIds}
+            placeholder="Select any app"
+            getA11ySelectionMessage={{
+              onAdd: (item: any) => {
+                setAppId(item);
+                return "";
+              }
+            }}
+          />
+          <Tooltip content="stageView.open()" trigger={
             <Button
-              onClick={() => {
+              onClick={async () => {
                 // open Developer Portal app in stage view
-                stageView.open({
-                  appId: "14072831-8a2a-4f76-9294-057bf0b42a68",
-                  contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
-                  threadId: ""
-                });
-                //
-                // *Enter Code for Bootcamp #1
-                //
-
+                try {
+                  await stageView.open({
+                    appId: appId.content,
+                    contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
+                    threadId: "19:q2RjWjUGpzJBl73_UnD_dxcGNDKrFDmcWVGxmYDRhes1",
+                    title: appId.header,
+                  });
+                } catch (error) {
+                  console.log(error);
+                }
               }}
             >
               Open Stage View
             </Button>
-          
+          } />
         </Flex >
       );
     } else {
