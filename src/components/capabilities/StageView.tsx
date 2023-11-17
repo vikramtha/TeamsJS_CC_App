@@ -52,7 +52,11 @@ export const StageView = () => {
             <Button
               onClick={() => {
                 // open Developer Portal app in stage view
-                
+                stageView.open({
+                  appId: "14072831-8a2a-4f76-9294-057bf0b42a68",
+                  contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
+                  threadId: ""
+                });
                 //
                 // *Enter Code for Bootcamp #1
                 //

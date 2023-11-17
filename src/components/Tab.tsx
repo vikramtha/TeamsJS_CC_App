@@ -15,6 +15,7 @@ import {
   CallIsSupported,
   Chat,
   ChatIsSupported,
+  ClipboardIsSupported,
   Dialog,
   DialogAdaptiveCard,
   DialogAdaptiveCardBot,
@@ -248,6 +249,21 @@ const Tab = () => {
           },
           { key: "Chat-2", content: ChatIsSupported() },
           { key: "Chat-3", content: <Chat />, className: "ui_action" },
+        ],
+      },
+      {
+        key: "Clipboard",
+        items: [
+          {
+            key: "Clipboard-1",
+            content: (
+              <>
+                <Fluent.TranscriptIcon />
+                <Fluent.Text content="Clipboard" />
+              </>
+            ),
+          },
+          { key: "Clipboard-2", content: ClipboardIsSupported() },
         ],
       },
       {

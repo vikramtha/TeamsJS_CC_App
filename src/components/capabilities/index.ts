@@ -8,6 +8,7 @@ import { BarCode, BarCodeIsSupported } from "./BarCode";
 import { Calendar, CalendarIsSupported } from "./Calendar";
 import { Call, CallIsSupported } from "./Call";
 import { Chat, ChatIsSupported } from "./Chat";
+import { Clipboard, ClipboardIsSupported } from "./Clipboard";
 import { Dialog, DialogUrlIsSupported } from "./Dialog.Url";
 import {
   DialogAdaptiveCard,
@@ -50,6 +51,8 @@ export {
   Call,
   CallIsSupported,
   Chat,
+  Clipboard,
+  ClipboardIsSupported,
   ChatIsSupported,
   Dialog,
   DialogBot,
