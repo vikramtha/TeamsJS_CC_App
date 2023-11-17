@@ -65,8 +65,10 @@ import {
   WebStorage,
   WebStorageIsSupported,
 } from "./capabilities";
+=======
+import { ClientType, ICapabilityStatus, ICapabilityTable } from "../helpers/utils";
 import { useContext, useEffect, useState } from "react";
-
+import { AllModules } from "./Modules";
 import { Button } from "@fluentui/react-northstar";
 import { Host } from "./Host";
 import { MobileView } from "../helpers/MobileView";
@@ -75,27 +77,6 @@ import { app } from "@microsoft/teams-js";
 import { createCsv } from "../helpers/writetoexcel";
 import { isMobile } from "react-device-detect";
 import packageJSON from "../../package.json";
-
-export enum ClientType {
-  mobile = "Mobile",
-  desktop = "Desktop",
-}
-
-export interface ICapabilityStatus {
-  capabilityName?: string;
-  supported: string;
-}
-
-interface ICapabilityTable {
-  key: string;
-  items: Item[];
-}
-
-interface Item {
-  key: string;
-  content: JSX.Element | string;
-  className?: string;
-}
 
 const Tab = () => {
   const [defaultTableRows, setDefaultTableRows] = useState([] as ICapabilityTable[]);
@@ -718,6 +699,9 @@ const Tab = () => {
         ],
       },
     ] as ICapabilityTable[];
+
+    return await AllModules() as ICapabilityTable[];
+
   };
 
   /**

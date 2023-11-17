@@ -2,7 +2,7 @@ import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { app, webStorage } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
-import { booleanToString } from "../../helpers/convert";
+import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 
 /**
@@ -19,7 +19,7 @@ export const WebStorage = () => {
             <Button
               onClick={() => {
                 const isCleared = webStorage.isWebStorageClearedOnUserLogOut();
-                console.log(isCleared);
+                alert("isWebStorageClearedOnUserLogOut" + isCleared);
               }}
             >
               Is Storage Cleared On LogOut

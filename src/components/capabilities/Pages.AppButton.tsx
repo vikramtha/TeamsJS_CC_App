@@ -3,7 +3,7 @@ import { app, pages } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
 import React from "react";
-import { booleanToString } from "../../helpers/convert";
+import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 
 /**

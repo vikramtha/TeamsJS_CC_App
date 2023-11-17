@@ -10,16 +10,20 @@ import { Call, CallIsSupported } from "./Call";
 import { Chat, ChatIsSupported } from "./Chat";
 import { Clipboard, ClipboardIsSupported } from "./Clipboard";
 import { Dialog, DialogUrlIsSupported } from "./Dialog.Url";
+=======
+import { Clipboard, ClipboardIsSupported } from './Clipboard';
 import {
   DialogAdaptiveCard,
   DialogAdaptiveCardIsSupported,
 } from "./Dialog.AdaptiveCard";
 import { DialogAdaptiveCardBot, DialogAdaptiveCardBotIsSupported } from "./Dialog.AdaptiveCard.Bot";
-import { DialogBot, DialogUrlBotIsSupported } from "./Dialog.Url.Bot";
 import { DialogUpdate, DialogUpdateIsSupported } from "./Dialog.Update";
+import { DialogUrl, DialogUrlIsSupported } from "./Dialog.Url";
+import { DialogUrlBot, DialogUrlBotIsSupported } from "./Dialog.Url.Bot";
 import { GeoLocation, GeoLocationIsSupported } from "./GeoLocation";
 import { GeoLocationMap, GeoLocationMapIsSupported } from "./GeoLocation.map";
-import { IsPagesCurrentAppSupported, PagesCurrent } from "./Pages.Current";
+import { LiveShare, LiveShareIsSupported } from "./LiveShare";
+import { Location, LocationIsSupported } from "./Location";
 import { Mail, MailIsSupported } from "./Mail";
 import { Menus, MenusIsSupported } from "./Menus";
 import { Monetization, MonetizationIsSupported } from "./Monetization";
@@ -27,6 +31,7 @@ import { Pages, PagesIsSupported } from "./Pages";
 import { PagesAppButton, PagesAppButtonIsSupported } from "./Pages.AppButton";
 import { PagesBackStack, PagesBackStackIsSupported } from "./Pages.BackStack";
 import { PagesConfig, PagesConfigIsSupported } from "./Pages.Config";
+import { PagesCurrentApp, PagesCurrentAppIsSupported } from "./Pages.Current";
 import { PagesTabs, PagesTabsIsSupported } from "./Pages.Tabs";
 import { People, PeopleIsSupported } from "./People";
 import { Profile, ProfileIsSupported } from "./Profile";
@@ -54,8 +59,8 @@ export {
   Clipboard,
   ClipboardIsSupported,
   ChatIsSupported,
-  Dialog,
-  DialogBot,
+  DialogUrl,
+  DialogUrlBot,
   DialogUrlBotIsSupported,
   DialogUpdate,
   DialogUpdateIsSupported,
@@ -68,9 +73,13 @@ export {
   GeoLocationIsSupported,
   GeoLocationMap,
   GeoLocationMapIsSupported,
-  IsPagesCurrentAppSupported,
-  PagesCurrent,
+  PagesCurrentApp,
+  PagesCurrentAppIsSupported,
   Mail,
+  LiveShare,
+  LiveShareIsSupported,
+  Location,
+  LocationIsSupported,
   MailIsSupported,
   Menus,
   MenusIsSupported,
