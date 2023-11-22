@@ -2,7 +2,6 @@ import { Button, Flex, TextArea, Tooltip } from "@fluentui/react-northstar";
 import { app, geoLocation } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
-import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
@@ -83,6 +82,3 @@ export const GeoLocation = () => {
   // return's if App is not initialized.
   return <>{CapabilityStatus.NotInitialized}</>;
 };
-
-export const GeoLocationIsSupported = () =>
-  booleanToString(geoLocation.isSupported());

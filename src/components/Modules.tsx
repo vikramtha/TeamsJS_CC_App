@@ -1,48 +1,57 @@
 import * as Fluent from "@fluentui/react-northstar";
 import * as capabilities from './capabilities';
+import * as mirosoftTeams from "@microsoft/teams-js";
 
-import { getModuleDetails } from "../helpers/utils";
+import { IModule, getModuleDetails, isModule, safeIsSupported } from "../helpers/utils";
+
+import { AppIsSupported } from "./capabilities";
 
 export const AllModules = () => {
-    let modules: any = [];
-    let modulesIsSupported: any = [];
+    let createdModules: any = [];
+
+    const msTeamsSdk = Object.entries(mirosoftTeams).filter(([_, value]) =>
+        isModule(value)
+    ) as [string, IModule[]][];
 
     if (typeof capabilities === "object") {
-        // filtering functions without 'isSupported' name
 
         const capabs = Object.entries(capabilities);
 
-        modules = capabs.filter((value, index) => {
+        createdModules = capabs.filter((value, index) => {
             return value[0].search("IsSupported") !== -1 ? false : value
-        }) as [];
-
-        modulesIsSupported = capabs.filter((value, index) => {
-            return value[0].search("IsSupported") === -1 ? false : value
         }) as [];
     }
 
-    const dataTable = modules.map((element: any) => {
+    msTeamsSdk.unshift(["app", [{ isSupported: AppIsSupported }]]);
+
+    const dataTable = msTeamsSdk.map((module: any) => {
         try {
-            const moduleName = element[0] as string;
+            const moduleName = module[0] as string;
 
-            const isSupportedElement = modulesIsSupported.find((supportedElement: any) => supportedElement[0] === `${moduleName}IsSupported`);
-
+            const isSupported = module[1] && safeIsSupported(module[1]);
             const moduleDetails = getModuleDetails(moduleName.toLowerCase());
 
             let iconName: any = [];
 
             if (typeof Fluent === "object") {
                 iconName = Object.entries(Fluent).find((value, index) =>
-                    value[0] === moduleDetails?.iconName ? value : undefined
+                    value[0] === moduleDetails?.iconName ? value : ""
                 );
             }
 
-            const el = element[1];
-            const elSupported = isSupportedElement[1] as Function;
-            const Icon = iconName[1];
+            const Icon = iconName && iconName[1];
 
-            const Capability = el as Function;
-            const supported: string = elSupported()
+            const isModulePresent = createdModules.filter((capabs: any) => { return capabs[0].toLowerCase() === moduleName.toLowerCase() });
+
+            let element: Function = empty;
+
+            if (isModulePresent && isModulePresent.length === 0) {
+                element = empty;
+            } else {
+                element = isModulePresent[0][1];
+            }
+
+            const Capability = element as Function;
 
             const capabilityName: JSX.Element | string = <>
                 <Icon />
@@ -57,6 +66,9 @@ export const AllModules = () => {
                     {moduleDetails?.internal &&
                         <Fluent.Text className="short-top-text" content="i" />
                     }
+                    {moduleDetails?.hidden &&
+                        <Fluent.Text className="short-top-text" content="h" />
+                    }
                 </Fluent.Text>
             </>;
             return {
@@ -66,7 +78,7 @@ export const AllModules = () => {
                         key: `${moduleName}-1`,
                         content: capabilityName
                     },
-                    { key: `${moduleName}-2`, content: supported },
+                    { key: `${moduleName}-2`, content: isSupported },
                     { key: `${moduleName}-3`, content: <Capability />, className: `ui_action ${moduleName === 'AppOpenLink' ? 'ui_openlink' : ''}` },
                 ],
             }
@@ -76,4 +88,8 @@ export const AllModules = () => {
         return [];
     });
     return dataTable;
+}
+
+const empty = () => {
+    return <></>;
 }

@@ -9,7 +9,6 @@ import {
 } from "../../helpers/constants";
 import { app, stageView } from "@microsoft/teams-js";
 
-import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 import { useState } from "react";
 
@@ -85,6 +84,3 @@ export const StageView = () => {
   // return's if App is not initialized.
   return <>{CapabilityStatus.NotInitialized}</>;
 };
-
-export const StageViewIsSupported = () =>
-  booleanToString(stageView.isSupported());

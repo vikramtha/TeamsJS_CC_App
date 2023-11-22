@@ -1,111 +1,77 @@
 import { App, AppIsSupported } from "./App";
+
 import {
-  AppInstallDialog,
-  AppInstallDialogIsSupported,
+  AppInstallDialog
 } from "./AppInstallDialog";
-import { AppOpenLink, AppOpenLinkIsSupported } from "./App.OpenLink"
-import { BarCode, BarCodeIsSupported } from "./BarCode";
-import { Calendar, CalendarIsSupported } from "./Calendar";
-import { Call, CallIsSupported } from "./Call";
-import { Chat, ChatIsSupported } from "./Chat";
-import { Clipboard, ClipboardIsSupported } from './Clipboard';
+import { AppOpenLink } from "./App.OpenLink"
+import { BarCode } from "./BarCode";
+import { Calendar } from "./Calendar";
+import { Call } from "./Call";
+import { Chat } from "./Chat";
+import { Clipboard } from './Clipboard';
 import {
   DialogAdaptiveCard,
-  DialogAdaptiveCardIsSupported,
 } from "./Dialog.AdaptiveCard";
-import { DialogAdaptiveCardBot, DialogAdaptiveCardBotIsSupported } from "./Dialog.AdaptiveCard.Bot";
-import { DialogUpdate, DialogUpdateIsSupported } from "./Dialog.Update";
-import { DialogUrl, DialogUrlIsSupported } from "./Dialog.Url";
-import { DialogUrlBot, DialogUrlBotIsSupported } from "./Dialog.Url.Bot";
-import { GeoLocation, GeoLocationIsSupported } from "./GeoLocation";
-import { GeoLocationMap, GeoLocationMapIsSupported } from "./GeoLocation.map";
-import { LiveShare, LiveShareIsSupported } from "./LiveShare";
-import { Location, LocationIsSupported } from "./Location";
-import { Mail, MailIsSupported } from "./Mail";
-import { Menus, MenusIsSupported } from "./Menus";
-import { Monetization, MonetizationIsSupported } from "./Monetization";
-import { Pages, PagesIsSupported } from "./Pages";
-import { PagesAppButton, PagesAppButtonIsSupported } from "./Pages.AppButton";
-import { PagesBackStack, PagesBackStackIsSupported } from "./Pages.BackStack";
-import { PagesConfig, PagesConfigIsSupported } from "./Pages.Config";
-import { PagesCurrentApp, PagesCurrentAppIsSupported } from "./Pages.Current";
-import { PagesTabs, PagesTabsIsSupported } from "./Pages.Tabs";
-import { People, PeopleIsSupported } from "./People";
-import { Profile, ProfileIsSupported } from "./Profile";
-import { Search, SearchIsSupported } from "./Search";
-import { Sharing, SharingIsSupported } from "./Sharing";
-import { StageView, StageViewIsSupported } from "./StageView";
-import { TeamsCore, TeamsCoreIsSupported } from "./TeamsCore";
-import { Video, VideoIsSupported } from "./Video";
-import { WebStorage, WebStorageIsSupported } from "./WebStorage";
+import { DialogAdaptiveCardBot } from "./Dialog.AdaptiveCard.Bot";
+import { DialogUpdate } from "./Dialog.Update";
+import { DialogUrl } from "./Dialog.Url";
+import { DialogUrlBot } from "./Dialog.Url.Bot";
+import { GeoLocation } from "./GeoLocation";
+import { GeoLocationMap } from "./GeoLocation.map";
+import { LiveShare } from "./LiveShare";
+import { Location } from "./Location";
+import { Mail } from "./Mail";
+import { Menus } from "./Menus";
+import { Monetization } from "./Monetization";
+import { Pages } from "./Pages";
+import { PagesAppButton } from "./Pages.AppButton";
+import { PagesBackStack } from "./Pages.BackStack";
+import { PagesConfig } from "./Pages.Config";
+import { PagesCurrentApp } from "./Pages.Current";
+import { PagesTabs } from "./Pages.Tabs";
+import { People } from "./People";
+import { Profile } from "./Profile";
+import { Search } from "./Search";
+import { Sharing } from "./Sharing";
+import { StageView } from "./StageView";
+import { TeamsCore } from "./TeamsCore";
+import { Video } from "./Video";
+import { WebStorage } from "./WebStorage";
 
 export {
   App,
   AppIsSupported,
   AppOpenLink,
-  AppOpenLinkIsSupported,
   AppInstallDialog,
-  AppInstallDialogIsSupported,
   BarCode,
-  BarCodeIsSupported,
   Calendar,
-  CalendarIsSupported,
   Call,
-  CallIsSupported,
   Chat,
   Clipboard,
-  ClipboardIsSupported,
-  ChatIsSupported,
   DialogUrl,
   DialogUrlBot,
-  DialogUrlBotIsSupported,
   DialogUpdate,
-  DialogUpdateIsSupported,
   DialogAdaptiveCard,
   DialogAdaptiveCardBot,
-  DialogAdaptiveCardBotIsSupported,
-  DialogAdaptiveCardIsSupported,
-  DialogUrlIsSupported,
   GeoLocation,
-  GeoLocationIsSupported,
   GeoLocationMap,
-  GeoLocationMapIsSupported,
   PagesCurrentApp,
-  PagesCurrentAppIsSupported,
   Mail,
   LiveShare,
-  LiveShareIsSupported,
   Location,
-  LocationIsSupported,
-  MailIsSupported,
   Menus,
-  MenusIsSupported,
   Monetization,
-  MonetizationIsSupported,
   PagesAppButton,
-  PagesAppButtonIsSupported,
   PagesBackStack,
-  PagesBackStackIsSupported,
   PagesConfig,
-  PagesConfigIsSupported,
   Pages,
-  PagesIsSupported,
   PagesTabs,
-  PagesTabsIsSupported,
   People,
-  PeopleIsSupported,
   Profile,
-  ProfileIsSupported,
   Search,
-  SearchIsSupported,
   Sharing,
-  SharingIsSupported,
   StageView,
-  StageViewIsSupported,
   TeamsCore,
-  TeamsCoreIsSupported,
   Video,
-  VideoIsSupported,
-  WebStorage,
-  WebStorageIsSupported,
+  WebStorage
 };

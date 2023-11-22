@@ -1,10 +1,11 @@
 import * as Fluent from "@fluentui/react-northstar";
 
+import { Button, Text } from "@fluentui/react-northstar";
 import { ClientType, ICapabilityStatus, ICapabilityTable } from "../helpers/utils";
 import { useContext, useEffect, useState } from "react";
 
 import { AllModules } from "./Modules";
-import { Button } from "@fluentui/react-northstar";
+import { AppOpenLink } from "./capabilities";
 import { Host } from "./Host";
 import { MobileView } from "../helpers/MobileView";
 import { TeamsFxContext } from "./Context";
@@ -155,6 +156,16 @@ const Tab = () => {
                 <Fluent.ExcelColorIcon />
                 Download .csv
               </Fluent.Button>
+            </Fluent.Flex.Item>
+          </Fluent.Flex>
+        </Fluent.Segment>
+        <Fluent.Segment>
+          <Fluent.Flex gap="gap.large">
+            <Fluent.Flex.Item>
+              <Text className="appopenlink" content="AppOpenLink" />
+            </Fluent.Flex.Item>
+            <Fluent.Flex.Item>
+              <AppOpenLink />
             </Fluent.Flex.Item>
           </Fluent.Flex>
         </Fluent.Segment>

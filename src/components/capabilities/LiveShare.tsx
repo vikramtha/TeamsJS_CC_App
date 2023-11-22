@@ -1,6 +1,5 @@
 import { Flex, Text, Tooltip } from "@fluentui/react-northstar";
 
-import { booleanToString } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 
 /**
@@ -15,5 +14,3 @@ export const LiveShare = () => {
         </Flex>
     )
 }
-
-export const LiveShareIsSupported = () => booleanToString(false);

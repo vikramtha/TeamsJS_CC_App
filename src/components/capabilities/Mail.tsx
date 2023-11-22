@@ -1,11 +1,11 @@
 import { Button, Flex, Tooltip } from "@fluentui/react-northstar";
 import { ProviderState, Providers } from "@microsoft/mgt-element";
 import { app, mail } from "@microsoft/teams-js";
-import { booleanToString, convertRestIdToEwsId } from "../../helpers/utils";
 
 import { CapabilityStatus } from "../../helpers/constants";
 import { TeamsFxContext } from "../Context";
 import { TeamsFxProvider } from "@microsoft/mgt-teamsfx-provider";
+import { convertRestIdToEwsId } from "../../helpers/utils";
 import { isMobile } from "react-device-detect";
 import { useContext } from "react";
 import { useGraphWithCredential } from "@microsoft/teamsfx-react";
@@ -14,8 +14,6 @@ import { useGraphWithCredential } from "@microsoft/teamsfx-react";
  * This component compose a new mail and open's an existing mail with mailItemId
  */
 export const Mail = () => {
-  //const [disableButton, setDisableButton] = useState(true);
-
   const { teamsUserCredential } = useContext(TeamsFxContext);
   const { loading, error, data, reload } = useGraphWithCredential(
     async (graph, teamsUserCredential, scope) => {
@@ -81,5 +79,3 @@ export const Mail = () => {
   // return's if App is not initialized.
   return <>{CapabilityStatus.NotInitialized}</>;
 };
-
-export const MailIsSupported = () => booleanToString(mail.isSupported());
