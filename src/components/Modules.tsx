@@ -1,6 +1,6 @@
 import * as Fluent from "@fluentui/react-northstar";
 import * as capabilities from './capabilities';
-import * as mirosoftTeams from "@microsoft/teams-js";
+import * as teamsJs from "@microsoft/teams-js";
 
 import { IModule, getModuleDetails, isModule, safeIsSupported } from "../helpers/utils";
 
@@ -9,7 +9,7 @@ import { AppIsSupported } from "./capabilities";
 export const AllModules = () => {
     let createdModules: any = [];
 
-    const msTeamsSdk = Object.entries(mirosoftTeams).filter(([_, value]) =>
+    const msTeamsSdk = Object.entries(teamsJs).filter(([_, value]) =>
         isModule(value)
     ) as [string, IModule[]][];
 
@@ -35,7 +35,7 @@ export const AllModules = () => {
 
             if (typeof Fluent === "object") {
                 iconName = Object.entries(Fluent).find((value, index) =>
-                    value[0] === moduleDetails?.iconName ? value : ""
+                    value[0] === moduleDetails?.iconName
                 );
             }
 
