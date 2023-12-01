@@ -9,6 +9,7 @@ import { AppIsSupported } from "./capabilities";
 export const AllModules = () => {
     let createdModules: any = [];
 
+    // Create list of capabilities from TeamsJs SDK with supported funtion
     const msTeamsSdk = Object.entries(teamsJs).filter(([_, value]) =>
         isModule(value)
     ) as [string, IModule[]][];
@@ -22,9 +23,41 @@ export const AllModules = () => {
         }) as [];
     }
 
-    msTeamsSdk.unshift(["app", [{ isSupported: AppIsSupported }]]);
+    let newMsTeamsSdk: [string, IModule[]][] = [];
 
-    const dataTable = msTeamsSdk.map((module: any) => {
+    msTeamsSdk.forEach(([name, module]: any) => {
+
+        newMsTeamsSdk.push([name, module]);
+
+        const entries = Object.entries(module).filter(([_, value]) => isModule(value)) as [string, IModule[]][];
+
+        if (entries && entries.length > 0) {
+            const filteredEntries = entries.map(([entryName, entry]: any) => {
+                return [name + entryName, entry] as [string, IModule[]];
+            });
+
+            if (filteredEntries.length > 0) {
+                newMsTeamsSdk = [...newMsTeamsSdk, ...filteredEntries];
+
+                filteredEntries.forEach(([subName, subModule]: any) => {
+
+                    const array = Object.entries(subModule).filter(([_, value]) => isModule(value)) as [string, IModule[]][];;
+
+                    if (array && array.length > 0) {
+                        const filteredArray = array.map(([arrayName, arrayItem]: any) => {
+                            return [subName + arrayName, arrayItem] as [string, IModule[]];
+                        });
+                        newMsTeamsSdk = [...newMsTeamsSdk, ...filteredArray];
+                    }
+                });
+
+            }
+        }
+    })
+
+    newMsTeamsSdk.unshift(["app", [{ isSupported: AppIsSupported }]]);
+
+    const dataTable = newMsTeamsSdk.map((module: any) => {
         try {
             const moduleName = module[0] as string;
 
@@ -39,7 +72,11 @@ export const AllModules = () => {
                 );
             }
 
-            const Icon = iconName && iconName[1];
+            let Icon = iconName && iconName[1];
+
+            if (!Icon) {
+                Icon = Fluent.AppsIcon;
+            }
 
             const isModulePresent = createdModules.filter((capabs: any) => { return capabs[0].toLowerCase() === moduleName.toLowerCase() });
 

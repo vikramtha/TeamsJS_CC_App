@@ -304,13 +304,6 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
   ],
   ["teamscore", { iconName: "TeamsMonochromeIcon" }],
   [
-    "video",
-    {
-      beta: true,
-      iconName: "CallVideoIcon"
-    },
-  ],
-  [
     "videoex",
     {
       beta: true,
@@ -318,6 +311,21 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
       internal: true,
       iconName: "CallVideoIcon",
     },
+  ],
+  [
+    "videoeffects",
+    {
+      beta: true,
+      iconName: "CallVideoIcon"
+    }
+  ], [
+    "videoeffectsex",
+    {
+      beta: true,
+      hidden: true,
+      internal: true,
+      iconName: "CallVideoIcon"
+    }
   ],
   [
     "webstorage",

@@ -3,7 +3,6 @@ import { App, AppIsSupported } from "./App";
 import {
   AppInstallDialog
 } from "./AppInstallDialog";
-import { AppOpenLink } from "./App.OpenLink"
 import { BarCode } from "./BarCode";
 import { Calendar } from "./Calendar";
 import { Call } from "./Call";
@@ -35,13 +34,12 @@ import { Search } from "./Search";
 import { Sharing } from "./Sharing";
 import { StageView } from "./StageView";
 import { TeamsCore } from "./TeamsCore";
-import { Video } from "./Video";
+// import { Video } from "./Video";
 import { WebStorage } from "./WebStorage";
 
 export {
   App,
   AppIsSupported,
-  AppOpenLink,
   AppInstallDialog,
   BarCode,
   Calendar,
@@ -72,6 +70,6 @@ export {
   Sharing,
   StageView,
   TeamsCore,
-  Video,
+  // Video,
   WebStorage
 };
