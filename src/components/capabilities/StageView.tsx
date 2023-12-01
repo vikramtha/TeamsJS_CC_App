@@ -63,7 +63,8 @@ export const StageView = () => {
                   await stageView.open({
                     appId: appId.content,
                     contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
-                    threadId: "19:q2RjWjUGpzJBl73_UnD_dxcGNDKrFDmcWVGxmYDRhes1",
+                    websiteUrl: "https://dev.teams.microsoft.com/home?host=teams",
+                    threadId: "",
                     title: appId.header,
                   });
                 } catch (error) {
@@ -71,7 +72,7 @@ export const StageView = () => {
                 }
               }}
             >
-              Open Stage View
+              Open Stage View (only set up for Developer Portal)
             </Button>
           } />
         </Flex >
