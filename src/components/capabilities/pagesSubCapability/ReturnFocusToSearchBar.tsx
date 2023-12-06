@@ -22,7 +22,7 @@ export const ReturnFocusToSearchBar = () => {
             />
           </Fluent.Flex>
           <Fluent.Flex space="between">
-            <Fluent.Tooltip content="pages.returnFocus(true)" trigger={
+            <Fluent.Tooltip content="API: pages.returnFocus(true) Framecontexts: content" trigger={
               <Fluent.Button
                 onClick={async () => {
                   pages.returnFocus(true);

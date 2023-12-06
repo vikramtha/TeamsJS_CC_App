@@ -14,7 +14,7 @@ export const DialogUrlBot = () => {
     if (dialog.url.bot.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="dialog.url.bot.open()" trigger={
+          <Tooltip content="API: dialog.url.bot.open() FrameContexts: content, sidePanel, meetingStage" trigger={
             <Button
               onClick={() => {
                 const baseUrl = `https://${window.location.host}`;

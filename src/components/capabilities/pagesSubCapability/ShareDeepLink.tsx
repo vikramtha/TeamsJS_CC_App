@@ -22,7 +22,7 @@ export const ShareDeepLink = () => {
             />
           </Fluent.Flex>
           <Fluent.Flex space="between">
-            <Fluent.Tooltip content="pages.shareDeepLink()" trigger={
+            <Fluent.Tooltip content="pages.shareDeepLink() FrameContexts: content, sidePanel, meetingStage" trigger={
               <Fluent.Button
                 onClick={async () => {
                   pages.shareDeepLink({

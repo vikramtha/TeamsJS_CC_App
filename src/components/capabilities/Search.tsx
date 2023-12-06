@@ -11,7 +11,7 @@ export const Search = () => {
     if (search.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="search.registerHandlers()" trigger={
+          <Tooltip content="API: search.registerHandlers() FrameContexts: content" trigger={
             <Button
               onClick={() => {
                 // register search handlers
@@ -34,7 +34,7 @@ export const Search = () => {
               Register Handlers
             </Button>
           } />
-          <Tooltip content="search.unregisterHandlers()" trigger={
+          <Tooltip content="API: search.unregisterHandlers() FrameContexts: content" trigger={
             <Button
               onClick={() => {
                 // unregister search handlers

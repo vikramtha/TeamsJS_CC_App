@@ -9,43 +9,56 @@ import { AppIsSupported } from "./capabilities";
 export const AllModules = () => {
     let createdModules: any = [];
 
-    // Create list of capabilities from TeamsJs SDK with supported funtion
+    // array of capabilities from TeamsJs SDK with isSupported funtion
     const msTeamsSdk = Object.entries(teamsJs).filter(([_, value]) =>
         isModule(value)
     ) as [string, IModule[]][];
 
     if (typeof capabilities === "object") {
 
+        // array of functions created mannually
         const capabs = Object.entries(capabilities);
 
+        // filtering isSupported functions which are created mannually
         createdModules = capabs.filter((value, index) => {
             return value[0].search("IsSupported") !== -1 ? false : value
         }) as [];
     }
 
+    // created a new array to consolidate both main capabilities and their corresponding sub-capabilities 
+    // at an equal level, optimizing the loop iteration process.
     let newMsTeamsSdk: [string, IModule[]][] = [];
 
-    msTeamsSdk.forEach(([name, module]: any) => {
+    msTeamsSdk.forEach(([parentModuleName, module]: any) => {
 
-        newMsTeamsSdk.push([name, module]);
+        newMsTeamsSdk.push([parentModuleName, module]);
 
+        // filtering sub-capabilities based on isSupported function
         const entries = Object.entries(module).filter(([_, value]) => isModule(value)) as [string, IModule[]][];
 
         if (entries && entries.length > 0) {
-            const filteredEntries = entries.map(([entryName, entry]: any) => {
-                return [name + "." + entryName, entry] as [string, IModule[]];
+            const filteredEntries = entries.map(([subModuleName, entry]: any) => {
+
+                // naming the sub-capability for example dialog.url
+                const moduleName = `${parentModuleName}.${subModuleName}`;
+
+                return [moduleName, entry] as [string, IModule[]];
             });
 
             if (filteredEntries.length > 0) {
                 newMsTeamsSdk = [...newMsTeamsSdk, ...filteredEntries];
 
-                filteredEntries.forEach(([subName, subModule]: any) => {
+                // Filtering capabilities inside sub capabilities based on isSupported function
+                filteredEntries.forEach(([moduleName, subModule]: any) => {
 
-                    const array = Object.entries(subModule).filter(([_, value]) => isModule(value)) as [string, IModule[]][];;
+                    const filteredSubModule = Object.entries(subModule).filter(([_, value]) => isModule(value)) as [string, IModule[]][];;
 
-                    if (array && array.length > 0) {
-                        const filteredArray = array.map(([arrayName, arrayItem]: any) => {
-                            return [subName + "." + arrayName, arrayItem] as [string, IModule[]];
+                    if (filteredSubModule && filteredSubModule.length > 0) {
+                        const filteredArray = filteredSubModule.map(([subModuleName, arrayItem]: any) => {
+
+                            // naming the final sub-capability for example dialog.url.bot
+                            const finalName = `${moduleName}.${subModuleName}`;
+                            return [finalName, arrayItem] as [string, IModule[]];
                         });
                         newMsTeamsSdk = [...newMsTeamsSdk, ...filteredArray];
                     }
@@ -55,6 +68,7 @@ export const AllModules = () => {
         }
     })
 
+    // Adding 'app' on the top of the list to show its functionality in the table.
     newMsTeamsSdk.unshift(["app", [{ isSupported: AppIsSupported }]]);
 
     const dataTable = newMsTeamsSdk.map((module: any) => {
@@ -74,6 +88,7 @@ export const AllModules = () => {
 
             let Icon = iconName && iconName[1];
 
+            // setting default icon
             if (!Icon) {
                 Icon = Fluent.AppsIcon;
             }
@@ -82,6 +97,7 @@ export const AllModules = () => {
 
             let element: Function = empty;
 
+            // checking module if its functions are implemented else setting it to a blank row
             if (isModulePresent && isModulePresent.length === 0) {
                 element = empty;
             } else {
@@ -90,6 +106,7 @@ export const AllModules = () => {
 
             const Capability = element as Function;
 
+            // setting the capabilityName and Icon
             const capabilityName: JSX.Element | string = <>
                 <Icon />
                 <Fluent.Text>
@@ -116,7 +133,7 @@ export const AllModules = () => {
                         content: capabilityName
                     },
                     { key: `${moduleName}-2`, content: isSupported },
-                    { key: `${moduleName}-3`, content: <Capability />, className: `ui_action ${moduleName === 'AppOpenLink' ? 'ui_openlink' : ''}` },
+                    { key: `${moduleName}-3`, content: <Capability />, className: `ui_action` },
                 ],
             }
         } catch (error) {

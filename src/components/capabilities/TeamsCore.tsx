@@ -30,7 +30,7 @@ export const TeamsCore = () => {
 
             return (
                 <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-                    <Tooltip content="teamsCore.enablePrintCapability()" trigger={
+                    <Tooltip content="API: teamsCore.enablePrintCapability() Framecontexts: content" trigger={
                         <Button onClick={() => {
                             teamsCore.enablePrintCapability();
                             setText("Use ctrl+p and cmd+p");
@@ -40,7 +40,7 @@ export const TeamsCore = () => {
                             Enable Print Capability
                         </Button>
                     } />
-                    <Tooltip content="teamsCore.print()" trigger={
+                    <Tooltip content="API: teamsCore.print() Framecontexts: content" trigger={
                         <Button onClick={() => {
                             teamsCore.print();
                         }}>

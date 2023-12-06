@@ -16,7 +16,7 @@ export const PagesCurrentApp = () => {
       if (pages.currentApp.isSupported()) {
         return (
           <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-            <Tooltip content="pages.currentApp.navigateTo()" trigger={
+            <Tooltip content="API: pages.currentApp.navigateTo() Framecontext: content" trigger={
               <Button
                 onClick={async () => {
                   await pages.currentApp.navigateTo({

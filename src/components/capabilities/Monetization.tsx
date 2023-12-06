@@ -14,7 +14,7 @@ export const Monetization = () => {
     if (monetization.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="monetization.openPurchaseExperience()" trigger={
+          <Tooltip content="API: monetization.openPurchaseExperience() FrameContexts: content" trigger={
             <Button
               onClick={async () => {
                 // To use this provide plan id and term of plan

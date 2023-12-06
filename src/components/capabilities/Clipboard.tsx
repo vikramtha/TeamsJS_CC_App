@@ -14,7 +14,7 @@ export const Clipboard = () => {
     if (clipboard.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="clipboard.read()" trigger={
+          <Tooltip content="API: clipboard.read() FrameContexts: content, meetingStage, task, settings, stage, sidePanel" trigger={
             <Button
               onClick={async () => {
                 await clipboard.read();
@@ -23,7 +23,7 @@ export const Clipboard = () => {
               Clipboard Read
             </Button>
           } />
-          <Tooltip content="clipboard.write()" trigger={
+          <Tooltip content="API: clipboard.write() FrameContexts: content, meetingStage, task, settings, stage, sidePanel" trigger={
             <Button
               onClick={async () => {
                 try {

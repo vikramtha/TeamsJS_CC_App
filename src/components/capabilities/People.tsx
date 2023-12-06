@@ -15,7 +15,7 @@ export const People = () => {
     if (people.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="people.selectPeople()" trigger={
+          <Tooltip content="API: people.selectPeople() FrameContexts: content, task, settings" trigger={
             <Button
               onClick={async () => {
                 try {
@@ -29,7 +29,7 @@ export const People = () => {
               People Picker (Defaults)
             </Button>
           } />
-          <Tooltip content="people.selectPeople({singleSelect: true,})" trigger={
+          <Tooltip content="API: people.selectPeople({singleSelect: true,}) FrameContexts: content, task, settings" trigger={
             <Button
               onClick={async () => {
                 try {
@@ -45,7 +45,7 @@ export const People = () => {
               People Picker (Single)
             </Button>
           } />
-          <Tooltip content="people.selectPeople({setSelected: [user]})" trigger={
+          <Tooltip content="API: people.selectPeople({setSelected: [user]}) FrameContexts: content, task, settings" trigger={
             <Button
               onClick={async () => {
                 try {
@@ -65,7 +65,7 @@ export const People = () => {
               People Picker (Preselected)
             </Button>
           } />
-          <Tooltip content="people.selectPeople({ openOrgWideSearchInChatOrChannel: false})" trigger={
+          <Tooltip content="API: people.selectPeople({ openOrgWideSearchInChatOrChannel: false}) FrameContexts: content, task, settings" trigger={
             <Button
               onClick={async () => {
                 try {
@@ -79,7 +79,7 @@ export const People = () => {
               People Picker (Members Only)
             </Button>
           } />
-          <Tooltip content="people.selectPeople({title: `Custom Title`})" trigger={
+          <Tooltip content="API: people.selectPeople({title: `Custom Title`}) FrameContexts: content, task, settings" trigger={
             <Button
               onClick={async () => {
                 try {

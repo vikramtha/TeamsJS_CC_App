@@ -11,9 +11,16 @@ import { useState } from "react";
 export const Chat = () => {
   const [users, setUsers] = useState([] as string[]);
   const [user, setUser] = useState("");
+  const [context, setContext] = useState({} as app.Context);
+
+  app.getContext().then(ctx => {
+    setContext(ctx);
+  });
 
   const getA11ySelectionMessage = {
     onAdd: (user: any) => {
+      const loginDomain = context.user?.userPrincipalName?.split('@').at(1);
+      user = user + '@' + loginDomain;
       const allusers = [...users, user];
       setUsers(allusers);
       return `${user} selected. Press left or right arrow keys to navigate selected items.`
@@ -41,12 +48,14 @@ export const Chat = () => {
             placeholder="Start typing a name or select"
             onSelect={onSelect}
           />
-          <Tooltip content="chat.openChat()" trigger={
+          <Tooltip content="API: chat.openChat() FrameContexts:content, task" trigger={
             <Button
               onClick={async () => {
+                const loginDomain = context.user?.userPrincipalName?.split('@').at(1);
+                const singleUser = user + '@' + loginDomain;
                 await chat.openChat({
-                  user: user,
-                  message: `This is the first message you are sending ${user}`,
+                  user: singleUser,
+                  message: `This is the first message you are sending ${singleUser}`,
                 });
               }}
             >
@@ -60,7 +69,7 @@ export const Chat = () => {
             getA11ySelectionMessage={getA11ySelectionMessage}
             placeholder="Start typing a name or select"
           />
-          <Tooltip content="chat.openGroupChat()" trigger={
+          <Tooltip content="API: chat.openGroupChat() FrameContexts:content, task" trigger={
             <Button
               onClick={async () =>
                 await chat.openGroupChat({

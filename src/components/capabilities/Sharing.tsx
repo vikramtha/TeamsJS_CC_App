@@ -25,7 +25,7 @@ export const Sharing = () => {
               setUrl(value);
             }}
           />
-          <Tooltip content="sharing.shareWebContent()" trigger={
+          <Tooltip content="API: sharing.shareWebContent() FrameContexts: content, sidePanel, task, stage, meetingStage" trigger={
             <Button
               onClick={async () => {
                 try {

@@ -17,7 +17,7 @@ export const Location = () => {
         if (location.isSupported()) {
             return (
                 <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-                    <Tooltip content="location.getLocation()" trigger={
+                    <Tooltip content="API: location.getLocation() FrameContexts: content, task" trigger={
                         <Button
                             onClick={() => {
                                 location.getLocation({ allowChooseLocation: true, showMap: true }, (handler) => {
@@ -28,7 +28,7 @@ export const Location = () => {
                             GetLocation
                         </Button>
                     } />
-                    <Tooltip content="geoLocation.requestPermission()" trigger={
+                    <Tooltip content="API: location.showLocation() FrameContexts: content, task" trigger={
                         <Button
                             onClick={async () => {
                                 try {

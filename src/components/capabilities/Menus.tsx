@@ -59,7 +59,7 @@ export const Menus = () => {
 
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="menus.setUpViews()" trigger={
+          <Tooltip content="API: menus.setUpViews() Framecontexts: content" trigger={
             <Button
               onClick={() => {
                 menus.setUpViews([{ id: "1", title: "View 1" }], (id: string) => {
@@ -71,7 +71,7 @@ export const Menus = () => {
               Setup Views
             </Button>
           } />
-          <Tooltip content="menus.setNavBarMenu()" trigger={
+          <Tooltip content="API: menus.setNavBarMenu() Framecontexts: content" trigger={
             <Button
               onClick={() => {
                 menus.setNavBarMenu(menuItem, (id: string) => {
@@ -83,7 +83,7 @@ export const Menus = () => {
               SetNavBarMenu
             </Button>
           } />
-          <Tooltip content="menus.showActionMenu()" trigger={
+          <Tooltip content="API: menus.showActionMenu() Framecontexts: content" trigger={
             <Button
               onClick={() => {
                 menus.showActionMenu(

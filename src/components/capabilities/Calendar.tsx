@@ -37,7 +37,7 @@ export const Calendar = () => {
     if (calendar.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="calendar.composeMeeting()" trigger={
+          <Tooltip content="API: calendar.composeMeeting() FrameContexts: content" trigger={
             <Button
               onClick={async () => {
                 await calendar.composeMeeting({
@@ -56,7 +56,7 @@ export const Calendar = () => {
           {!loading && !data &&
             <Button onClick={reload} disabled={loading}>Authorize</Button>
           }
-          <Tooltip content="calendar.openCalendarItem()" trigger={
+          <Tooltip content="API: calendar.openCalendarItem() FrameContexts: content" trigger={
             <Button disabled={loading} onClick={async () => {
               if (!loading &&
                 data &&

@@ -10,7 +10,11 @@ import { useState } from "react";
  */
 export const Call = () => {
   const [users, setUsers] = useState([] as string[]);
+  const [context, setContext] = useState({} as app.Context);
 
+  app.getContext().then(ctx => {
+    setContext(ctx);
+  });
   // Check to see if capability is isInitialized
   if (app.isInitialized()) {
     // Check to see if capability is supported
@@ -23,11 +27,12 @@ export const Call = () => {
             items={userList}
             placeholder="Start typing a name or select"
             onSelect={(e: any) => {
-              const value = e.target.value ? e.target.value : "";
+              const loginDomain = context.user?.userPrincipalName?.split('@').at(1);
+              const value = e.target.value ? e.target.value + '@' + loginDomain : "";
               setUsers([value]);
             }}
           />
-          <Tooltip content="call.startCall()" trigger={
+          <Tooltip content={`API: call.startCall() FrameContexts:content, task`} trigger={
             <Button
               onClick={async () => {
                 if (users.length > 0) {

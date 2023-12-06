@@ -49,7 +49,7 @@ export const App = () => {
               }}>
               Get Context
             </Button>}
-            content="app.getContext()"
+            content={"API: app.getContext() FrameContexts:content, sidePanel, settings, task, stage, meetingStage"}
           />
           {showText && (
             <>

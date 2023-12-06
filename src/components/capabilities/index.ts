@@ -34,7 +34,6 @@ import { Search } from "./Search";
 import { Sharing } from "./Sharing";
 import { StageView } from "./StageView";
 import { TeamsCore } from "./TeamsCore";
-// import { Video } from "./Video";
 import { WebStorage } from "./WebStorage";
 
 export {
@@ -70,6 +69,5 @@ export {
   Sharing,
   StageView,
   TeamsCore,
-  // Video,
   WebStorage
 };

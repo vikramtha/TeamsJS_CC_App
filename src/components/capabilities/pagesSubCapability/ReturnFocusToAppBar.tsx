@@ -22,7 +22,7 @@ export const ReturnFocusToAppBar = () => {
             />
           </Fluent.Flex>
           <Fluent.Flex space="between">
-            <Fluent.Tooltip content="pages.returnFocus(false)" trigger={
+            <Fluent.Tooltip content="API: pages.returnFocus(false) Framecontexts: content" trigger={
               <Fluent.Button
                 onClick={() => {
                   pages.returnFocus(false);

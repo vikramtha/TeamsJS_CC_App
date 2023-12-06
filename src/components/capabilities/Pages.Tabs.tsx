@@ -25,7 +25,7 @@ export const PagesTabs = () => {
       <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
         {pages.tabs.isSupported() && (
           <>
-            <Tooltip content="pages.tabs.getTabInstances()" trigger={
+            <Tooltip content="API: pages.tabs.getTabInstances() FrameContexts: content" trigger={
               <Button
                 onClick={async () => {
                   const config = await pages.tabs.getTabInstances();
@@ -37,7 +37,7 @@ export const PagesTabs = () => {
                 Get tab instances
               </Button>
             } />
-            <Tooltip content="pages.tabs.getMruTabInstances()" trigger={
+            <Tooltip content="API: pages.tabs.getMruTabInstances() FrameContexts: content" trigger={
               <Button
                 onClick={async () => {
                   const config = await pages.tabs.getMruTabInstances();
@@ -51,7 +51,7 @@ export const PagesTabs = () => {
                 Get Most Recently Used tab instances
               </Button>
             } />
-            <Tooltip content="pages.tabs.navigateToTab()" trigger={
+            <Tooltip content="API: pages.tabs.navigateToTab() FrameContexts: content" trigger={
               <Button
                 onClick={async () => {
 
