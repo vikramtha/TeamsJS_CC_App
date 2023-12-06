@@ -16,7 +16,7 @@ export const DialogUrl = () => {
       // return buttons to open dialog
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="dialog.url.submit()" trigger={
+          <Tooltip content="API: dialog.url.open() FrameContexts: content, sidePanel, meetingStage" trigger={
             <Button
               onClick={() => {
                 const baseUrl = `https://${window.location.host}`;
@@ -39,7 +39,7 @@ export const DialogUrl = () => {
                 );
               }}
             >
-              Open Dialog Url Submit
+              Open Dialog Url
             </Button>
           } />
         </Flex>

@@ -60,7 +60,7 @@ export interface IModuleDetails {
   internal?: boolean;
   hidden?: boolean;
   beta?: boolean;
-  iconName?: string
+  iconName?: string;
 }
 export interface IModule {
   isSupported: () => boolean;
@@ -91,31 +91,46 @@ export function getModuleDetails(path: string): IModuleDetails | undefined {
 }
 
 const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
-  ["app", { iconName: "AppsIcon" }],
-  ["appopenlink", { iconName: "AppsIcon" }],
+  [
+    "app", {
+      iconName: "AppsIcon"
+    }
+  ],
+  [
+    "appopenlink", {
+      iconName: "AppsIcon"
+    }
+  ],
   [
     "appentity",
     {
       iconName: "AppsIcon",
       hidden: true,
       internal: true,
+
     },
   ],
-  ["appinstalldialog", { iconName: "DownloadIcon" }],
+  [
+    "appinstalldialog",
+    {
+      iconName: "DownloadIcon",
+    }],
   [
     "barcode",
     {
       beta: true,
       iconName: "TranscriptIcon"
+
     },
   ],
-  ["calendar", { iconName: "CalendarIcon" }],
+  ["calendar", { iconName: "CalendarIcon", }],
   ["call", { iconName: "CallIcon" }],
   [
     "chat",
     {
       beta: true,
-      iconName: "ChatIcon"
+      iconName: "ChatIcon",
+
     },
   ],
   [
@@ -131,6 +146,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
       iconName: "AppsIcon",
       hidden: true,
       internal: true,
+
     },
   ],
   ["dialog", { iconName: "CustomerHubIcon" }],
@@ -138,14 +154,16 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     "dialogurl",
     {
       beta: true,
-      iconName: "CustomerHubIcon"
+      iconName: "CustomerHubIcon",
+
     },
   ],
   [
     "dialogurlbot",
     {
       beta: true,
-      iconName: "CustomerHubIcon"
+      iconName: "CustomerHubIcon",
+
     },
   ],
   [
@@ -159,28 +177,34 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     "dialogadaptivecard",
     {
       beta: true,
-      iconName: "CustomerHubIcon"
+      iconName: "CustomerHubIcon",
+
+
     },
   ],
   [
     "dialogadaptivecardbot",
     {
       beta: true,
-      iconName: "CustomerHubIcon"
+      iconName: "CustomerHubIcon",
+
+
     },
   ],
   [
     "geolocation",
     {
       beta: true,
-      iconName: "LocationIcon"
+      iconName: "LocationIcon",
+
     },
   ],
   [
     "geolocationmap",
     {
       beta: true,
-      iconName: "ShareLocationIcon"
+      iconName: "ShareLocationIcon",
+
     },
   ],
   ["liveshare", { iconName: "EmailIcon" }],
@@ -200,7 +224,8 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     },
   ],
   ["mail", {
-    iconName: "EmailIcon"
+    iconName: "EmailIcon",
+
   }],
   [
     "marketplace",
@@ -208,6 +233,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
       hidden: true,
       beta: true,
       iconName: "PollIcon",
+
     },
   ],
   [
@@ -215,13 +241,15 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     {
       hidden: true,
       internal: true,
-      iconName: "ContactGroupIcon",
+      iconName: "ContactGroupIcon"
     },
   ],
   ["menus", { iconName: "MenuIcon" }],
-  ["monetization", { internal: true, iconName: "PollIcon" }],
+  ["monetization", { internal: true, iconName: "PollIcon", }],
   ["notifications", { iconName: "AppsIcon", }],
-  ["pages", { iconName: "FilesTxtIcon" }],
+  ["pages", {
+    iconName: "FilesTxtIcon"
+  }],
   ["pagestabs", { iconName: "FilesTxtIcon" }],
   ["pagesconfig", { iconName: "FilesTxtIcon" }],
   ["pagesbackstack", { iconName: "FilesTxtIcon" }],
@@ -240,12 +268,15 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
       iconName: "FilesTxtIcon"
     },
   ],
-  ["people", { iconName: "AttendeeIcon" }],
+  ["people", {
+    iconName: "AttendeeIcon"
+  }],
   [
     "profile",
     {
       beta: true,
-      iconName: "ContactCardIcon"
+      iconName: "ContactCardIcon",
+
     },
   ],
   [
@@ -254,13 +285,15 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
       hidden: true,
       internal: true,
       iconName: "CameraIcon",
+
     },
   ],
   [
     "search",
     {
       beta: true,
-      iconName: "SearchIcon"
+      iconName: "SearchIcon",
+
     },
   ],
   [
@@ -268,14 +301,18 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     {
       beta: true,
       iconName: "AppsIcon",
+
     },
   ],
-  ["sharing", { iconName: "ScreenshareIcon" }],
+  ["sharing", {
+    iconName: "ScreenshareIcon"
+  }],
   [
     "stageview",
     {
       beta: true,
-      iconName: "PanoramaIcon"
+      iconName: "PanoramaIcon",
+
     },
   ],
   [
@@ -284,6 +321,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
       hidden: true,
       internal: true,
       iconName: "TeamsMonochromeIcon",
+
     },
   ],
   [
@@ -304,19 +342,11 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
   ],
   ["teamscore", { iconName: "TeamsMonochromeIcon" }],
   [
-    "videoex",
-    {
-      beta: true,
-      hidden: true,
-      internal: true,
-      iconName: "CallVideoIcon",
-    },
-  ],
-  [
     "videoeffects",
     {
       beta: true,
-      iconName: "CallVideoIcon"
+      iconName: "CallVideoIcon",
+
     }
   ], [
     "videoeffectsex",
@@ -324,7 +354,8 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
       beta: true,
       hidden: true,
       internal: true,
-      iconName: "CallVideoIcon"
+      iconName: "CallVideoIcon",
+
     }
   ],
   [

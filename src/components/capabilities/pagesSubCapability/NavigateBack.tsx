@@ -33,7 +33,7 @@ export const NavigateBack = () => {
                     </Fluent.Flex>
                     {pages.backStack.isSupported() ?
                         <Fluent.Flex gap="gap.small" vAlign="center">
-                            <Fluent.Tooltip content="pages.backStack.navigateBack()" trigger={
+                            <Fluent.Tooltip content="API: pages.backStack.navigateBack() Framecontexts: content" trigger={
                                 <Fluent.Button
                                     onClick={async () => {
                                         await pages.backStack.navigateBack();

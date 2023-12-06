@@ -1,5 +1,5 @@
 import { Button, Dropdown, DropdownItemProps, Flex, Tooltip } from "@fluentui/react-northstar";
-import { CapabilityStatus, adobeAcrobat, developersPortal, powerBI, vivaEngage, vivaInsight } from "../../helpers/constants";
+import { CapabilityStatus, adobeAcrobat, avatars, developersPortal, powerBI, vivaEngage, vivaInsight } from "../../helpers/constants";
 import { app, appInstallDialog } from "@microsoft/teams-js";
 
 import { isMobile } from "react-device-detect";
@@ -28,6 +28,9 @@ export const AppInstallDialog = () => {
   }, {
     content: adobeAcrobat.appId,
     header: adobeAcrobat.name
+  }, {
+    content: avatars.appId,
+    header: avatars.name
   }];
 
   // Check if app is initialized
@@ -61,7 +64,7 @@ export const AppInstallDialog = () => {
               }}
             >
               Open App Install Dialog
-            </Button>} content="appInstallDialog.openAppInstallDialog()" />
+            </Button>} content={`API: appInstallDialog.openAppInstallDialog() FrameContexts: content, sidePanel, settings, task, stage, meetingStage`} />
         </Flex>
       );
     } else {

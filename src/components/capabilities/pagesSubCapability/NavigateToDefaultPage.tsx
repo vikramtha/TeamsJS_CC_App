@@ -29,7 +29,7 @@ export const NavigateToDefaultPage = () => {
                             </Fluent.Flex>
                             <Fluent.Flex space="between">
 
-                                <Fluent.Tooltip content="pages.currentApp.navigateToDefaultPage()" trigger={
+                                <Fluent.Tooltip content="API: pages.currentApp.navigateToDefaultPage() FrameContexts: content, sidePanel, settings, task, stage, meetingStage" trigger={
                                     <Fluent.Button
                                         onClick={async () => {
                                             await pages.currentApp.navigateToDefaultPage();

@@ -1,4 +1,4 @@
-import { Flex, Input, Text } from "@fluentui/react-northstar";
+import { Flex, Input, Text, Tooltip } from "@fluentui/react-northstar";
 import { app, pages } from "@microsoft/teams-js";
 
 import { CapabilityStatus } from "../../helpers/constants";
@@ -31,7 +31,9 @@ export const PagesAppButton = () => {
 
             });
             return <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-                <Text content="Check the current app's icon in App Bar section and hover / click on it to see the effect" />
+                <Tooltip content="API: pages.appButton() FrameContexts: content" trigger={
+                    <Text content="Check the current app's icon in App Bar section and hover / click on it to see the effect" />
+                } />
                 <Input fluid value={text} />
             </Flex>;
 

@@ -20,7 +20,7 @@ export const GeoLocation = () => {
     if (geoLocation.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="geoLocation.hasPermission()" trigger={
+          <Tooltip content="API: geoLocation.hasPermission() FrameContexts: content,task" trigger={
             <Button
               onClick={async () => {
                 // check if the user has granted permission to access their location
@@ -33,7 +33,7 @@ export const GeoLocation = () => {
               Has Permission
             </Button>
           } />
-          <Tooltip content="geoLocation.requestPermission()" trigger={
+          <Tooltip content="API: geoLocation.requestPermission() FrameContexts: content,task" trigger={
             <Button
               onClick={async () => {
                 try {
@@ -51,7 +51,7 @@ export const GeoLocation = () => {
               Request Permission
             </Button>
           } />
-          <Tooltip content="geoLocation.getCurrentLocation()" trigger={
+          <Tooltip content="API: geoLocation.getCurrentLocation() FrameContexts: content,task" trigger={
             <Button
               onClick={async () => {
                 // get the user's location

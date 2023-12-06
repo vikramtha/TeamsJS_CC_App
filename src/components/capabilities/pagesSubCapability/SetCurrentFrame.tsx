@@ -27,7 +27,7 @@ export const SetCurrentFrame = () => {
             />
           </Fluent.Flex>
           <Fluent.Flex space="between">
-            <Fluent.Tooltip content="pages.setCurrentFrame()" trigger={
+            <Fluent.Tooltip content="pages.setCurrentFrame() FrameContexts.content" trigger={
               <Fluent.Button
                 onClick={() => {
                   const baseUrl = `https://${window.location.host}`;

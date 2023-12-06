@@ -15,7 +15,7 @@ export const BarCode = () => {
       // return button to scan barcode
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="barCode.hasPermission()" trigger={<Button
+          <Tooltip content="API: barCode.hasPermission() FrameContexts: content, task" trigger={<Button
             onClick={async () => {
               await barCode.hasPermission();
             }}
@@ -23,7 +23,7 @@ export const BarCode = () => {
             Bar code has permission
           </Button>
           } />
-          <Tooltip content="barCode.requestPermission()" trigger={
+          <Tooltip content="API: barCode.requestPermission() FrameContexts: content, task" trigger={
             <Button
               onClick={async () => {
                 await barCode.requestPermission();
@@ -33,7 +33,7 @@ export const BarCode = () => {
             </Button>
           } />
 
-          <Tooltip content="barCode.scanBarCode()" trigger={
+          <Tooltip content="API: barCode.scanBarCode() FrameContexts: content, task" trigger={
             <Button
               onClick={async () => {
                 const scanString = await barCode.scanBarCode({

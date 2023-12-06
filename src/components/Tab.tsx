@@ -46,7 +46,7 @@ const Tab = () => {
 
   const setData = async (): Promise<ICapabilityTable[]> => {
     await app.initialize();
-    return await AllModules() as ICapabilityTable[];
+    return AllModules() as ICapabilityTable[];
   };
 
   /**

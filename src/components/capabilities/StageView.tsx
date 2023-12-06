@@ -1,11 +1,8 @@
 import { Button, Dropdown, Flex, Tooltip } from "@fluentui/react-northstar";
 import {
   CapabilityStatus,
-  adobeAcrobat,
-  developersPortal,
-  powerBI,
-  vivaEngage,
-  vivaInsight,
+  avatars,
+  developersPortal
 } from "../../helpers/constants";
 import { app, stageView } from "@microsoft/teams-js";
 
@@ -15,6 +12,7 @@ import { useState } from "react";
 interface IDropDrownProps {
   content: string;
   header: string;
+  url: string;
 }
 
 /**
@@ -24,21 +22,14 @@ export const StageView = () => {
   const [appId, setAppId] = useState({} as IDropDrownProps);
   const appIds: IDropDrownProps[] = [{
     content: developersPortal.appId,
-    header: developersPortal.name
+    header: developersPortal.name,
+    url: developersPortal.url
   }, {
-    content: powerBI.appId,
-    header: powerBI.name
-  }, {
-    content: vivaInsight.appId,
-    header: vivaInsight.name
-  },
-  {
-    content: vivaEngage.appId,
-    header: vivaEngage.name
-  }, {
-    content: adobeAcrobat.appId,
-    header: adobeAcrobat.name
-  }];
+    content: avatars.appId,
+    header: avatars.name,
+    url: avatars.url
+  }
+  ];
   // Check to see if capability is isInitialized
   if (app.isInitialized()) {
     // check to see if capability is supported
@@ -55,15 +46,15 @@ export const StageView = () => {
               }
             }}
           />
-          <Tooltip content="stageView.open()" trigger={
+          <Tooltip content="API: stageView.open() FrameContexts: content" trigger={
             <Button className="btn_stageview"
               onClick={async () => {
                 // open Developer Portal app in stage view
                 try {
                   await stageView.open({
                     appId: appId.content,
-                    contentUrl: "https://dev.teams.microsoft.com/home?host=teams",
-                    websiteUrl: "https://dev.teams.microsoft.com/home?host=teams",
+                    contentUrl: appId.url,
+                    websiteUrl: appId.url,
                     threadId: "",
                     title: appId.header,
                   });
@@ -72,7 +63,7 @@ export const StageView = () => {
                 }
               }}
             >
-              Open Stage View (only set up for Developer Portal)
+              Open Stage View
             </Button>
           } />
         </Flex >

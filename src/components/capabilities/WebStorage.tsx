@@ -14,7 +14,7 @@ export const WebStorage = () => {
     if (webStorage.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="webStorage.isWebStorageClearedOnUserLogOut()" trigger={
+          <Tooltip content="API: webStorage.isWebStorageClearedOnUserLogOut() Framecontexts: content" trigger={
             <Button
               onClick={() => {
                 const isCleared = webStorage.isWebStorageClearedOnUserLogOut();

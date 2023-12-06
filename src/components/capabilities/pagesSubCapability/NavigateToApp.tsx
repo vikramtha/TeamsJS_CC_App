@@ -26,7 +26,7 @@ export const NavigateToApp = () => {
         </Fluent.Flex>
         <Fluent.Flex space="between">
           {pages.isSupported() ?
-            <Fluent.Tooltip content="pages.navigateToApp()" trigger={
+            <Fluent.Tooltip content="API: pages.navigateToApp() FrameContexts: content, sidePanel, settings, task, stage, meetingStage" trigger={
               <Fluent.Button
                 onClick={async () => {
                   // navigate to the Apps tab in the Developer Portal app

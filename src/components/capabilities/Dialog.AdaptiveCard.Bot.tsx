@@ -17,7 +17,7 @@ export const DialogAdaptiveCardBot = () => {
       // return buttons to open dialog
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
-          <Tooltip content="dialog.adaptiveCard.bot.open()" trigger={
+          <Tooltip content="API: dialog.adaptiveCard.bot.open() FrameContexts: content, sidePanel, meetingStage" trigger={
             <Button
               onClick={() => {
                 dialog.adaptiveCard.bot.open({
