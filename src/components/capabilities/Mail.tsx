@@ -38,6 +38,9 @@ export const Mail = () => {
     if (mail.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
+          {!loading && !data &&
+            <Button onClick={reload} disabled={loading}>Authorize</Button>
+          }
           <Tooltip content="API: mail.composeMail() FrameContexts: content" trigger={
             <Button
               onClick={async () => {
@@ -56,9 +59,6 @@ export const Mail = () => {
               Compose Mail
             </Button>
           } />
-          {!loading && !data &&
-            <Button onClick={reload} disabled={loading}>Authorize</Button>
-          }
           <Tooltip content="API: mail.openMailItem() FrameContexts: content" trigger={
             <Button disabled={loading} onClick={async () => {
               if (!loading && data && data.mail.value.length > 0 && data.mail.value[0].id) {
