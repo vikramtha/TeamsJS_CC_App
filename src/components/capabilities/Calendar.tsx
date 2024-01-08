@@ -22,11 +22,11 @@ export const Calendar = () => {
       Providers.globalProvider = provider;
       Providers.globalProvider.setState(ProviderState.SignedIn);
 
-      let calendars = await graph.api("/me/calendars").get();
+      let calendars = await graph.api("/me/events?$select=subject").get();
       return { calendars };
     },
     {
-      scope: ["User.Read", "Calendars.ReadBasic"],
+      scope: ["User.Read", "Calendars.Read"],
       credential: teamsUserCredential,
     }
   );
@@ -37,13 +37,18 @@ export const Calendar = () => {
     if (calendar.isSupported()) {
       return (
         <Flex gap="gap.small" className={isMobile ? "ui_flex_button_mobile" : ""} vAlign="center">
+          {!loading && !data &&
+            <Button onClick={reload} disabled={loading}>Authorize</Button>
+          }
           <Tooltip content="API: calendar.composeMeeting() FrameContexts: content" trigger={
             <Button
               onClick={async () => {
+                const ctx = await app.getContext();
+                const domain = ctx.user && ctx.user.loginHint?.split('@').at(1);
                 await calendar.composeMeeting({
                   attendees: [
-                    "AdeleV@6plbfs.onmicrosoft.com",
-                    "AlexW@6plbfs.onmicrosoft.com",
+                    `AdeleV@${domain}`,
+                    `AlexW@${domain}`,
                   ],
                   content: "Meeting Agenda",
                   subject: "Meeting created by TeamsJS",
@@ -53,9 +58,6 @@ export const Calendar = () => {
               Compose Meeting
             </Button>
           } />
-          {!loading && !data &&
-            <Button onClick={reload} disabled={loading}>Authorize</Button>
-          }
           <Tooltip content="API: calendar.openCalendarItem() FrameContexts: content" trigger={
             <Button disabled={loading} onClick={async () => {
               if (!loading &&
