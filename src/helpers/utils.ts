@@ -149,9 +149,16 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
 
     },
   ],
-  ["dialog", { iconName: "CustomerHubIcon" }],
+  ["dialog", { beta: true, iconName: "CustomerHubIcon" }],
   [
     "dialogurl",
+    {
+      beta: true,
+      iconName: "CustomerHubIcon",
+
+    },
+  ], [
+    "dialogurlparentcommunication",
     {
       beta: true,
       iconName: "CustomerHubIcon",
@@ -190,6 +197,18 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
 
 
     },
+  ],
+  [
+    "externalappauthentication", {
+      hidden: true,
+      internal: true
+    }
+  ],
+  [
+    "externalappcardactions", {
+      hidden: true,
+      internal: true
+    }
   ],
   [
     "geolocation",
@@ -245,8 +264,9 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     },
   ],
   ["menus", { iconName: "MenuIcon" }],
+  ["messagechannels", { internal: true, beta: true, hidden: true, iconName: "EmailIcon" }],
   ["monetization", { internal: true, iconName: "PollIcon", }],
-  ["notifications", { iconName: "AppsIcon", }],
+  ["notifications", { hidden: true, internal: true, iconName: "AppsIcon", }],
   ["pages", {
     iconName: "FilesTxtIcon"
   }],
@@ -257,7 +277,7 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     "pagesfulltrust",
     {
       hidden: true,
-      iconName: "AppsIcon",
+      iconName: "FilesTxtIcon",
     },
   ],
   ["pagesappbutton", { iconName: "FilesTxtIcon" }],
@@ -341,6 +361,12 @@ const moduleDetailsMap: Map<string, IModuleDetails> = new Map([
     },
   ],
   ["teamscore", { iconName: "TeamsMonochromeIcon" }],
+  [
+    "thirdpartycloudstorage",
+    {
+      beta: true, iconName: "BriefcaseIcon"
+    },
+  ],
   [
     "videoeffects",
     {
