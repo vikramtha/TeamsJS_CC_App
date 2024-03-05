@@ -1,5 +1,11 @@
 # TeamsJS Capability Checker
 
+This is a sample app that allows developers to verify what Capabilities work on which hub using a matrix of isSupported values. These are updated using the isSupported() check in TeamsJS. In addition, there are quick code demos for some of the APIs. Some of these outputs are shown in console as there is no UI change. This should help to better understand how to call these APIs in your own sample app after looking at how these APIs are implemented.
+
+Try opening the app in other hubs including mobile hubs and you can see the isSupported values there as well.
+
+Feel free to add any suggestions at the link below. 
+
 # Personal Tabs
 
 Tabs are Teams-aware webpages embedded in Microsoft Teams. A channel/group tab delivers content to channels and group chats, and are a great way to create collaborative spaces around dedicated web-based content.
